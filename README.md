@@ -15,7 +15,9 @@ Each entry includes a short description and a direct link to the project folder.
 | Project | Description | Link |
 |--------|-------------|------|
 | **static-website-hosting-on-aws-s3** | Simple, scalable static website hosting using Amazon S3. | [`static-website-hosting-on-aws-s3/`](static-website-hosting-on-aws-s3/) |
-| **Add More Projects** | Add new AWS projects here as your portfolio grows. | — |
+| **serverless-dynamodb-crud-api** | End‑to‑end serverless CRUD architecture built with Lambda, API Gateway, and DynamoDB. | [`serverless-dynamodb-crud-api/`](serverless-dynamodb-crud-api/) |
+
+
 
 ---
 
