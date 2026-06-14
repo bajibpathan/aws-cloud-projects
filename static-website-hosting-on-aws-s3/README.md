@@ -123,7 +123,7 @@ If you no longer want this project hosted on AWS, you can safely remove all reso
 
 A full clean‑up guide is available here:
 
-👉 [Clean‑up Instructions](docs/deployment/cleanup.md)
+👉 [Clean‑up Instructions](docs/deployment/cleanup-guide.md)
 
 ---
 
