@@ -264,7 +264,7 @@ $ curl -X POST -d "{\"operation\":\"create\",\"tableName\":\"lambda-apigateway\"
 ## ## ✅ 9.Validate the Results from AWS Console
 1. To validate that the item is indeed inserted into DynamoDB table, go to Dynamo console, select "lambda-apigateway" table, select "Explore table items" button from top right, and the newly inserted item should be displayed.
 ![Verify Results](./images/Dynamodb/DB_ExploreItems.png)
-![Verify Results](./images/Dynamodb/DB_Data.png)
+![Verify Results](./images/Dynamodb/Db_Data.png)
 
 2. To get all the inserted items from the table, we can use the "list" operation of Lambda using the same API. Pass the following JSON to the API, and it will return all the items from the Dynamo table
 
@@ -276,6 +276,7 @@ $ curl -X POST -d "{\"operation\":\"create\",\"tableName\":\"lambda-apigateway\"
     }
 }
 ```
+
 ![Verify Results](./images/Postman/PostMan_AllItems.png)
 
 We have successfully created a serverless API using API Gateway, Lambda, and DynamoDB! Your serverless CRUD API is now live and ready to use!🎉
