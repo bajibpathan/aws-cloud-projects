@@ -97,6 +97,7 @@ Amazon CloudWatch Logs
 │   ├── 02-event-layer.md
 │   └── 03-data-layer.md
 │   └── 04-observability-layer.md
+│   └── 05-reliability-layer.md
 │
 ├── lambda/
 │
@@ -117,6 +118,7 @@ The project is documented by architecture layers instead of individual AWS servi
 | 02-event-layer.md | Event-driven processing using Amazon S3 Event Notifications and AWS Lambda |
 | 03-data-layer.md | Metadata storage using Amazon DynamoDB and serverless design decisions |
 | 04-observability-layer.md | Application monitoring, log retention, Lambda metrics, dashboards, and error detection using Amazon CloudWatch |
+| 05-reliability-layer.md | Idempotency, file validation, processing states, structured logging, and resilient error handling |
 
 Each document includes:
 
@@ -173,6 +175,19 @@ Each document includes:
 
 ---
 
+## ✅ Reliability and Resilience
+
+- Deterministic image identifiers
+- Idempotent DynamoDB writes
+- Duplicate-event protection
+- Supported file-type validation
+- Structured JSON logging
+- Processing status tracking
+- Controlled error handling
+- Processing duration measurement
+
+---
+
 # 🧪 Validation Completed
 
 - Amazon S3 bucket created successfully.
@@ -182,18 +197,23 @@ Each document includes:
 - Metadata stored in Amazon DynamoDB.
 - CloudWatch Logs verified.
 - End-to-end workflow validated.
+- Duplicate S3 events safely ignored.
+- Unsupported file types rejected.
+- Invalid event structures handled.
+- Structured processing statuses verified in CloudWatch.
+- DynamoDB duplicate records prevented using conditional writes.
 
 ---
 ## 📈 Project Status
 
 | Phase | Status |
 |--------|:------:|
-| Phase 1 – Storage Layer | ✅ Completed |
-| Phase 2 – Event Layer | ✅ Completed |
-| Phase 3 – Data Layer | ✅ Completed |
-| Phase 4 – Observability Layer | ✅ Completed |
-| Phase 5 – Production Readiness | ⏳ Planned |
-| Phase 6 – Final Documentation & Portfolio | ⏳ Planned |
+| Phase 1: Storage Layer | ✅ Completed |
+| Phase 2: Event Layer | ✅ Completed |
+| Phase 3: Data Layer | ✅ Completed |
+| Phase 4: Observability Layer | ✅ Completed |
+| Phase 5: Reliability and Resilience | ✅ Completed |
+| Phase 6: Final Documentation and Portfolio | ⏳ Planned |
 
 ---
 
