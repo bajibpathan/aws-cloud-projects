@@ -96,6 +96,7 @@ Amazon CloudWatch Logs
 │   ├── 01-storage-layer.md
 │   ├── 02-event-layer.md
 │   └── 03-data-layer.md
+│   └── 04-observability-layer.md
 │
 ├── lambda/
 │
@@ -115,6 +116,7 @@ The project is documented by architecture layers instead of individual AWS servi
 | 01-storage-layer.md | Storage architecture, security decisions, and Amazon S3 implementation |
 | 02-event-layer.md | Event-driven processing using Amazon S3 Event Notifications and AWS Lambda |
 | 03-data-layer.md | Metadata storage using Amazon DynamoDB and serverless design decisions |
+| 04-observability-layer.md | Application monitoring, log retention, Lambda metrics, dashboards, and error detection using Amazon CloudWatch |
 
 Each document includes:
 
@@ -182,19 +184,16 @@ Each document includes:
 - End-to-end workflow validated.
 
 ---
-
-# 📈 Project Status
+## 📈 Project Status
 
 | Phase | Status |
 |--------|:------:|
 | Phase 1 – Storage Layer | ✅ Completed |
 | Phase 2 – Event Layer | ✅ Completed |
 | Phase 3 – Data Layer | ✅ Completed |
-| Phase 4 – Observability Layer | ⏳ Planned |
-| Phase 5 – Security Enhancements | ⏳ Planned |
-| Phase 6 – Error Handling | ⏳ Planned |
-| Phase 7 – Project Documentation | ⏳ Planned |
-
+| Phase 4 – Observability Layer | ✅ Completed |
+| Phase 5 – Production Readiness | ⏳ Planned |
+| Phase 6 – Final Documentation & Portfolio | ⏳ Planned |
 
 ---
 
