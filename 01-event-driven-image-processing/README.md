@@ -27,49 +27,7 @@ This project is built incrementally to understand not only **how AWS services wo
 ---
 
 # 🏗 Current Architecture
-
-```text
-User
-
-        │
-
-Upload Image
-
-        ▼
-
-Amazon S3 Bucket
-
-        │
-
-ObjectCreated Event
-
-        ▼
-
-Amazon S3 Event Notification
-
-        │
-
-        ▼
-
-AWS Lambda
-
-        │
-
-Extract Metadata
-
-        ▼
-
-Amazon DynamoDB
-
-        │
-
-Store Metadata
-
-        ▼
-
-Amazon CloudWatch Logs
-```
-
+![Event-Driven Image Processing Architecture](architecture/images/01-high-level-architecture.png)
 ---
 
 # ☁️ AWS Services Used
@@ -91,6 +49,7 @@ Amazon CloudWatch Logs
 01-event-driven-image-processing/
 
 ├── README.md
+├── PROJECT_SUMMARY.md
 │
 ├── docs/
 │   ├── 01-storage-layer.md
@@ -100,7 +59,7 @@ Amazon CloudWatch Logs
 │   └── 05-reliability-layer.md
 │
 ├── lambda/
-│
+│   └── lambda_function.py
 ├── screenshots/
 │
 └── sample-images/
