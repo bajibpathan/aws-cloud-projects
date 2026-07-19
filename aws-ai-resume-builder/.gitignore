@@ -1,0 +1,78 @@
+# Operating system files
+
+.DS_Store
+Thumbs.db
+
+# IDE and editor files
+
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Python
+
+**pycache**/
+*.py[cod]
+*.pyo
+.pytest_cache/
+.coverage
+htmlcov/
+
+# Python virtual environments
+
+venv/
+.venv/
+env/
+
+# Environment variables and secrets
+
+.env
+.env.*
+!.env.example
+
+# AWS SAM and deployment artifacts
+
+.aws-sam/
+samconfig.toml
+
+# Terraform
+
+.terraform/
+*.tfstate
+*.tfstate.*
+.terraform.lock.hcl
+crash.log
+
+# Build and package artifacts
+
+build/
+dist/
+package/
+*.zip
+
+# Application logs
+
+*.log
+logs/
+
+# Temporary files
+
+tmp/
+temp/
+
+# Local test outputs
+
+test-output/
+generated-output/
+
+# Personal and sensitive resumes
+
+sample-resumes/*
+!sample-resumes/README.md
+!sample-resumes/sample-resume.pdf
+!sample-resumes/sample-resume.docx
+
+# Generated website files
+
+frontend/generated/
