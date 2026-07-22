@@ -95,3 +95,33 @@ Documentation is considered part of the software deliverable.
 * Document architectural decisions as the project evolves.
 * Build incrementally and validate each phase before moving forward.
 * Focus on explaining **why**, not just **what**.
+
+
+## Why did you configure a Lifecycle Rule?
+
+Uploaded resumes are temporary processing files.
+
+Deleting them automatically:
+
+- Reduces storage costs
+- Minimizes exposure of sensitive personal information
+- Prevents unnecessary data retention
+- Aligns with security best practices
+
+For this project, resumes are retained for seven days to allow processing, troubleshooting, and retries.
+
+
+## Why is versioning enabled on the website bucket?
+
+Generated website files may be overwritten when a resume is updated or when the website is regenerated.
+
+Versioning allows recovery from accidental overwrites or deletions and provides a simple rollback option.
+
+Versioning is not enabled on the temporary resume bucket because uploaded resumes use unique object keys and are automatically deleted after seven days.
+
+## Why is S3 static website hosting disabled?
+
+The S3 bucket remains private and will be accessed through Amazon CloudFront using Origin Access Control.
+
+This avoids exposing the S3 website endpoint publicly and provides a more secure delivery model.
+

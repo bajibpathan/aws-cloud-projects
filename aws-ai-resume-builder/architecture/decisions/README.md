@@ -29,10 +29,11 @@ ADRs will be created as each project phase is designed, implemented and validate
 
 ## ADR Index
 
-| ADR | Decision | Status |
-|---|---|:---:|
-| [ADR-001](ADR-001-use-separate-s3-buckets.md) | Use separate S3 buckets for resumes and generated websites | Accepted |
-| [ADR-002](ADR-002-use-different-versioning-strategies.md) | Use different versioning strategies for the S3 buckets | Accepted |
+| ADR | Title | Status |
+|------|-------|--------|
+| ADR-001 | Use Separate S3 Buckets | Accepted |
+| ADR-002 | Use Different Versioning Strategies | Accepted |
+| ADR-003 | Use Amazon S3 Presigned URLs for Secure Resume Uploads | Accepted |
 ---
 
 ## Naming Convention

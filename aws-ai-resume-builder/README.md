@@ -1,9 +1,10 @@
 # AWS AI Resume Builder
 
-> **Build Status:** 🚧 Phase 1 – Project Foundation (In Progress)
+> **Build Status:** ✅ Phase 3 – Secure Resume Upload (Completed)
 
-This project is being designed, implemented, tested and documented incrementally. Each phase is completed, validated and committed to GitHub before moving to the next stage.
+An end-to-end serverless AWS application that transforms a resume into a professional portfolio website using Amazon Textract, Amazon Bedrock and modern AWS serverless services.
 
+The project is being designed, implemented, tested and documented incrementally. Each phase is completed, validated and committed to GitHub before moving to the next stage.
 
 ---
 
@@ -15,27 +16,25 @@ However, building a personal website typically requires web development knowledg
 
 This project automates that entire process.
 
-Users upload a PDF resume through a secure web application. The application extracts the resume content, understands the information using Generative AI, and automatically generates a professional static website.
+Users upload a resume through a secure web application. The application extracts the resume content, understands the information using Generative AI, and automatically generates a professional static portfolio website.
 
-The solution follows an event-driven serverless architecture that scales automatically without requiring server management.
-
-The project is being built from scratch as a learning and portfolio project while following AWS best practices for security, scalability, reliability and cost optimization.
+The solution follows a serverless, event-driven architecture designed using AWS best practices for security, scalability, reliability and cost optimization.
 
 ---
 
 # Problem Statement
 
-Creating a professional personal website usually involves multiple manual steps:
+Creating a professional portfolio website usually involves multiple manual steps:
 
-- Writing HTML and CSS
-- Organizing resume content
-- Choosing a website layout
-- Hosting the website
-- Keeping the website updated whenever the resume changes
+* Writing HTML, CSS and JavaScript
+* Organizing resume content
+* Choosing a website layout
+* Hosting the website
+* Updating the website whenever the resume changes
 
 These tasks can be time-consuming, especially for users without web development experience.
 
-The goal of this project is to automate the entire workflow using managed AWS services and Generative AI.
+This project automates the entire workflow using managed AWS services and Generative AI.
 
 ---
 
@@ -43,81 +42,220 @@ The goal of this project is to automate the entire workflow using managed AWS se
 
 The application provides an automated pipeline that:
 
-- Accepts secure PDF uploads
-- Extracts text using Amazon Textract
-- Understands resume content using Amazon Bedrock
-- Converts the extracted information into structured JSON
-- Generates a professional HTML website using Python
-- Stores the website in Amazon S3
-- Delivers the website globally through Amazon CloudFront
+* Securely uploads resume files using Amazon S3 presigned URLs
+* Stores uploaded resumes in a private Amazon S3 bucket
+* Extracts document text using Amazon Textract
+* Understands resume content using Amazon Bedrock
+* Converts extracted information into structured JSON
+* Generates a professional portfolio website
+* Stores the generated website in Amazon S3
+* Delivers the website globally through Amazon CloudFront
 
-The result is a scalable, secure and fully serverless solution that demonstrates modern cloud architecture patterns.
+The result is a scalable, secure and fully serverless architecture.
 
+---
+
+# High-Level Architecture
+
+```text
+                    User
+                      │
+                      ▼
+              Frontend Application
+                      │
+                      ▼
+             Amazon API Gateway
+                      │
+                      ▼
+                AWS Lambda
+                      │
+          Generate Presigned URL
+                      │
+                      ▼
+         Amazon S3 (Resume Upload)
+                      │
+                      ▼
+             Amazon Textract
+                      │
+                      ▼
+                Amazon SNS
+                      │
+                      ▼
+                AWS Lambda
+                      │
+                      ▼
+             Amazon Bedrock
+                      │
+                      ▼
+          Python HTML Generator
+                      │
+                      ▼
+        Amazon S3 (Website Bucket)
+                      │
+                      ▼
+          Amazon CloudFront
+                      │
+                      ▼
+        Generated Portfolio Website
+```
+
+A detailed AWS architecture diagram is available in the `architecture/images` directory.
+
+---
 
 # Project Highlights
 
 The completed solution is designed to provide:
 
-- A fully serverless and event-driven architecture
-- Secure PDF resume uploads using Amazon S3 presigned URLs
-- Authentication and authorization with Amazon Cognito
-- Automated document text extraction using Amazon Textract
-- Asynchronous document processing using Amazon SNS
-- AI-powered resume understanding using Amazon Bedrock
-- Structured JSON generation for deterministic website rendering
-- Professional HTML website generation using reusable Python templates
-- Secure static website hosting using Amazon S3 and Amazon CloudFront
-- Logging, monitoring and troubleshooting using Amazon CloudWatch
-- Security based on IAM least-privilege principles
-- Architecture aligned with the AWS Well-Architected Framework
+* Fully serverless architecture
+* Event-driven processing
+* Secure resume uploads using Amazon S3 Presigned URLs
+* Private Amazon S3 storage
+* Authentication with Amazon Cognito
+* Document text extraction using Amazon Textract
+* AI-powered resume understanding using Amazon Bedrock
+* Structured JSON generation
+* Automated HTML portfolio generation
+* Global content delivery through Amazon CloudFront
+* Monitoring using Amazon CloudWatch
+* IAM least-privilege security model
+* AWS Well-Architected Framework best practices
 
-### Key Design Principles
+---
 
-This project follows several cloud architecture best practices:
+# AWS Services
 
-- **Event-Driven Architecture** – Components communicate through events instead of continuous polling.
-- **Serverless Design** – Managed AWS services automatically scale without server management.
-- **Separation of Concerns** – Each AWS service is responsible for a single business function.
-- **AI-Assisted Processing** – Amazon Bedrock extracts structured information, while Python generates the final website.
-- **Security by Design** – Authentication, authorization and least-privilege access are applied throughout the solution.
+| Category            | Services           |
+| ------------------- | ------------------ |
+| Compute             | AWS Lambda         |
+| Storage             | Amazon S3          |
+| AI                  | Amazon Bedrock     |
+| Document Processing | Amazon Textract    |
+| API                 | Amazon API Gateway |
+| Messaging           | Amazon SNS         |
+| Authentication      | Amazon Cognito     |
+| CDN                 | Amazon CloudFront  |
+| Monitoring          | Amazon CloudWatch  |
+| Security            | AWS IAM            |
 
+---
 
-# Project Progress
+# Current Progress
 
-The project is being developed iteratively. Each phase is designed, implemented, tested, documented and committed before moving to the next stage.
+| Phase    | Description                                 |     Status     |
+| :------- | :------------------------------------------ | :------------: |
+| Phase 1  | Project Foundation                          |   ✅ Complete   |
+| Phase 2  | Storage Layer (Amazon S3)                   |   ✅ Complete   |
+| Phase 3  | Secure Resume Upload (API Gateway & Lambda) |   ✅ Complete   |
+| Phase 4  | Authentication (Amazon Cognito)             |  ⬜ Not Started |
+| Phase 5  | Document Processing (Textract & SNS)        |  ⬜ Not Started |
+| Phase 6  | AI Processing (Amazon Bedrock)              |  ⬜ Not Started |
+| Phase 7  | Portfolio Website Generation                |  ⬜ Not Started |
+| Phase 8  | Frontend Integration                        |  ⬜ Not Started |
+| Phase 9  | Observability (CloudWatch)                  |  ⬜ Not Started |
+| Phase 10 | Reliability & Security                      |  ⬜ Not Started |
+| Phase 11 | Cost Optimization                           |  ⬜ Not Started |
+| Phase 12 | Final Testing & Documentation               |  ⬜ Not Started |
 
-| Phase | Description | Status |
-|:------|:------------|:------:|
-| Phase 1 | Project Foundation | 🚧 In Progress |
-| Phase 2 | Storage Layer (Amazon S3) | ⬜ Not Started |
-| Phase 3 | API Layer (API Gateway & Presigned Uploads) | ⬜ Not Started |
-| Phase 4 | Authentication Layer (Amazon Cognito) | ⬜ Not Started |
-| Phase 5 | Document Processing (Lambda, Amazon Textract & Amazon SNS) | ⬜ Not Started |
-| Phase 6 | AI Processing (Amazon Bedrock) | ⬜ Not Started |
-| Phase 7 | Presentation Layer (Python HTML Renderer & CloudFront) | ⬜ Not Started |
-| Phase 8 | Frontend Integration | ⬜ Not Started |
-| Phase 9 | Observability (Amazon CloudWatch) | ⬜ Not Started |
-| Phase 10 | Reliability & Security | ⬜ Not Started |
-| Phase 11 | Cost Optimization | ⬜ Not Started |
-| Phase 12 | Final Testing & Documentation | ⬜ Not Started |
+---
 
+# Completed So Far
 
+## Phase 1 – Project Foundation
+
+* Repository structure
+* Initial architecture
+* Project documentation
+* Architecture Decision Record (ADR) structure
+
+## Phase 2 – Storage Layer
+
+* Private Resume Upload Bucket
+* Private Website Bucket
+* Server-side encryption (SSE-S3)
+* Lifecycle policy for uploaded resumes
+* Versioning for generated websites
+* Block Public Access
+* Bucket Owner Enforced
+* Sample resume dataset
+* Architecture Decision Records for storage design
+
+## Phase 3 – Secure Resume Upload
+
+- HTTP API using Amazon API Gateway
+- Lambda proxy integration
+- Lambda execution role with least-privilege IAM permissions
+- Presigned URL generation
+- File validation (type and size)
+- Secure direct uploads to a private Amazon S3 bucket
+- API-level CORS configuration
+- End-to-end upload testing
+
+---
+
+# Repository Structure
+
+```text
+aws-ai-resume-builder/
+│
+├── architecture/
+│   ├── images/
+│   └── decisions/
+│
+├── docs/
+├── frontend/
+├── lambda/
+├── policies/
+├── prompts/
+├── sample-resumes/
+├── screenshots/
+├── tests/
+│
+├── README.md
+├── PROJECT_SUMMARY.md
+└── INTERVIEW_GUIDE.md
+```
+
+---
+
+# Architecture Decision Records (ADRs)
+
+Important design decisions are documented as Architecture Decision Records.
+
+Current ADRs include:
+
+* ADR-001 – Use Separate S3 Buckets
+* ADR-002 – Use Different Versioning Strategies
+
+Additional ADRs will be added as new architectural decisions are made.
+
+---
 
 # Learning Journey
 
-This repository is being built as a hands-on learning and portfolio project rather than simply following a tutorial.
+This repository is intentionally being built as a hands-on engineering project rather than by following a tutorial.
 
-For every phase, the same engineering workflow is followed:
+For every feature, the same engineering workflow is followed:
 
-1. Understand the AWS concept
-2. Design the architecture
-3. Implement the solution
-4. Validate the functionality
-5. Document the implementation
-6. Commit and push the changes to GitHub
-7. Capture key learnings and interview notes
+1. Understand the business requirement
+2. Design the solution
+3. Implement the feature
+4. Test the implementation
+5. Capture screenshots
+6. Document architectural decisions (ADR)
+7. Commit and push to GitHub
+8. Update project documentation at the end of each phase
 
-The goal is not only to build a working application, but also to understand the architectural decisions behind every AWS service used. This approach helps reinforce cloud engineering best practices and prepares the project for technical discussions and interviews.
+The objective is not only to build a working application, but also to understand the reasoning behind every architectural decision and create a portfolio project that demonstrates real-world cloud engineering practices.
 
+---
 
+# Upcoming Milestones
 
+* Complete API Gateway integration
+* Build secure browser uploads
+* Process resumes using Amazon Textract
+* Generate structured resume JSON with Amazon Bedrock
+* Render portfolio websites automatically
+* Deliver websites securely using Amazon CloudFront
+* Add observability, security hardening and cost optimization
