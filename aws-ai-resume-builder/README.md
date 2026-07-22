@@ -147,7 +147,7 @@ The completed solution is designed to provide:
 | Phase 1  | Project Foundation                          |   ✅ Complete   |
 | Phase 2  | Storage Layer (Amazon S3)                   |   ✅ Complete   |
 | Phase 3  | Secure Resume Upload (API Gateway & Lambda) |   ✅ Complete   |
-| Phase 4  | Authentication (Amazon Cognito)             |  ⬜ Not Started |
+| Phase 4  | Authentication (Amazon Cognito)             |   ✅ Complete   |
 | Phase 5  | Document Processing (Textract & SNS)        |  ⬜ Not Started |
 | Phase 6  | AI Processing (Amazon Bedrock)              |  ⬜ Not Started |
 | Phase 7  | Portfolio Website Generation                |  ⬜ Not Started |
@@ -191,6 +191,19 @@ The completed solution is designed to provide:
 - API-level CORS configuration
 - End-to-end upload testing
 
+## Phase 4 – Authentication and API Security
+
+- Created an Amazon Cognito User Pool
+- Created a public application client without a client secret
+- Created and confirmed a test user
+- Enabled username and password authentication for testing
+- Created an API Gateway JWT authorizer
+- Protected the `POST /upload-url` route
+- Verified unauthenticated requests return `401 Unauthorized`
+- Generated an Amazon Cognito access token
+- Verified authenticated requests return a presigned upload URL
+- Successfully uploaded a resume to the private S3 bucket
+
 ---
 
 # Repository Structure
@@ -226,6 +239,8 @@ Current ADRs include:
 
 * ADR-001 – Use Separate S3 Buckets
 * ADR-002 – Use Different Versioning Strategies
+* ADR-003 - Use Amazon S3 Presigned URLs for Secure Resume Uploads
+* ADR-004 - Use Amazon Cognito and API Gateway JWT Authorization 
 
 Additional ADRs will be added as new architectural decisions are made.
 

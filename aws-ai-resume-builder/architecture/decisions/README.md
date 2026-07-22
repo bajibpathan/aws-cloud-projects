@@ -34,6 +34,7 @@ ADRs will be created as each project phase is designed, implemented and validate
 | ADR-001 | Use Separate S3 Buckets | Accepted |
 | ADR-002 | Use Different Versioning Strategies | Accepted |
 | ADR-003 | Use Amazon S3 Presigned URLs for Secure Resume Uploads | Accepted |
+| ADR-004 | Use Amazon Cognito and API Gateway JWT Authorization | Accepted |
 ---
 
 ## Naming Convention
