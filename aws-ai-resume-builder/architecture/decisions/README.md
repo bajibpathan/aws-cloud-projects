@@ -31,12 +31,8 @@ ADRs will be created as each project phase is designed, implemented and validate
 
 | ADR | Decision | Status |
 |---|---|:---:|
-| ADR-001 | Use Amazon S3 presigned URLs for secure resume uploads | Proposed |
-| ADR-002 | Use separate S3 buckets for uploaded resumes and generated websites | Proposed |
-| ADR-003 | Use asynchronous Amazon Textract processing | Proposed |
-| ADR-004 | Use Amazon Bedrock to generate structured JSON instead of HTML | Proposed |
-| ADR-005 | Use Amazon CloudFront for generated website delivery | Proposed |
-
+| [ADR-001](ADR-001-use-separate-s3-buckets.md) | Use separate S3 buckets for resumes and generated websites | Accepted |
+| [ADR-002](ADR-002-use-different-versioning-strategies.md) | Use different versioning strategies for the S3 buckets | Accepted |
 ---
 
 ## Naming Convention
