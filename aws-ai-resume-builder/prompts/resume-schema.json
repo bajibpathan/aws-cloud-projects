@@ -1,0 +1,46 @@
+{
+  "personal_information": {
+    "full_name": "",
+    "professional_title": "",
+    "email": "",
+    "phone": "",
+    "location": "",
+    "linkedin": "",
+    "github": ""
+  },
+  "professional_summary": "",
+  "skills": [],
+  "experience": [
+    {
+      "job_title": "",
+      "company": "",
+      "location": "",
+      "start_date": "",
+      "end_date": "",
+      "responsibilities": []
+    }
+  ],
+  "education": [
+    {
+      "degree": "",
+      "institution": "",
+      "location": "",
+      "graduation_date": ""
+    }
+  ],
+  "certifications": [
+    {
+      "name": "",
+      "issuer": "",
+      "date": ""
+    }
+  ],
+  "projects": [
+    {
+      "name": "",
+      "description": "",
+      "technologies": [],
+      "url": ""
+    }
+  ]
+}

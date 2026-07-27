@@ -1,10 +1,10 @@
 # AWS AI Resume Builder
 
-> **Build Status:** ✅ Phase 4 – Resume Processing Completed
+> **Build Status:** ✅ Phase 5 – AI Resume Analysis Completed
 
-An end-to-end serverless AWS application that transforms an uploaded resume into a professional portfolio website using Amazon Textract, Amazon Bedrock, and modern AWS serverless services.
+The application currently supports an end-to-end backend workflow from authenticated resume upload to AI-generated structured resume data.
 
-The project is being designed and implemented incrementally. Each major phase is completed, validated, documented, and committed to GitHub before moving to the next stage.
+The project does not yet include a graphical user interface. Authentication and resume upload were tested using `curl`.
 
 ---
 
@@ -95,17 +95,17 @@ The solution is designed to demonstrate:
 
 ## AWS Services
 
-| Category            | AWS Service        | Purpose                                          |     Status    |
-| :------------------ | :----------------- | :----------------------------------------------- | :-----------: |
-| Compute             | AWS Lambda         | Run serverless application logic                 | ✅ Implemented |
-| Storage             | Amazon S3          | Store resumes, processed JSON, and website files | ✅ Implemented |
-| API                 | Amazon API Gateway | Expose secure application APIs                   | ✅ Implemented |
-| Authentication      | Amazon Cognito     | Authenticate users and issue JWT tokens          | ✅ Implemented |
-| Document Processing | Amazon Textract    | Extract text from uploaded resumes               | ✅ Implemented |
-| Monitoring          | Amazon CloudWatch  | Collect Lambda logs and operational data         | ✅ Implemented |
-| Security            | AWS IAM            | Control access between AWS services              | ✅ Implemented |
-| Generative AI       | Amazon Bedrock     | Analyze and restructure resume content           |   🚧 Planned  |
-| Content Delivery    | Amazon CloudFront  | Deliver generated portfolio websites             | ⬜ Not Started |
+| Category            | AWS Service        | Purpose                                               | Status |
+| :------------------ | :----------------- | :---------------------------------------------------- | :----: |
+| Compute             | AWS Lambda         | Run serverless application logic                      | ✅ Implemented |
+| Storage             | Amazon S3          | Store resumes, processed JSON, AI output, and website files | ✅ Implemented |
+| API                 | Amazon API Gateway | Expose secure application APIs                        | ✅ Implemented |
+| Authentication      | Amazon Cognito     | Authenticate users and issue JWT tokens               | ✅ Implemented |
+| Document Processing | Amazon Textract    | Extract text from uploaded resumes                    | ✅ Implemented |
+| Monitoring          | Amazon CloudWatch  | Collect Lambda logs and operational metrics           | ✅ Implemented |
+| Security            | AWS IAM            | Control access between AWS services                   | ✅ Implemented |
+| Generative AI       | Amazon Bedrock     | Analyze resume content using Claude Sonnet 4.6 and generate structured JSON | ✅ Implemented |
+| Content Delivery    | Amazon CloudFront  | Deliver generated portfolio websites securely         | ⬜ Not Started |
 
 ---
 
@@ -238,6 +238,18 @@ During implementation, several real-world issues were identified and resolved:
 * Invalid or unsupported test documents
 
 CloudWatch Logs, AWS CLI commands, and the IAM Policy Simulator were used to troubleshoot the issues.
+
+### Phase 5: AI Resume Analysis 
+
+- Created a dedicated AI Resume Analyzer Lambda
+- Integrated Claude Sonnet 4.6 through Amazon Bedrock
+- Used a Bedrock inference profile for on-demand invocation
+- Created controlled resume-extraction prompts
+- Added hallucination and prompt-injection protections
+- Parsed and validated model-generated JSON
+- Stored AI output under a dedicated S3 prefix
+- Added CloudWatch operational logging
+- Troubleshot Bedrock inference-profile and S3 IAM issues
 
 ---
 
@@ -466,10 +478,8 @@ This project demonstrates the ability to:
 
 ---
 
-## Current Status
+## Next Phase
 
-> **Phase 4 – Resume Processing is complete.**
+### Phase 6: Portfolio Website Generation
 
-The application currently supports authenticated resume uploads, secure Amazon S3 storage, automatic resume processing, Amazon Textract text extraction, and structured JSON generation.
-
-The next phase will introduce Amazon Bedrock for AI-powered resume analysis and restructuring.
+The next phase will use the AI-generated structured resume JSON to generate a professional static portfolio website and store it in the website S3 bucket.

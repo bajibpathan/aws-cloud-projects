@@ -74,22 +74,30 @@ Amazon CloudFront
 | Phase 7 | Production Readiness         | ⬜ Not Started |
 
 ---
-
-## Current Implementation
+### Current Implementation
 
 The application currently includes:
 
-* Project foundation and repository structure
-* Private Amazon S3 buckets for resume storage
-* Secure browser uploads using Amazon S3 presigned URLs
-* User authentication with Amazon Cognito
-* JWT-protected API Gateway endpoints
-* Upload URL generation using AWS Lambda
+* Project foundation and organized GitHub repository structure
+* Three private Amazon S3 buckets for resume uploads, processed data, and generated website files
+* Secure resume uploads using Amazon S3 presigned URLs
+* User authentication using Amazon Cognito
+* JWT-protected Amazon API Gateway endpoints
+* Presigned upload URL generation using AWS Lambda
+* Backend API and resume upload testing using `curl`
 * Event-driven processing using Amazon S3 Event Notifications
 * Resume text extraction using Amazon Textract
-* Structured JSON generation
-* Amazon CloudWatch logging
-* Least-privilege IAM permissions
+* Structured Textract output stored in the processed-data bucket
+* AI resume analysis using Amazon Bedrock
+* Claude Sonnet 4.6 integration through a Bedrock inference profile
+* Structured and validated AI resume JSON generation
+* Separate `processed/` and `ai-output/` prefixes in the processed-data bucket
+* Amazon CloudWatch logging and troubleshooting
+* Dedicated IAM roles with least-privilege permissions
+* End-to-end backend processing from resume upload to AI-generated resume data
+
+The project currently provides a complete backend workflow. A graphical user interface has not yet been implemented, so authentication, API requests, and resume uploads were validated using `curl`.
+
 
 ---
 
@@ -265,28 +273,22 @@ This project demonstrates the ability to:
 * Explain design decisions and trade-offs during technical interviews
 
 ---
-
 ## Current Status
 
-**Current Progress: Phase 4 Completed (Resume Processing)**
+**Phase 5 Complete: AI Resume Analysis**
 
-The project has successfully implemented the core serverless workflow, including secure uploads, authentication, and automated resume processing using Amazon Textract.
+### Completed
 
-The next phase introduces Amazon Bedrock to analyze the extracted resume content and prepare structured data for portfolio website generation.
+- Project foundation and S3 storage
+- Secure presigned resume upload
+- Cognito authentication and JWT authorization
+- Textract resume processing
+- Claude Sonnet 4.6 integration
+- Structured AI resume JSON generation
+- S3 event-driven processing
+- CloudWatch logging
+- Manual and end-to-end testing using `curl`
 
----
+### Next
 
-## Next Phase
-
-### Phase 5 – AI Resume Analysis
-
-The next phase integrates Amazon Bedrock to transform the extracted resume content into structured JSON suitable for portfolio website generation.
-
-Planned work includes:
-
-* Amazon Bedrock integration
-* Prompt engineering
-* JSON schema validation
-* AI response validation
-* Error handling
-* Structured AI output
+**Phase 6: Portfolio Website Generation**
