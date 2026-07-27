@@ -2,17 +2,17 @@
 
 ## Project Overview
 
-The AWS AI Resume Builder is a serverless, event-driven application that transforms an uploaded resume into a structured and professionally formatted portfolio website.
+The AWS AI Resume Builder is a serverless, event-driven application that transforms an uploaded resume into a professionally designed portfolio website.
 
-Users upload a resume through a web interface. The application securely stores the document, extracts its content, processes the extracted text using generative AI, and creates a static portfolio website that can be delivered through Amazon CloudFront.
+Users securely upload a resume through a web interface. The application authenticates the user, stores the document in Amazon S3, extracts its content using Amazon Textract, processes the extracted data with generative AI, and generates a static portfolio website that can be securely delivered through Amazon CloudFront.
 
-The project is being built incrementally to demonstrate practical AWS architecture, serverless development, security, automation, observability and AI integration.
+The project is being built incrementally to demonstrate practical AWS architecture, serverless development, security, automation, observability, and AI integration.
 
 ---
 
 ## Business Problem
 
-Creating a professional portfolio website from a resume can require:
+Creating a professional portfolio website from a resume typically requires:
 
 * Manual content extraction
 * Website development knowledge
@@ -21,7 +21,7 @@ Creating a professional portfolio website from a resume can require:
 * Hosting and deployment configuration
 * Ongoing maintenance
 
-The AWS AI Resume Builder automates this process by converting resume content into structured data and generating a static portfolio website.
+The AWS AI Resume Builder automates this process by converting resume content into structured data and generating a professional portfolio website.
 
 ---
 
@@ -30,43 +30,82 @@ The AWS AI Resume Builder automates this process by converting resume content in
 The application follows this workflow:
 
 ```text
-User uploads a resume
+User signs in
         ↓
-Application generates an S3 presigned URL
+Amazon Cognito
         ↓
-Resume is uploaded directly to Amazon S3
+Application requests a presigned URL
         ↓
-An S3 event starts the processing workflow
+Upload URL Lambda
         ↓
-Amazon Textract extracts resume content
+Amazon S3 Presigned URL
         ↓
-Amazon Bedrock converts the content into structured JSON
+Resume uploaded directly to Amazon S3
         ↓
-A Python renderer generates the portfolio website
+S3 ObjectCreated Event
         ↓
-The website is stored in Amazon S3
+Resume Processor Lambda
         ↓
-Amazon CloudFront delivers the generated website
+Amazon Textract
+        ↓
+Structured Resume JSON
+        ↓
+Amazon Bedrock
+        ↓
+Portfolio Website Generator
+        ↓
+Website stored in Amazon S3
+        ↓
+Amazon CloudFront
 ```
+
+---
+
+# Project Roadmap
+
+| Phase   | Description                  |     Status    |
+| :------ | :--------------------------- | :-----------: |
+| Phase 1 | Project Foundation & Storage |   ✅ Complete  |
+| Phase 2 | Secure Resume Upload         |   ✅ Complete  |
+| Phase 3 | Authentication               |   ✅ Complete  |
+| Phase 4 | Resume Processing            |   ✅ Complete  |
+| Phase 5 | AI Resume Analysis           |   🚧 Planned  |
+| Phase 6 | Portfolio Website Generation | ⬜ Not Started |
+| Phase 7 | Production Readiness         | ⬜ Not Started |
+
+---
+
+## Current Implementation
+
+The application currently includes:
+
+* Project foundation and repository structure
+* Private Amazon S3 buckets for resume storage
+* Secure browser uploads using Amazon S3 presigned URLs
+* User authentication with Amazon Cognito
+* JWT-protected API Gateway endpoints
+* Upload URL generation using AWS Lambda
+* Event-driven processing using Amazon S3 Event Notifications
+* Resume text extraction using Amazon Textract
+* Structured JSON generation
+* Amazon CloudWatch logging
+* Least-privilege IAM permissions
 
 ---
 
 ## Core AWS Services
 
-| AWS Service        | Purpose                                            |
-| ------------------ | -------------------------------------------------- |
-| Amazon S3          | Store uploaded resumes and generated website files |
-| Amazon API Gateway | Expose application APIs                            |
-| AWS Lambda         | Execute serverless application logic               |
-| Amazon Cognito     | Authenticate and authorize users                   |
-| Amazon Textract    | Extract text and document structure from resumes   |
-| Amazon SNS         | Support asynchronous event communication           |
-| Amazon Bedrock     | Transform resume content into structured data      |
-| Amazon CloudFront  | Deliver generated portfolio websites               |
-| Amazon CloudWatch  | Collect logs, metrics and operational information  |
-| AWS IAM            | Control access between users and AWS services      |
-
-The final service list may evolve as the architecture is implemented and validated.
+| AWS Service        | Purpose                                   | Status |
+| ------------------ | ----------------------------------------- | :----: |
+| Amazon S3          | Store uploaded resumes and processed data |    ✅   |
+| Amazon API Gateway | Expose secure APIs                        |    ✅   |
+| AWS Lambda         | Execute serverless business logic         |    ✅   |
+| Amazon Cognito     | Authenticate users                        |    ✅   |
+| Amazon Textract    | Extract resume text                       |    ✅   |
+| Amazon CloudWatch  | Logging and monitoring                    |    ✅   |
+| AWS IAM            | Identity and access management            |    ✅   |
+| Amazon Bedrock     | AI-powered resume analysis                |   🚧   |
+| Amazon CloudFront  | Deliver generated portfolio websites      |    ⬜   |
 
 ---
 
@@ -74,81 +113,96 @@ The final service list may evolve as the architecture is implemented and validat
 
 ### Serverless
 
-The application uses managed AWS services and does not require continuously running servers.
+The application is built entirely using managed AWS services without requiring continuously running servers.
 
 ### Event-Driven
 
 Resume processing begins automatically when a document is uploaded to Amazon S3.
 
-### Asynchronous Processing
-
-Long-running document-processing tasks are separated from the initial upload request.
-
 ### Secure File Uploads
 
-S3 presigned URLs allow the browser to upload files directly to a private bucket without exposing AWS credentials.
+Amazon S3 presigned URLs allow users to upload files directly to a private S3 bucket without exposing AWS credentials.
+
+### Authentication
+
+Amazon Cognito provides secure user registration, authentication, and JWT-based authorization.
 
 ### Separation of Concerns
 
-Different Lambda functions handle upload authorization, resume processing and website generation.
+Each Lambda function performs a single responsibility:
 
-### Structured AI Output
+* Upload URL generation
+* Resume processing
+* AI processing
+* Portfolio website generation
 
-Amazon Bedrock is expected to return validated JSON rather than directly generating the final HTML website.
+### AI-Ready Architecture
+
+Resume data is converted into structured JSON before being processed by Amazon Bedrock, creating a modular workflow that is easy to extend.
 
 ### Static Website Delivery
 
-Generated websites are stored in Amazon S3 and distributed through Amazon CloudFront.
+Generated portfolio websites will be stored in Amazon S3 and distributed globally through Amazon CloudFront.
 
 ---
 
-## Planned Functional Capabilities
+## Application Features
+
+### Completed
 
 * User authentication
-* Resume upload through presigned URLs
-* PDF file validation
+* Secure resume uploads
+* Browser-based uploads using presigned URLs
+* PDF validation
+* Event-driven processing
 * Resume text extraction
-* AI-assisted resume restructuring
 * Structured JSON generation
-* Static HTML portfolio generation
-* Website publication
-* Processing status tracking
-* Error handling and retry mechanisms
-* Logging and monitoring
-* Automated infrastructure deployment
+* CloudWatch logging
+* Least-privilege IAM implementation
+* Private S3 storage
+
+### Planned
+
+* AI-powered resume analysis
+* Portfolio website generation
+* Static website hosting
+* CloudFront distribution
+* Infrastructure as Code
+* CI/CD pipeline
+* Production monitoring
+* Security hardening
+* Cost optimization
 
 ---
 
 ## Security Considerations
 
-The project will apply the following security practices:
+The project follows AWS security best practices, including:
 
-* Private S3 buckets
+* Private Amazon S3 buckets
+* Block Public Access
 * Least-privilege IAM permissions
 * Short-lived S3 presigned URLs
-* File type and file size validation
+* JWT-protected APIs
+* Amazon Cognito authentication
 * Encryption at rest
-* HTTPS for application communication
-* User authentication and authorization
-* Sensitive-data protection
+* HTTPS communication
+* File type and file size validation
 * CloudWatch logging
-* Controlled access to generated websites
-* Secure handling of application configuration and secrets
 
 ---
 
 ## Reliability Considerations
 
-The architecture will evaluate:
+The production-ready architecture will incorporate:
 
+* Event-driven processing
 * Lambda retry behavior
-* Asynchronous failure handling
-* Dead-letter queues
-* Idempotent processing
-* Duplicate event handling
-* Textract job-status tracking
+* Error handling
+* Duplicate event protection
+* Dead-letter queue evaluation
 * Bedrock response validation
-* Partial-processing recovery
+* Idempotent processing
 * CloudWatch alarms
 * Operational dashboards
 
@@ -158,39 +212,40 @@ The architecture will evaluate:
 
 The application is designed around usage-based AWS services.
 
-Primary cost drivers may include:
+Primary cost drivers include:
 
-* Resume storage in Amazon S3
-* Lambda invocations and execution duration
+* Amazon S3 storage
+* AWS Lambda invocations
 * API Gateway requests
 * Amazon Textract document processing
 * Amazon Bedrock model inference
-* CloudFront requests and data transfer
-* CloudWatch logs and metrics
+* Amazon CloudFront requests
+* CloudWatch logs
 
-Lifecycle policies and cleanup automation will be considered to control storage and operational costs.
+Lifecycle policies and cleanup automation will be used to minimize storage and operational costs.
 
 ---
 
 ## Learning Objectives
 
-This project is intended to build practical knowledge in:
+This project provides hands-on experience with:
 
 * AWS serverless architecture
 * Event-driven application design
-* Secure browser-based uploads
-* Document-processing workflows
-* Generative AI integration
+* Secure browser uploads
+* Amazon Cognito authentication
+* Amazon Textract integration
+* Generative AI with Amazon Bedrock
 * Prompt engineering
 * JSON schema validation
-* Python-based HTML generation
+* Python application development
 * Static website hosting
-* CDN delivery
+* Content delivery with CloudFront
 * IAM design
 * Monitoring and observability
 * Infrastructure as Code
 * CI/CD automation
-* Architecture Decision Records
+* Architecture Decision Records (ADRs)
 
 ---
 
@@ -198,46 +253,40 @@ This project is intended to build practical knowledge in:
 
 This project demonstrates the ability to:
 
-* Translate a business problem into a cloud architecture
-* Select appropriate AWS managed services
-* Design secure and scalable workflows
-* Build event-driven serverless applications
-* Integrate AI into a practical application
-* Evaluate architectural alternatives
-* Document technical decisions
-* Test and validate cloud components
-* Explain design trade-offs during interviews
+* Translate a business requirement into a cloud-native solution
+* Design secure AWS architectures
+* Build serverless applications
+* Implement event-driven workflows
+* Integrate AWS managed AI services
+* Design least-privilege IAM permissions
+* Build scalable cloud-native applications
+* Apply AWS Well-Architected Framework principles
+* Document architectural decisions
+* Explain design decisions and trade-offs during technical interviews
 
 ---
 
 ## Current Status
 
-> **Phase 1 — Project Foundation**
+**Current Progress: Phase 4 Completed (Resume Processing)**
 
-Current activities include:
+The project has successfully implemented the core serverless workflow, including secure uploads, authentication, and automated resume processing using Amazon Textract.
 
-* Defining the project scope
-* Designing the high-level architecture
-* Creating the repository structure
-* Establishing documentation standards
-* Preparing Architecture Decision Records
-* Protecting sensitive test data
-* Preparing the project for incremental implementation
-
-No production AWS resources have been deployed at this stage.
+The next phase introduces Amazon Bedrock to analyze the extracted resume content and prepare structured data for portfolio website generation.
 
 ---
 
-## Planned Next Phase
+## Next Phase
 
-Phase 2 will focus on the storage and secure upload layer.
+### Phase 5 – AI Resume Analysis
 
-Planned activities include:
+The next phase integrates Amazon Bedrock to transform the extracted resume content into structured JSON suitable for portfolio website generation.
 
-* Designing the resume S3 bucket
-* Designing the generated website S3 bucket
-* Defining bucket security settings
-* Reviewing encryption and lifecycle policies
-* Evaluating S3 presigned URL uploads
-* Creating the first detailed Architecture Decision Records
-* Implementing and validating the storage layer
+Planned work includes:
+
+* Amazon Bedrock integration
+* Prompt engineering
+* JSON schema validation
+* AI response validation
+* Error handling
+* Structured AI output

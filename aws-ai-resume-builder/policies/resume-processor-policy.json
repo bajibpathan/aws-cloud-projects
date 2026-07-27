@@ -1,0 +1,33 @@
+{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Sid": "ReadUploadedResumes",
+      "Effect": "Allow",
+      "Action": [
+        "s3:GetObject"
+      ],
+      "Resource": [
+        "arn:aws:s3:::YOUR-UPLOAD-BUCKET/uploads/*"
+      ]
+    },
+    {
+      "Sid": "WriteProcessedResults",
+      "Effect": "Allow",
+      "Action": [
+        "s3:PutObject"
+      ],
+      "Resource": [
+        "arn:aws:s3:::YOUR-PROCESSED-BUCKET/processed/*"
+      ]
+    },
+    {
+      "Sid": "UseTextract",
+      "Effect": "Allow",
+      "Action": [
+        "textract:DetectDocumentText"
+      ],
+      "Resource": "*"
+    }
+  ]
+}
