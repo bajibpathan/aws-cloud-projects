@@ -1,0 +1,1 @@
+console.log("AWS AI Resume Builder frontend loaded successfully.");
