@@ -394,7 +394,7 @@ The following permission was added:
     "s3:PutObject"
   ],
   "Resource": [
-    "arn:aws:s3:::ai-resume-builder-processed-dev-5204-us-east-1/ai-output/*"
+    "arn:aws:s3:::YOUR-BUCKET-NAME/ai-output/*"
   ]
 }
 ```
