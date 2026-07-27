@@ -14,9 +14,83 @@
 </head>
 
 <body>
-    <h1>AWS AI Resume Builder</h1>
+    <main class="container">
+        <header>
+            <h1>AWS AI Resume Builder</h1>
 
-    <p>Securely upload your resume for AI-powered analysis.</p>
+            <p>
+                Sign in and securely upload your resume for AI-powered analysis.
+            </p>
+        </header>
+
+        <section id="login-section">
+            <h2>Sign In</h2>
+
+            <form id="login-form">
+                <div class="form-group">
+                    <label for="email">Email</label>
+
+                    <input
+                        type="email"
+                        id="email"
+                        name="email"
+                        placeholder="Enter your email"
+                        required
+                    >
+                </div>
+
+                <div class="form-group">
+                    <label for="password">Password</label>
+
+                    <input
+                        type="password"
+                        id="password"
+                        name="password"
+                        placeholder="Enter your password"
+                        required
+                    >
+                </div>
+
+                <button type="submit">
+                    Sign In
+                </button>
+            </form>
+        </section>
+
+        <section id="upload-section" hidden>
+            <h2>Upload Resume</h2>
+
+            <p id="signed-in-user"></p>
+
+            <div class="form-group">
+                <label for="resume-file">
+                    Select Resume
+                </label>
+
+                <input
+                    type="file"
+                    id="resume-file"
+                    accept=".pdf,.doc,.docx"
+                >
+            </div>
+
+            <button id="upload-button" type="button">
+                Upload Resume
+            </button>
+
+            <button id="sign-out-button" type="button">
+                Sign Out
+            </button>
+        </section>
+
+        <section class="status-section">
+            <h2>Status</h2>
+
+            <p id="status-message">
+                Please sign in to continue.
+            </p>
+        </section>
+    </main>
 
     <script src="app.js"></script>
 </body>
