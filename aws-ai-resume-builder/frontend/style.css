@@ -1,8 +1,127 @@
-body {
-    font-family: Arial, sans-serif;
-    margin: 40px;
+/* Reset */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
+/* Page */
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background: #f4f6f9;
+    color: #333;
+}
+
+/* Main Container */
+
+.container {
+    max-width: 650px;
+    margin: 50px auto;
+    background: white;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+}
+
+/* Headings */
+
 h1 {
+    color: #232f3e;
     margin-bottom: 10px;
+}
+
+h2 {
+    margin-bottom: 15px;
+    color: #232f3e;
+}
+
+header p {
+    color: #666;
+    margin-bottom: 30px;
+}
+
+/* Sections */
+
+section {
+    margin-bottom: 30px;
+}
+
+/* Labels */
+
+label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: bold;
+}
+
+/* Inputs */
+
+input[type="email"],
+input[type="password"],
+input[type="file"] {
+
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+}
+
+/* Form spacing */
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+/* Buttons */
+
+button {
+
+    width: 100%;
+    padding: 12px;
+
+    border: none;
+
+    border-radius: 6px;
+
+    background: #ff9900;
+
+    color: white;
+
+    font-size: 16px;
+
+    cursor: pointer;
+
+    margin-top: 10px;
+}
+
+button:hover {
+
+    background: #e68a00;
+}
+
+/* Status */
+
+.status-section {
+
+    background: #f9fafb;
+
+    border-radius: 6px;
+
+    padding: 20px;
+}
+
+#status-message {
+
+    color: #444;
+}
+
+/* User */
+
+#signed-in-user {
+
+    margin-bottom: 20px;
+
+    font-weight: bold;
 }
