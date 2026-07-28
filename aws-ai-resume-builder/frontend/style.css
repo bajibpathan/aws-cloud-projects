@@ -1,127 +1,128 @@
-/* Reset */
-
 * {
+    box-sizing: border-box;
     margin: 0;
     padding: 0;
-    box-sizing: border-box;
 }
-
-/* Page */
 
 body {
+    min-height: 100vh;
+    padding: 40px 20px;
     font-family: Arial, Helvetica, sans-serif;
-    background: #f4f6f9;
-    color: #333;
+    line-height: 1.6;
+    color: #232f3e;
+    background-color: #f3f4f6;
 }
-
-/* Main Container */
 
 .container {
+    width: 100%;
     max-width: 650px;
-    margin: 50px auto;
-    background: white;
-    padding: 30px;
+    margin: 0 auto;
+}
+
+.page-header {
+    margin-bottom: 24px;
+    text-align: center;
+}
+
+.page-header h1 {
+    margin-bottom: 8px;
+    font-size: 2rem;
+}
+
+.page-header p {
+    color: #5f6b7a;
+}
+
+.card {
+    margin-bottom: 20px;
+    padding: 24px;
+    background-color: #ffffff;
     border-radius: 10px;
-    box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.08);
 }
 
-/* Headings */
-
-h1 {
-    color: #232f3e;
-    margin-bottom: 10px;
+.card h2 {
+    margin-bottom: 18px;
+    font-size: 1.25rem;
 }
 
-h2 {
-    margin-bottom: 15px;
-    color: #232f3e;
+.form-group {
+    margin-bottom: 18px;
 }
-
-header p {
-    color: #666;
-    margin-bottom: 30px;
-}
-
-/* Sections */
-
-section {
-    margin-bottom: 30px;
-}
-
-/* Labels */
 
 label {
     display: block;
-    margin-bottom: 8px;
+    margin-bottom: 7px;
     font-weight: bold;
 }
 
-/* Inputs */
-
-input[type="email"],
+input[type="text"],
 input[type="password"],
 input[type="file"] {
-
     width: 100%;
-    padding: 12px;
-    border: 1px solid #ccc;
+    padding: 11px;
+    font-size: 1rem;
+    border: 1px solid #c5cbd3;
     border-radius: 6px;
 }
 
-/* Form spacing */
-
-.form-group {
-    margin-bottom: 20px;
+input:focus {
+    outline: 2px solid #ff9900;
+    outline-offset: 1px;
 }
-
-/* Buttons */
 
 button {
-
-    width: 100%;
-    padding: 12px;
-
+    min-width: 130px;
+    margin-right: 10px;
+    padding: 11px 18px;
+    font-size: 1rem;
+    font-weight: bold;
+    color: #111827;
+    background-color: #ff9900;
     border: none;
-
     border-radius: 6px;
-
-    background: #ff9900;
-
-    color: white;
-
-    font-size: 16px;
-
     cursor: pointer;
-
-    margin-top: 10px;
 }
 
 button:hover {
-
-    background: #e68a00;
+    opacity: 0.9;
 }
 
-/* Status */
-
-.status-section {
-
-    background: #f9fafb;
-
-    border-radius: 6px;
-
-    padding: 20px;
+button:disabled {
+    cursor: not-allowed;
+    opacity: 0.6;
 }
 
-#status-message {
-
-    color: #444;
+.secondary-button {
+    color: #ffffff;
+    background-color: #37475a;
 }
 
-/* User */
+.status-card {
+    border-left: 5px solid #ff9900;
+}
 
-#signed-in-user {
-
-    margin-bottom: 20px;
-
+.success-message {
+    color: #067647;
     font-weight: bold;
+}
+
+.error-message {
+    color: #b42318;
+    font-weight: bold;
+}
+
+@media (max-width: 600px) {
+    body {
+        padding: 20px 12px;
+    }
+
+    .card {
+        padding: 18px;
+    }
+
+    button {
+        width: 100%;
+        margin: 6px 0;
+    }
 }

@@ -1121,91 +1121,241 @@ Possible improvements include:
 * AI responses are validated before storage.
 * The backend workflow was successfully tested using curl before building the frontend.
 ---
+---
 
-# Phase 6 – Portfolio Website Generation
+# Phase 6 – Web Client Integration
 
-> **Status: Not Started**
+## Overview
 
-## Q1. Why generate a static website?
+In this phase, I integrated a browser-based frontend with the backend services developed in the previous phases. The implementation allows authenticated users to securely upload PDF resumes without exposing AWS credentials or making the Amazon S3 bucket public.
 
-A static portfolio website is appropriate because resume content changes infrequently.
+The frontend authenticates users using Amazon Cognito, requests a Presigned URL through an API Gateway HTTP API protected by a JWT Authorizer, and uploads the resume directly to Amazon S3.
 
-Static websites provide:
-
-* Fast loading
-* Low cost
-* Simple hosting
-* Reduced attack surface
-* Easy CloudFront delivery
-* No continuously running backend
 
 ---
 
-## Q2. Why use Python to generate the website?
+## Design Decisions
 
-Python is already used in the Lambda functions and can generate HTML from structured JSON.
+### Why did you add a browser frontend?
 
-A Python renderer can:
-
-* Load a reusable template
-* Insert validated resume data
-* Escape unsafe content
-* Generate HTML and CSS files
-* Store the output in Amazon S3
+The earlier phases focused on backend services that were tested using API tools. A browser frontend was added to provide a real user experience and demonstrate how end users interact with the application securely.
 
 ---
 
-## Q3. Why use templates instead of generating HTML with Bedrock?
+### Why did you use Amazon Cognito?
 
-Templates provide:
+Amazon Cognito provides a fully managed authentication service, eliminating the need to build custom login functionality.
 
-* Predictable structure
-* Consistent design
-* Easier testing
-* Better accessibility
-* Controlled HTML
-* Reduced AI hallucination risk
-* Reusable website themes
+Benefits:
 
-Bedrock should produce content, while the renderer controls presentation.
-
----
-
-## Q4. Why use Amazon CloudFront?
-
-CloudFront provides:
-
-* HTTPS delivery
-* Global edge caching
-* Improved performance
-* Private S3 origin access
-* Custom domain support
-* Reduced direct exposure of the S3 bucket
+- Managed user authentication
+- Secure password storage
+- JWT token generation
+- Password policies
+- Multi-factor authentication support
+- Seamless integration with API Gateway
 
 ---
 
-## Q5. How will the frontend integrate with the backend?
+### Why did you use API Gateway HTTP API instead of REST API?
 
-The frontend will:
+HTTP API was selected because the application only requires JWT authentication and lightweight API routing.
 
-1. Authenticate the user with Cognito.
-2. Request a presigned upload URL.
-3. Upload the resume to S3.
-4. Display processing status.
-5. Provide the generated portfolio URL.
+Benefits:
 
-The frontend should not contain AWS credentials or directly invoke protected AWS services without authorization.
+- Lower cost
+- Lower latency
+- Native JWT Authorizer support
+- Simpler configuration
+- Well suited for serverless applications
 
 ---
 
-## Phase 6 Key Takeaways
+### Why use a JWT Authorizer?
 
-* Separate content generation from HTML rendering.
-* Static websites are cost-effective and secure for portfolio content.
-* CloudFront should access the website bucket privately.
-* Templates provide more predictable results than AI-generated markup.
-* The frontend should communicate through secure, authenticated interfaces.
+The JWT Authorizer validates the Cognito Access Token before the request reaches the Lambda function.
 
+It verifies:
+
+- Token signature
+- Issuer
+- Audience
+- Expiration
+
+This prevents unauthorized requests from reaching the backend.
+
+---
+
+### Why use the Cognito Access Token instead of the ID Token?
+
+The Access Token is intended for API authorization and is validated by the JWT Authorizer.
+
+The ID Token contains user identity information and is primarily used by the frontend to identify the signed-in user.
+
+Using the Access Token follows AWS security best practices.
+
+---
+
+### Why use Presigned URLs?
+
+Instead of sending the resume through Lambda, the backend generates a short-lived Presigned URL.
+
+Benefits:
+
+- Direct browser upload
+- Lower Lambda execution time
+- Reduced API Gateway payload processing
+- Better scalability
+- Supports larger files
+- Keeps AWS credentials out of the browser
+
+---
+
+### Why keep the S3 bucket private?
+
+The bucket remains private to prevent unauthorized uploads and downloads.
+
+Users receive temporary upload permissions through Presigned URLs rather than permanent access to the bucket.
+
+---
+
+## Security Considerations
+
+The following security controls are implemented:
+
+- Amazon Cognito authentication
+- JWT-protected HTTP API
+- Access Token authorization
+- Private Amazon S3 bucket
+- Short-lived Presigned URLs
+- Backend file validation
+- Filename sanitization
+- Session-based authentication
+- No AWS credentials in frontend code
+
+---
+
+## Validation Strategy
+
+### Why validate files in both the frontend and backend?
+
+Frontend validation improves the user experience by providing immediate feedback.
+
+Backend validation is required because browser-side validation can be bypassed.
+
+The backend validates:
+
+- Filename
+- Content type
+- File size
+- Upload permissions
+
+---
+
+## Challenges Encountered
+
+### Request field mismatch
+
+Initially, the frontend sent:
+
+```json
+{
+  "fileName": "resume.pdf"
+}
+```
+
+The Lambda function expected:
+
+```json
+{
+  "filename": "resume.pdf"
+}
+```
+
+The request payload was updated to match the backend contract.
+
+---
+
+### Missing fileSize
+
+The initial request omitted the `fileSize` property.
+
+Lambda returned:
+
+```json
+{
+  "message": "A valid fileSize is required"
+}
+```
+
+The frontend was updated to include:
+
+```javascript
+fileSize: file.size
+```
+
+This ensured the request matched the Lambda validation logic.
+
+---
+
+## Common Interview Questions
+
+### Why not upload files through Lambda?
+
+Uploading directly to Amazon S3 using Presigned URLs reduces Lambda execution time, lowers cost, and scales better for larger files.
+
+---
+
+### How does the browser upload to S3 without AWS credentials?
+
+The backend generates a short-lived Presigned URL that grants temporary permission to upload a single object. The browser never receives AWS access keys or secret keys.
+
+---
+
+### Why configure CORS on both API Gateway and S3?
+
+API Gateway CORS allows the frontend to call the backend API.
+
+Amazon S3 CORS allows the browser to upload directly to the bucket using the Presigned URL.
+
+Both services require independent CORS configuration.
+
+---
+
+### What happens if the Access Token expires?
+
+The JWT Authorizer rejects the request, and the frontend prompts the user to authenticate again before requesting another Presigned URL.
+
+---
+
+### Why sanitize the filename?
+
+Filename sanitization prevents invalid or potentially malicious object names from being stored in Amazon S3 and helps maintain a predictable object naming convention.
+
+---
+
+### How is the upload secured?
+
+The upload process is secured through multiple layers:
+
+- Cognito authentication
+- JWT token validation
+- Protected HTTP API
+- Backend validation
+- Private S3 bucket
+- Short-lived Presigned URLs
+
+No AWS credentials are exposed to the browser.
+
+---
+
+## Key Takeaways
+
+- Amazon Cognito simplifies secure user authentication.
+- HTTP API with JWT Authorizer provides lightweight API protection.
+- Presigned URLs enable secure browser uploads without exposing AWS credentials.
+- Frontend validation improves usability, while backend validation enforces security.
+- Keeping the S3 bucket private with temporary upload permissions follows AWS security best practices.
 ---
 
 # Phase 7 – Production Readiness

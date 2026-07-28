@@ -15,82 +15,114 @@
 
 <body>
     <main class="container">
-        <header>
+        <header class="page-header">
             <h1>AWS AI Resume Builder</h1>
 
             <p>
-                Sign in and securely upload your resume for AI-powered analysis.
+                Securely upload your resume for
+                AI-powered analysis.
             </p>
         </header>
 
-        <section id="login-section">
+        <!-- Login section -->
+        <section
+            id="login-section"
+            class="card"
+        >
             <h2>Sign In</h2>
 
             <form id="login-form">
                 <div class="form-group">
-                    <label for="email">Email</label>
+                    <label for="email">
+                        Email or Username
+                    </label>
 
                     <input
-                        type="email"
+                        type="text"
                         id="email"
-                        name="email"
-                        placeholder="Enter your email"
+                        autocomplete="username"
                         required
                     >
                 </div>
 
                 <div class="form-group">
-                    <label for="password">Password</label>
+                    <label for="password">
+                        Password
+                    </label>
 
                     <input
                         type="password"
                         id="password"
-                        name="password"
-                        placeholder="Enter your password"
+                        autocomplete="current-password"
                         required
                     >
                 </div>
 
-                <button type="submit">
+                <button
+                    type="submit"
+                    id="sign-in-button"
+                >
                     Sign In
                 </button>
             </form>
         </section>
 
-        <section id="upload-section" hidden>
+        <!-- Upload section -->
+        <section
+            id="upload-section"
+            class="card"
+            hidden
+        >
             <h2>Upload Resume</h2>
 
             <p id="signed-in-user"></p>
 
             <div class="form-group">
                 <label for="resume-file">
-                    Select Resume
+                    Select your resume
                 </label>
 
                 <input
                     type="file"
                     id="resume-file"
-                    accept=".pdf,.doc,.docx"
+                    accept=".pdf,application/pdf"
                 >
             </div>
 
-            <button id="upload-button" type="button">
+            <button
+                type="button"
+                id="upload-button"
+            >
                 Upload Resume
             </button>
 
-            <button id="sign-out-button" type="button">
+            <button
+                type="button"
+                id="sign-out-button"
+                class="secondary-button"
+            >
                 Sign Out
             </button>
         </section>
 
-        <section class="status-section">
+        <!-- Status section -->
+        <section class="card status-card">
             <h2>Status</h2>
 
-            <p id="status-message">
+            <p
+                id="status-message"
+                role="status"
+                aria-live="polite"
+            >
                 Please sign in to continue.
             </p>
         </section>
     </main>
+
+    <!-- Cognito browser library must load before app.js -->
+    <script
+        src="https://unpkg.com/amazon-cognito-identity-js@6.3.15/dist/amazon-cognito-identity.min.js"
+    ></script>
 
     <script src="app.js"></script>
 </body>
