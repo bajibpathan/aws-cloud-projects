@@ -144,6 +144,7 @@ aws-ai-resume-builder/
 | INTERVIEW_GUIDE.md | Interview questions and architecture discussion |
 | docs/ | Detailed implementation of all project phases |
 | architecture/decisions/ | Architecture Decision Records (ADRs) |
+| troubleshooting.md | Common issues and resolutions |
 | cleanup-guide.md | AWS resource cleanup steps |
 
 ---
