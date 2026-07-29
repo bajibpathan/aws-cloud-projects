@@ -71,13 +71,15 @@ Future projects will introduce:
 
 # 🚀 Production-Inspired AWS Projects
 
+## 🚀 Production-Inspired AWS Projects
+
 | Project | Architecture | AWS Services | Difficulty | Status |
-|----------|--------------|--------------|:----------:|:------:|
+|---------|--------------|--------------|:----------:|:------:|
+| **AWS AI Resume Builder** | Serverless AI Application | Cognito, API Gateway, Lambda, S3, Textract, Bedrock, CloudFront, IAM, CloudWatch | ⭐⭐⭐⭐⭐ | ✅ |
 | **AWS Event-Driven Image Processing** | Event-Driven Serverless | S3, Lambda, DynamoDB, CloudWatch | ⭐⭐⭐⭐ | ✅ |
 | **Serverless DynamoDB CRUD API** | RESTful Serverless API | API Gateway, Lambda, DynamoDB | ⭐⭐⭐ | ✅ |
 | **AWS Lambda Execution Profiler** | Performance Engineering | Lambda, CloudWatch | ⭐⭐⭐ | ✅ |
 | **Static Website Hosting on Amazon S3** | Static Website Hosting | Amazon S3 | ⭐⭐ | ✅ |
-
 ---
 
 # 🗺️ Cloud Engineering Learning Roadmap
