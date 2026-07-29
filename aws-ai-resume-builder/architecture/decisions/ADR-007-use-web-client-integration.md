@@ -1,4 +1,4 @@
-# ADR-006: Browser-Based Web Client Integration
+# ADR-007: Browser-Based Web Client Integration
 
 **Status:** Accepted
 

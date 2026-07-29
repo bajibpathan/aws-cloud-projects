@@ -1,0 +1,192 @@
+:root {
+    --background: #ffffff;
+    --surface: #f4f6f8;
+    --text: #1f2933;
+    --muted-text: #52606d;
+    --primary: #0967d2;
+    --border: #d9e2ec;
+    --maximum-width: 1100px;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    margin: 0;
+    font-family:
+        Inter,
+        system-ui,
+        -apple-system,
+        BlinkMacSystemFont,
+        "Segoe UI",
+        sans-serif;
+    color: var(--text);
+    background: var(--background);
+    line-height: 1.6;
+}
+
+a {
+    color: var(--primary);
+    text-decoration: none;
+}
+
+a:hover,
+a:focus {
+    text-decoration: underline;
+}
+
+.container {
+    width: min(90%, var(--maximum-width));
+    margin-inline: auto;
+}
+
+.site-header {
+    position: sticky;
+    top: 0;
+    background: var(--background);
+    border-bottom: 1px solid var(--border);
+    z-index: 10;
+}
+
+.navigation {
+    min-height: 64px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 24px;
+}
+
+.logo {
+    color: var(--text);
+    font-weight: 700;
+}
+
+.navigation-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 18px;
+}
+
+.hero {
+    padding: 100px 0;
+    background: var(--surface);
+}
+
+.hero h1 {
+    margin: 0;
+    font-size: clamp(2.5rem, 7vw, 5rem);
+    line-height: 1.1;
+}
+
+.hero h2 {
+    margin-top: 12px;
+    color: var(--muted-text);
+    font-weight: 500;
+}
+
+.hero-summary {
+    max-width: 720px;
+    font-size: 1.1rem;
+}
+
+.hero-links {
+    display: flex;
+    gap: 16px;
+    margin-top: 24px;
+}
+
+.section {
+    padding: 72px 0;
+}
+
+.alternate-section {
+    background: var(--surface);
+}
+
+.skills-grid,
+.projects-grid,
+.certifications-grid {
+    display: grid;
+    grid-template-columns:
+        repeat(auto-fit, minmax(240px, 1fr));
+    gap: 24px;
+}
+
+.skill-card,
+.project-card,
+.certification-card {
+    padding: 24px;
+    background: var(--background);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+}
+.skills-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    padding: 0;
+    list-style: none;
+}
+
+.skills-list li {
+    padding: 8px 14px;
+    background: var(--background);
+    border: 1px solid var(--border);
+    border-radius: 999px;
+    font-weight: 500;
+}
+.experience-item,
+.education-item {
+    padding: 24px 0;
+    border-bottom: 1px solid var(--border);
+}
+
+.experience-company,
+.experience-date {
+    color: var(--muted-text);
+}
+
+.technology-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    padding: 0;
+    list-style: none;
+}
+
+.technology-list li {
+    padding: 4px 10px;
+    background: var(--surface);
+    border-radius: 999px;
+}
+
+.site-footer {
+    padding: 32px 0;
+    text-align: center;
+    border-top: 1px solid var(--border);
+}
+
+@media (max-width: 720px) {
+    .navigation {
+        align-items: flex-start;
+        flex-direction: column;
+        padding: 16px 0;
+    }
+
+    .navigation-links {
+        gap: 12px;
+    }
+
+    .hero {
+        padding: 72px 0;
+    }
+
+    .section {
+        padding: 56px 0;
+    }
+}

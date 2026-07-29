@@ -1,0 +1,97 @@
+{
+  "source": {
+    "bucket": "ai-resume-builder-processed-dev-5204-us-east-1",
+    "key": "processed/3ae938af-6c4e-4e35-81ad-ae5cac0722c1/sample-resume-alex-morgan.json"
+  },
+  "model": "us.anthropic.claude-sonnet-4-6",
+  "status": "COMPLETED",
+  "usage": {
+    "inputTokens": 827,
+    "outputTokens": 667,
+    "totalTokens": 1494,
+    "cacheReadInputTokens": 0,
+    "cacheWriteInputTokens": 0
+  },
+  "resume": {
+    "personal_information": {
+      "full_name": "Alex Morgan",
+      "professional_title": "Cloud Engineer",
+      "email": "alex.morgan@email.com",
+      "phone": "(555) 123-4567",
+      "location": "Toronto, ON",
+      "linkedin": "linkedin.com/in/alexmorgan",
+      "github": "github.com/alexmorgan"
+    },
+    "professional_summary": "Cloud Engineer with hands-on experience building serverless AWS applications using Lambda, API Gateway, S3, DynamoDB, and Terraform. Passionate about designing scalable, event-driven cloud solutions and integrating AI services to solve real-world problems.",
+    "skills": [
+      "AWS Lambda",
+      "API Gateway",
+      "S3",
+      "DynamoDB",
+      "IAM",
+      "CloudWatch",
+      "Textract",
+      "Terraform",
+      "CloudFormation",
+      "Python",
+      "JavaScript",
+      "Node.js",
+      "Git",
+      "GitHub Actions",
+      "Docker",
+      "Linux"
+    ],
+    "experience": [
+      {
+        "job_title": "Cloud Engineer",
+        "company": "Personal Projects",
+        "location": "",
+        "start_date": "2025",
+        "end_date": "Present",
+        "responsibilities": [
+          "Developed production-style AWS serverless applications.",
+          "Automated cloud infrastructure using Terraform.",
+          "Designed event-driven architectures following AWS best practices.",
+          "Implemented monitoring, logging, and secure IAM access."
+        ]
+      }
+    ],
+    "education": [
+      {
+        "degree": "Bachelor of Technology (Computer Science)",
+        "institution": "",
+        "location": "",
+        "graduation_date": ""
+      }
+    ],
+    "certifications": [
+      {
+        "name": "AWS Certified Cloud Practitioner",
+        "issuer": "AWS",
+        "date": "In Progress"
+      },
+      {
+        "name": "AWS Solutions Architect - Associate",
+        "issuer": "AWS",
+        "date": "In Progress"
+      }
+    ],
+    "projects": [
+      {
+        "name": "AI Resume Builder (AWS Serverless)",
+        "description": "Designed and developed a serverless AI Resume Builder on AWS that enables users to upload resumes, extract text, enhance content using AI, and generate professional resumes.",
+        "technologies": [
+          "API Gateway",
+          "AWS Lambda",
+          "Amazon S3",
+          "Amazon Textract",
+          "DynamoDB",
+          "Terraform",
+          "IAM",
+          "CloudWatch"
+        ],
+        "url": ""
+      }
+    ]
+  }
+}
