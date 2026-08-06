@@ -1,0 +1,8 @@
+{
+  "jobDescription": "We are looking for a Cloud Engineer with experience in AWS, infrastructure automation, observability, incident troubleshooting and production support.",
+  "resumeBullets": [
+    "Worked on Dynatrace dashboards",
+    "Helped application teams troubleshoot production incidents",
+    "Used Ansible to deploy and configure Dynatrace OneAgent"
+  ]
+}
