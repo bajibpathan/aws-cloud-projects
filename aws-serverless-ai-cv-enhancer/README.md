@@ -105,7 +105,7 @@ There are:
 | AWS Service        | Purpose                                         | Status  |
 | ------------------ | ----------------------------------------------- | ------- |
 | Amazon API Gateway | Expose the application API                      | Planned |
-| AWS Lambda         | Validate requests and run the application logic | Planned |
+| AWS Lambda         | Validate requests and run the application logic | In Progress |
 | Amazon Bedrock     | Enhance resume bullets using a foundation model | Planned |
 | Amazon DynamoDB    | Store and retrieve enhancement history          | Planned |
 | Amazon CloudWatch  | Store logs and application metrics              | Planned |
@@ -567,24 +567,27 @@ When measurable information is not provided, the model should improve the wordin
 
 ### Completed
 
+### Completed
+
 * Project idea reviewed
 * Project scope finalized
 * Core architecture defined
-* Level-up features identified
-* Cost-conscious decisions documented
-* Project inspiration acknowledged
-* Initial repository structure planned
+* Architecture diagrams created
+* Initial repository structure created
+* Basic Lambda handler created
+* API Gateway event simulated locally
+* Request body parsed successfully
 
 ### Current Phase
 
 ```text
-Phase 1: Project Foundation
+Phase 2: Basic Lambda Request Handling
 ```
 
 ### Next Phase
 
 ```text
-Phase 2: Basic Lambda Request Handling
+Phase 3: Input Validation
 ```
 
 ---
