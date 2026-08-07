@@ -1,0 +1,21 @@
+{
+  "version": "2.0",
+  "routeKey": "POST /enhance",
+  "rawPath": "/enhance",
+  "rawQueryString": "",
+  "headers": {
+    "content-type": "application/json",
+    "host": "example.execute-api.ca-central-1.amazonaws.com"
+  },
+  "requestContext": {
+    "http": {
+      "method": "POST",
+      "path": "/enhance",
+      "protocol": "HTTP/1.1"
+    },
+    "requestId": "local-test-request-001",
+    "stage": "$default"
+  },
+  "body": "{\"jobDescription\":\"We are looking for a Cloud Engineer with experience in AWS, infrastructure automation, observability, incident troubleshooting and production support.\",\"resumeBullets\":[\"Worked on Dynatrace dashboards\",\"Helped application teams troubleshoot production incidents\",\"Used Ansible to deploy and configure Dynatrace OneAgent\"]}",
+  "isBase64Encoded": false
+}
