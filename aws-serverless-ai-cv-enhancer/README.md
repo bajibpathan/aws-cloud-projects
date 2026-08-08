@@ -106,7 +106,7 @@ There are:
 | ------------------ | ----------------------------------------------- | ------- |
 | Amazon API Gateway | Expose the application API                      | Planned |
 | AWS Lambda         | Validate requests and run the application logic | In Progress |
-| Amazon Bedrock     | Enhance resume bullets using a foundation model | Planned |
+| Amazon Bedrock     | Enhance resume bullets using a foundation model | In Progress |
 | Amazon DynamoDB    | Store and retrieve enhancement history          | Planned |
 | Amazon CloudWatch  | Store logs and application metrics              | Planned |
 | AWS X-Ray          | Trace requests across the application           | Planned |
@@ -568,17 +568,21 @@ When measurable information is not provided, the model should improve the wordin
 - Input validation implemented
 - Invalid request handling implemented
 - Local validation tests completed
+- Amazon Bedrock model selected
+- Resume enhancement prompt v1 created
+- Prompt tested with realistic resume examples
+- Prompt integrity guardrails tested
 
 ### Current Phase
 
 ```text
-Phase 3: Input Validation
+Phase 4: Amazon Bedrock Prompt Testing
 ```
 
 ### Next Phase
 
 ```text
-Phase 4: Amazon Bedrock Prompt Testing
+Phase 5: Lambda and Amazon Bedrock Integration
 ```
 
 ---
