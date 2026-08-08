@@ -133,11 +133,14 @@ aws-serverless-ai-cv-enhancer/
 | Phase 2 – Basic Lambda Request Handling | ✅ |
 | Phase 3 – Input Validation | ✅ |
 | Phase 4 – Amazon Bedrock Prompt Engineering | ✅ |
-| Phase 5 – Lambda + Bedrock Integration | 🚧 Current |
+| Phase 5 – Lambda + Amazon Bedrock Integration | 🚧 (Local integration complete) |
 | Phase 6 – API Gateway Integration | ⏳ |
 | Phase 7 – DynamoDB History | ⏳ |
 | Phase 8 – Static Frontend + History | ⏳ |
 | Phase 9 – Observability, Security & Final Testing | ⏳ |
+
+> Do not mark Phase 5 as fully complete until the application is deployed to AWS Lambda and verified through API Gateway.
+
 
 ---
 

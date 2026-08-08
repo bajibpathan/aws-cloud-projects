@@ -1,7 +1,15 @@
 from typing import Any
 
+from prompts.prompt_builder import build_prompt
 from response import build_response
-from validator import parse_request_body, validate_request
+from services.bedrock_service import (
+    BedrockServiceError,
+    enhance_resume
+)
+from validator import (
+    parse_request_body,
+    validate_request
+)
 
 
 def lambda_handler(
@@ -9,7 +17,7 @@ def lambda_handler(
     context: Any
 ) -> dict[str, Any]:
     """
-    Handle a resume-enhancement request.
+    Handle a resume enhancement request.
     """
 
     print("Resume enhancement request received")
@@ -37,11 +45,28 @@ def lambda_handler(
     job_description = request_body["jobDescription"]
     resume_bullets = request_body["resumeBullets"]
 
+    prompt = build_prompt(
+        job_description,
+        resume_bullets
+    )
+
+    try:
+        enhanced_resume = enhance_resume(prompt)
+
+    except BedrockServiceError:
+        return build_response(
+            502,
+            {
+                "error": (
+                    "Unable to enhance resume at this time."
+                )
+            }
+        )
+
     return build_response(
         200,
         {
-            "message": "Request validated successfully.",
-            "jobDescription": job_description,
-            "resumeBullets": resume_bullets
+            "message": "Resume enhanced successfully.",
+            "enhancedResume": enhanced_resume
         }
     )
