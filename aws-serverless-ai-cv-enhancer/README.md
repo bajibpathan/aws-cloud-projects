@@ -502,12 +502,6 @@ aws-serverless-ai-cv-enhancer/
 * Display partial responses in the frontend
 * Compare the user experience with the normal response flow
 
-### Phase 14: Optional Terraform Implementation
-
-* Recreate the manually built resources using Terraform
-* Compare manual and Infrastructure as Code workflows
-* Store Terraform state safely
-* Document deployment and cleanup steps
 
 ---
 
@@ -567,27 +561,24 @@ When measurable information is not provided, the model should improve the wordin
 
 ### Completed
 
-### Completed
-
-* Project idea reviewed
-* Project scope finalized
-* Core architecture defined
-* Architecture diagrams created
-* Initial repository structure created
-* Basic Lambda handler created
-* API Gateway event simulated locally
-* Request body parsed successfully
+- Project foundation completed
+- Basic Lambda handler created
+- API Gateway event simulated locally
+- Request body parsing implemented
+- Input validation implemented
+- Invalid request handling implemented
+- Local validation tests completed
 
 ### Current Phase
 
 ```text
-Phase 2: Basic Lambda Request Handling
+Phase 3: Input Validation
 ```
 
 ### Next Phase
 
 ```text
-Phase 3: Input Validation
+Phase 4: Amazon Bedrock Prompt Testing
 ```
 
 ---
