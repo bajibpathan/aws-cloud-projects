@@ -131,15 +131,12 @@ Return temporary response
 
 ## Current Responsibilities
 
-The function currently performs the following tasks:
-
-* Receives the Lambda `event`
-* Reads the request `body`
-* Converts the JSON string into a Python dictionary
-* Extracts `jobDescription`
-* Extracts `resumeBullets`
-* Builds a consistent API response
-* Returns HTTP status code `200`
+- Receive an API Gateway event
+- Parse the JSON request body
+- Validate the job description
+- Validate resume bullets
+- Reject malformed requests
+- Return consistent HTTP responses
 
 ---
 
@@ -246,19 +243,12 @@ A `requirements.txt` file is not needed in this phase.
 
 ## Not Yet Implemented
 
-The current version does not yet include:
-
-* Input validation
-* Invalid JSON handling
-* Missing field handling
-* Empty value handling
-* Amazon Bedrock integration
-* DynamoDB history
-* Structured logging
-* Request tracing
-* API authentication
-* API throttling
-* Streaming responses
+- Amazon Bedrock integration
+- Prompt generation
+- DynamoDB enhancement history
+- Structured logging
+- Request tracing
+- Frontend integration
 
 These features will be added gradually in later phases.
 
