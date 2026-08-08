@@ -2,21 +2,22 @@
 
 ## Purpose
 
-The `enhance_resume` Lambda function handles resume-enhancement requests for the Serverless AI CV Enhancer application.
+The `enhance_resume` Lambda function is the core backend component of the **Serverless AI CV Enhancer** application.
 
-In the current phase, the function:
+It is responsible for:
 
-* Receives an API Gateway event
-* Reads the JSON request body
-* Extracts the target job description
-* Extracts the resume bullets
-* Returns an API Gateway-compatible response
+- Receiving API Gateway HTTP API requests
+- Parsing and validating the request payload
+- Building the AI prompt from the approved prompt template
+- Invoking Amazon Bedrock using the Converse API
+- Returning enhanced resume bullet points
+- Returning consistent error responses
 
-Amazon Bedrock and DynamoDB integrations will be added in later phases.
+Amazon DynamoDB integration and API Gateway deployment will be added in later phases.
 
 ---
 
-## Handler
+## Lambda Handler
 
 ```text
 lambda_function.lambda_handler
@@ -44,17 +45,41 @@ This is the function inside that file.
 
 ---
 
+## Request Flow
+
+```text
+API Gateway Event
+        │
+        ▼
+Lambda Handler
+        │
+        ▼
+Parse JSON
+        │
+        ▼
+Validate Request
+        │
+        ▼
+Build Prompt
+        │
+        ▼
+Amazon Bedrock
+(Converse API)
+        │
+        ▼
+Enhanced Resume
+        │
+        ▼
+API Response
+```
+
+---
+
 ## Expected Input
-
-The function expects an Amazon API Gateway HTTP API event.
-
-The business request is stored inside the event's `body` field.
-
-Example request body:
 
 ```json
 {
-  "jobDescription": "We are looking for a Cloud Engineer with experience in AWS, infrastructure automation, observability, incident troubleshooting and production support.",
+  "jobDescription": "Cloud Engineer with AWS and observability experience",
   "resumeBullets": [
     "Worked on Dynatrace dashboards",
     "Helped application teams troubleshoot production incidents",
@@ -63,244 +88,158 @@ Example request body:
 }
 ```
 
+The request body is received through an Amazon API Gateway HTTP API (Payload Format Version 2.0).
+
 ---
 
-## API Gateway Event Example
-
-The complete event received by Lambda looks similar to:
+## Example Response
 
 ```json
 {
-  "version": "2.0",
-  "routeKey": "POST /enhance",
-  "rawPath": "/enhance",
-  "rawQueryString": "",
+  "statusCode": 200,
   "headers": {
-    "content-type": "application/json",
-    "host": "example.execute-api.ca-central-1.amazonaws.com"
+    "Content-Type": "application/json"
   },
-  "requestContext": {
-    "http": {
-      "method": "POST",
-      "path": "/enhance",
-      "protocol": "HTTP/1.1"
-    },
-    "requestId": "local-test-request-001",
-    "stage": "$default"
-  },
-  "body": "{\"jobDescription\":\"We are looking for a Cloud Engineer with experience in AWS, infrastructure automation, observability, incident troubleshooting and production support.\",\"resumeBullets\":[\"Worked on Dynatrace dashboards\",\"Helped application teams troubleshoot production incidents\",\"Used Ansible to deploy and configure Dynatrace OneAgent\"]}",
-  "isBase64Encoded": false
+  "body": "{\"message\":\"Resume enhanced successfully.\",\"enhancedResume\":\"- Developed and maintained Dynatrace dashboards...\"}"
 }
-```
-
-The `body` value is a JSON string.
-
-The Lambda function converts it into a Python dictionary using:
-
-```python
-request_body = json.loads(event["body"])
-```
-
----
-
-## Current Request Flow
-
-```text
-API Gateway event
-        |
-        v
-Lambda handler
-        |
-        v
-Read event body
-        |
-        v
-Parse JSON
-        |
-        v
-Extract job description
-        |
-        v
-Extract resume bullets
-        |
-        v
-Return temporary response
 ```
 
 ---
 
 ## Current Responsibilities
 
-- Receive an API Gateway event
-- Parse the JSON request body
-- Validate the job description
-- Validate resume bullets
-- Reject malformed requests
-- Return consistent HTTP responses
+- Receive API Gateway requests
+- Parse JSON request bodies
+- Validate incoming requests
+- Build prompts from the approved template
+- Invoke Amazon Bedrock using the Converse API
+- Return enhanced resume bullets
+- Handle Bedrock and validation errors
 
 ---
 
-## Current Response
-
-Example response:
-
-```json
-{
-  "statusCode": 200,
-  "headers": {
-    "Content-Type": "application/json"
-  },
-  "body": "{\"message\":\"Request received successfully\",\"jobDescription\":\"We are looking for a Cloud Engineer with experience in AWS, infrastructure automation, observability, incident troubleshooting and production support.\",\"resumeBullets\":[\"Worked on Dynatrace dashboards\",\"Helped application teams troubleshoot production incidents\",\"Used Ansible to deploy and configure Dynatrace OneAgent\"]}"
-}
-```
-
-The response `body` is returned as a JSON string because API Gateway expects the body in string format.
-
----
-
-## Folder Structure
+## Project Structure
 
 ```text
 lambda/
 └── enhance_resume/
+    ├── config.py
     ├── lambda_function.py
+    ├── validator.py
+    ├── response.py
     ├── local_test.py
+    ├── prompts/
+    │   └── prompt_builder.py
+    ├── services/
+    │   └── bedrock_service.py
     └── README.md
 ```
 
-### File Purpose
+---
 
-| File                 | Purpose                                                           |
-| -------------------- | ----------------------------------------------------------------- |
-| `lambda_function.py` | Contains the Lambda handler and response builder                  |
-| `local_test.py`      | Loads a sample event and invokes the Lambda handler locally       |
-| `README.md`          | Documents the function's purpose, input, output and testing steps |
+## File Responsibilities
+
+| File | Purpose |
+|------|---------|
+| `lambda_function.py` | Orchestrates the request flow |
+| `validator.py` | Validates incoming requests |
+| `response.py` | Builds API Gateway responses |
+| `config.py` | Stores application configuration |
+| `prompts/prompt_builder.py` | Loads the prompt template and builds the final prompt |
+| `services/bedrock_service.py` | Invokes Amazon Bedrock |
+| `local_test.py` | Executes local integration tests |
 
 ---
 
 ## Local Testing
 
-From the project root, run:
+Run:
 
 ```bash
 python3 lambda/enhance_resume/local_test.py
 ```
 
-Expected output:
+The test suite validates:
 
-```text
-Resume enhancement request received
+- Valid request
+- Missing request body
+- Invalid JSON
+- Missing job description
+- Empty job description
+- Invalid resume bullets
+- Empty resume bullets
 
-Lambda response:
-{
-  "statusCode": 200,
-  "headers": {
-    "Content-Type": "application/json"
-  },
-  "body": "{\"message\": \"Request received successfully\", \"jobDescription\": \"We are looking for a Cloud Engineer with experience in AWS, infrastructure automation, observability, incident troubleshooting and production support.\", \"resumeBullets\": [\"Worked on Dynatrace dashboards\", \"Helped application teams troubleshoot production incidents\", \"Used Ansible to deploy and configure Dynatrace OneAgent\"]}"
-}
-
-Decoded response body:
-{
-  "message": "Request received successfully",
-  "jobDescription": "We are looking for a Cloud Engineer with experience in AWS, infrastructure automation, observability, incident troubleshooting and production support.",
-  "resumeBullets": [
-    "Worked on Dynatrace dashboards",
-    "Helped application teams troubleshoot production incidents",
-    "Used Ansible to deploy and configure Dynatrace OneAgent"
-  ]
-}
-```
-
----
-
-## Sample Event
-
-The local test uses:
-
-```text
-sample-events/api-gateway-enhance-request.json
-```
-
-This file simulates an API Gateway HTTP API payload version `2.0` event.
+The valid request invokes Amazon Bedrock and returns AI-generated resume bullets.
 
 ---
 
 ## Dependencies
 
-The current function only uses Python standard-library modules:
+The application uses:
 
-```python
-import json
-from typing import Any
+- boto3
+- botocore
+
+AWS Lambda includes these libraries by default.
+
+For local development:
+
+```bash
+pip install boto3
 ```
 
-No third-party packages are required.
-
-A `requirements.txt` file is not needed in this phase.
-
 ---
 
-## Not Yet Implemented
+## Security Considerations
 
-- Amazon Bedrock integration
-- Prompt generation
-- DynamoDB enhancement history
-- Structured logging
-- Request tracing
-- Frontend integration
-
-These features will be added gradually in later phases.
-
----
-
-## Security Notes
-
-The function should not:
-
-* Store AWS credentials in code
-* Log complete resumes
-* Log full job descriptions
-* Accept unlimited input sizes
-* Generate unsupported metrics
-* Invent user experience
-
-Least-privilege IAM permissions will be added when AWS services are integrated.
+- Validate requests before invoking Amazon Bedrock
+- Do not store AWS credentials in code
+- Use IAM for authentication
+- Avoid logging complete resumes or job descriptions
+- Prevent the model from inventing achievements or metrics
+- Follow the principle of least privilege
 
 ---
 
 ## Current Status
 
 ```text
-Phase 2: Basic Lambda Request Handling
+Phase 5 – Lambda + Amazon Bedrock Integration
 ```
 
-Completed:
+### Completed
 
-* Lambda handler created
-* API Gateway event simulated
-* JSON body parsed
-* Job description extracted
-* Resume bullets extracted
-* Temporary API response returned
-* Local test completed
+- ✅ Lambda handler
+- ✅ Request validation
+- ✅ Prompt builder
+- ✅ Amazon Bedrock integration
+- ✅ Converse API integration
+- ✅ Dynamic prompt loading
+- ✅ Local end-to-end AI testing
+- ✅ Bedrock error handling
+
+---
+
+## Not Yet Implemented
+
+- API Gateway deployment
+- Amazon DynamoDB enhancement history
+- Static frontend
+- CloudWatch structured logging
+- AWS X-Ray tracing
 
 ---
 
 ## Next Phase
 
 ```text
-Phase 3: Input Validation
+Phase 6 – API Gateway Integration
 ```
 
-The next phase will add validation for:
+Objectives:
 
-* Missing request body
-* Invalid JSON
-* Missing job description
-* Empty job description
-* Missing resume bullets
-* Empty resume bullet list
-* Invalid resume bullet types
-* Empty resume bullet values
-* Consistent error responses
+- Deploy the Lambda function
+- Configure environment variables
+- Create an HTTP API
+- Connect API Gateway to Lambda
+- Test the complete end-to-end workflow
