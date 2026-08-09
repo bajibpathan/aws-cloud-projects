@@ -43,29 +43,61 @@ This project demonstrates how to:
 
 ---
 
+# 🏢 Business Problem
+
+Recruiters and hiring managers often receive resumes in a variety of formats, making manual screening time-consuming and inconsistent. Candidates also struggle to understand how effectively their resumes communicate their skills and experience or how to transform them into a professional online portfolio.
+
+Traditional resume reviews are largely manual, making it difficult to provide personalized feedback, structured insights, or an engaging digital representation of a candidate's profile.
+
+---
+
+# 💡 Solution
+
+AWS AI Resume Builder demonstrates a production-inspired serverless application that automates resume processing using managed AWS services.
+
+The solution enables users to securely upload resumes, extract structured information, leverage Generative AI to enhance and analyze resume content, and automatically generate a professional portfolio website.
+
+The application is designed around modern cloud engineering principles including event-driven architecture, serverless computing, least-privilege security, Infrastructure as Code readiness, and operational observability.
+
+---
+
+# 🎯 Engineering Goals
+
+This project was designed to demonstrate the following cloud engineering capabilities:
+
+- Design an end-to-end event-driven serverless architecture
+- Build secure APIs using Amazon API Gateway and Amazon Cognito
+- Process documents automatically using Amazon Textract
+- Integrate Generative AI using Amazon Bedrock
+- Generate static portfolio websites using Amazon S3 and Amazon CloudFront
+- Apply AWS security and Well-Architected best practices
+- Build scalable and loosely coupled cloud-native applications
+- Produce comprehensive engineering documentation for maintainability and knowledge sharing
+
+---
+
 # ✨ Key Features
 
-### User Features
+### 🔐 Security
 
-- Secure user authentication
-- Resume upload through a web interface
-- Direct S3 uploads using Presigned URLs
-- Automatic resume processing
-- AI-powered resume enhancement
-- Responsive portfolio website generation
-- Global website delivery using CloudFront
-
-### Cloud Engineering Features
-
-- Event-driven architecture
-- Fully serverless design
-- Modular Lambda functions
+- Amazon Cognito authentication
+- JWT-secured REST APIs
+- Amazon S3 presigned uploads
 - Least-privilege IAM permissions
-- Private S3 buckets
-- Structured CloudWatch logging
-- Jinja2 template engine
-- Production-style documentation
-- Architecture Decision Records (ADRs)
+
+### 🤖 AI & Document Processing
+
+- Resume text extraction with Amazon Textract
+- AI-powered resume analysis using Amazon Bedrock
+- Structured JSON generation
+- Automated portfolio content generation
+
+### ☁️ Cloud Architecture
+
+- Event-driven serverless design
+- RESTful APIs with Amazon API Gateway
+- Static website hosting with Amazon CloudFront
+- CloudWatch monitoring and logging
 
 ---
 
