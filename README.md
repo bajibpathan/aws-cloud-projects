@@ -1,7 +1,7 @@
 # ☁️ AWS Cloud Engineering Portfolio
 
-![AWS](https://img.shields.io/badge/AWS-Cloud-FF9900?logo=amazonaws&logoColor=white)
-![Python](https://img.shields.io/badge/Python-3776AB?logo=python&logoColor=white)
+![AWS](https://img.shields.io/badge/AWS-Cloud-FF9900?logo=amazonaws\&logoColor=white)
+![Python](https://img.shields.io/badge/Python-3776AB?logo=python\&logoColor=white)
 ![Serverless](https://img.shields.io/badge/Architecture-Serverless-success)
 ![Generative AI](https://img.shields.io/badge/Generative-AI-purple)
 ![Portfolio](https://img.shields.io/badge/Portfolio-Cloud%20Engineering-blueviolet)
@@ -11,248 +11,160 @@
 
 ---
 
-# 🌟 About This Repository
+# 🌟 About This Portfolio
 
 Welcome to my AWS Cloud Engineering Portfolio.
 
-This repository showcases hands-on AWS projects built from scratch as part of my cloud engineering learning journey. Every project emphasizes practical implementation, architectural decision-making, operational excellence, and comprehensive technical documentation.
+This repository showcases production-inspired AWS projects that I built to strengthen my cloud engineering skills through hands-on implementation.
 
-Rather than reproducing isolated tutorials, I focus on understanding **why** AWS services are selected, documenting architectural decisions, and applying AWS best practices to build production-inspired cloud solutions.
+Rather than reproducing isolated tutorials, every project focuses on solving real engineering problems while documenting the architectural decisions, trade-offs, security considerations, monitoring strategy, and AWS best practices behind the solution.
 
-Each project demonstrates both technical implementation and the engineering thought process behind the solution.
-
----
-
-# 🚀 Skills Demonstrated
-
-This portfolio demonstrates practical experience across multiple cloud engineering domains.
-
-| Category | Skills |
-|----------|--------|
-| Cloud Architecture | Serverless Architecture, Event-Driven Design, REST APIs |
-| Compute | AWS Lambda |
-| Storage | Amazon S3 |
-| Database | Amazon DynamoDB |
-| Networking | Amazon API Gateway |
-| AI / ML | Amazon Bedrock, Prompt Engineering |
-| Monitoring | Amazon CloudWatch, AWS X-Ray |
-| Security | IAM, Least Privilege, CORS |
-| Infrastructure as Code | CloudFormation *(planned)*, Terraform *(planned)* |
-| Programming | Python |
-| Documentation | ADRs, Architecture Diagrams, Technical Documentation |
+The goal is to build practical, well-documented cloud solutions that reflect how modern applications are designed, deployed, and operated.
 
 ---
 
-# ☁️ AWS Services Covered
+# 🚀 Featured Projects
 
-Current projects include hands-on experience with:
-
-- Amazon API Gateway
-- Amazon Bedrock
-- Amazon CloudWatch
-- Amazon DynamoDB
-- Amazon S3
-- AWS IAM
-- AWS Lambda
-- AWS X-Ray
-
-Future projects will introduce:
-
-- Amazon EC2
-- Elastic Load Balancing
-- Auto Scaling
-- Amazon ECS
-- Amazon EKS
-- Amazon RDS
-- Amazon VPC
-- AWS CloudFormation
-- Terraform
-- AWS CDK
-- AWS Step Functions
-- Amazon EventBridge
-- Amazon SQS
-- Amazon SNS
-
----
-
-# 🚀 Production-Inspired AWS Projects
-
-| Project | Architecture | AWS Services | Difficulty | Status |
-|---------|--------------|--------------|:----------:|:------:|
-| **AWS AI Resume Builder** | Serverless Generative AI | Cognito, API Gateway, Lambda, S3, Textract, Bedrock, CloudFront, IAM, CloudWatch | ⭐⭐⭐⭐⭐ | ✅ |
-| **Serverless AI CV Enhancer** | Serverless Generative AI | API Gateway, Lambda, Bedrock, DynamoDB, S3, CloudWatch, X-Ray, IAM | ⭐⭐⭐⭐ | ✅ |
-| **AWS Event-Driven Image Processing** | Event-Driven Serverless | S3, Lambda, DynamoDB, CloudWatch | ⭐⭐⭐⭐ | ✅ |
-| **Serverless DynamoDB CRUD API** | RESTful Serverless API | API Gateway, Lambda, DynamoDB | ⭐⭐⭐ | ✅ |
-| **AWS Lambda Execution Profiler** | Performance Engineering | Lambda, CloudWatch | ⭐⭐⭐ | ✅ |
-| **Static Website Hosting on Amazon S3** | Static Website Hosting | Amazon S3 | ⭐⭐ | ✅ |
-
----
-
-# 🗺️ Cloud Engineering Learning Roadmap
-
-This portfolio continues to grow through progressively more advanced AWS projects.
-
-| Project | Primary Focus | Status |
-|----------|---------------|:------:|
-| Static Website Hosting | Amazon S3 Fundamentals | ✅ |
-| Serverless CRUD API | API Gateway & Lambda | ✅ |
-| Lambda Execution Profiler | Performance Optimization | ✅ |
-| Event-Driven Image Processing | Event-Driven Architecture | ✅ |
-| Serverless AI CV Enhancer | Amazon Bedrock & Generative AI | ✅ |
-| AI Resume Builder | End-to-End Serverless AI Application | ✅ |
-| Three-Tier Web Application | EC2, ALB & Auto Scaling | ⏳ Planned |
-| Containerized Application | Docker & Amazon ECS | ⏳ Planned |
-| Kubernetes Platform | Amazon EKS | ⏳ Planned |
-| Infrastructure as Code | Terraform & CloudFormation | ⏳ Planned |
-| CI/CD Pipeline | GitHub Actions & AWS | ⏳ Planned |
-| Multi-Account AWS Environment | AWS Organizations | ⏳ Planned |
-
----
-
-# 🎯 Engineering Principles
-
-Every project in this portfolio follows a consistent set of cloud engineering principles.
-
-- Production-inspired architecture
-- Hands-on implementation
-- Security by design
-- Reliability engineering
-- Monitoring & observability
-- Cost-aware architecture
-- AWS Well-Architected Framework
-- Comprehensive technical documentation
-- Architecture Decision Records (ADRs)
-- Operational excellence
-
----
-
-# 📂 Standard Repository Structure
-
-Although every project is different, I follow a consistent documentation and repository structure wherever applicable.
-
-```text
-project-name/
-
-├── README.md
-├── TECHNICAL_OVERVIEW.md
-├── INTERVIEW_GUIDE.md
-│
-├── architecture/
-│   ├── decisions/
-│   └── diagrams/
-│
-├── docs/
-│
-├── frontend/                 # Optional
-├── lambda/                   # Serverless projects
-├── policies/
-├── prompts/                  # AI projects
-├── sample-events/
-├── screenshots/
-│
-└── LICENSE
-```
-
-> **Note:** Some projects may include additional folders depending on the architecture and implementation requirements.
-
----
-
-# 📖 Project Documentation
-
-Every project contains documentation that explains not only **how** it was built but also **why** specific architectural decisions were made.
-
-Documentation typically includes:
-
-- Project Overview
-- Technical Overview
-- Interview Guide
-- Architecture Diagrams
-- Architecture Decision Records (ADRs)
-- Phase-by-Phase Implementation Guide
-- Cleanup Guide
-- Lambda Documentation (where applicable)
-
-The goal is to make each project easy to understand, reproduce, and extend.
+| Project | Category | Key Learning Outcomes | AWS Services | Difficulty | Status |
+|---------|----------|-----------------------|--------------|:----------:|:------:|
+| 🤖 **AWS AI Resume Builder** | AI / Serverless | Build an end-to-end serverless AI application with secure authentication, document processing, and Generative AI | Amazon Cognito, API Gateway, Lambda, S3, Textract, Bedrock, CloudFront, IAM, CloudWatch | ⭐⭐⭐⭐⭐ | ✅ |
+| ✨ **Serverless AI CV Enhancer** | AI / Serverless | Build a secure serverless REST API powered by Amazon Bedrock for AI-driven CV enhancement | API Gateway, Lambda, Bedrock, DynamoDB, S3, CloudWatch, X-Ray, IAM | ⭐⭐⭐⭐ | ✅ |
+| 📸 **AWS Event-Driven Image Processing** | Event-Driven | Implement an event-driven architecture using Amazon S3 event notifications and AWS Lambda for automated image processing | Amazon S3, Lambda, DynamoDB, CloudWatch | ⭐⭐⭐⭐ | ✅ |
+| 🔄 **Serverless DynamoDB CRUD API** | API Development | Design and deploy a scalable RESTful API using AWS Lambda and Amazon DynamoDB | API Gateway, Lambda, DynamoDB | ⭐⭐⭐ | ✅ |
+| ⚡ **AWS Lambda Execution Profiler** | Observability | Analyze AWS Lambda execution performance using Amazon CloudWatch metrics, logs, and profiling techniques | Lambda, CloudWatch | ⭐⭐⭐ | ✅ |
+| 🌐 **Static Website Hosting on Amazon S3** | Static Hosting | Host and manage a static website using Amazon S3 following AWS best practices | Amazon S3 | ⭐⭐ | ✅ |
+| 🏗️ **Three-Tier Web Application** *(Coming Soon)* | Compute & Networking | Build a highly available three-tier web application using EC2, ALB, Auto Scaling, and Amazon RDS | EC2, ALB, Auto Scaling, RDS, VPC | ⭐⭐⭐⭐⭐ | 🚧 |
 
 ---
 
 # 📊 Portfolio Snapshot
 
-| Category | Count |
-|----------|------:|
-| AWS Projects | **6** |
-| AWS Services | **8+** |
-| Architecture Patterns | **5+** |
-| Architecture Diagrams | **30+** |
-| Technical Documents | **40+** |
-| Architecture Decision Records | **14+** |
+| Portfolio                            |   Count |
+| ------------------------------------ | ------: |
+| Production-Inspired AWS Projects     |   **6** |
+| AWS Services Used                    |  **8+** |
+| Architecture Patterns                |  **5+** |
+| Technical Documents                  | **40+** |
+| Architecture Decision Records (ADRs) | **14+** |
+| Architecture Diagrams                | **30+** |
+| Interview Guides                     |   **6** |
 
-> *These numbers will continue to grow as new projects are added.*
-
----
-
-# 💡 Why This Portfolio?
-
-The objective of this portfolio is to demonstrate practical cloud engineering skills through real implementations rather than isolated AWS service demonstrations.
-
-Each project is designed to answer questions such as:
-
-- Why was this AWS service selected?
-- What alternatives were considered?
-- How was the solution secured?
-- How is the application monitored?
-- How is reliability achieved?
-- How are costs optimized?
-- How would the architecture evolve in production?
-
-By documenting both the implementation and the reasoning behind each decision, the portfolio reflects the approach cloud engineers take when designing and operating real-world solutions.
+> *The portfolio continues to grow with each new project.*
 
 ---
 
-# 🚀 What's Next?
+# 🛠️ Cloud Engineering Skills
 
-This portfolio will continue to expand with increasingly advanced AWS projects.
+| Domain                 | Technologies                                            |
+| ---------------------- | ------------------------------------------------------- |
+| Cloud Architecture     | Serverless Architecture, Event-Driven Design, REST APIs |
+| Compute                | AWS Lambda                                              |
+| Storage                | Amazon S3                                               |
+| Database               | Amazon DynamoDB                                         |
+| AI / ML                | Amazon Bedrock, Amazon Textract, Prompt Engineering     |
+| Monitoring             | Amazon CloudWatch, AWS X-Ray                            |
+| Security               | IAM, Least Privilege, CORS                              |
+| Programming            | Python                                                  |
+| Infrastructure as Code | Terraform *(Learning)*, CloudFormation *(Learning)*     |
 
-Upcoming focus areas include:
-
-- Three-Tier Web Applications
-- Amazon EC2
-- Elastic Load Balancing
-- Auto Scaling
-- Amazon ECS
-- Amazon EKS
-- Amazon RDS
-- Amazon VPC
-- Infrastructure as Code (Terraform & CloudFormation)
-- CI/CD Pipelines
-- AWS Step Functions
-- Amazon EventBridge
-- Amazon SNS & Amazon SQS
-- Multi-Account AWS Architectures
-- Disaster Recovery & High Availability
-- Advanced Serverless Architectures
-- Amazon Bedrock Agents
-- Amazon Bedrock Knowledge Bases
-- AI-powered Cloud Applications
+📖 Additional technology notes and service summaries are available in the **docs/** directory.
 
 ---
 
-# 🎯 Long-Term Goal
+# 🗺️ Cloud Engineering Learning Journey
 
-The goal of this portfolio is to build a comprehensive collection of production-inspired AWS projects covering modern cloud architecture patterns, DevOps practices, Generative AI, Infrastructure as Code, and operational excellence.
+## ✅ Completed
 
-Each completed project represents another step toward becoming a well-rounded Cloud Engineer and Solutions Architect.
+* Static Website Hosting on Amazon S3
+* Serverless DynamoDB CRUD API
+* AWS Lambda Execution Profiler
+* Event-Driven Image Processing
+* Serverless AI CV Enhancer
+* AWS AI Resume Builder
+
+## 🚧 Currently Building
+
+* Three-Tier Web Application on AWS
+
+## 📌 Planned
+
+* Docker & Amazon ECS
+* Amazon EKS
+* Amazon VPC
+* Infrastructure as Code with Terraform
+* AWS CloudFormation
+* CI/CD with GitHub Actions
+* Amazon EventBridge
+* Amazon SNS & Amazon SQS
+* Multi-Account AWS Architecture
+* Disaster Recovery & High Availability
+* Amazon Bedrock Agents
+* Amazon Bedrock Knowledge Bases
 
 ---
 
-# 🤝 Connect With Me
+# 📂 Repository Navigation
+
+Every project follows a consistent documentation standard and includes, where applicable:
+
+* Project Overview
+* Technical Overview
+* Architecture Diagrams
+* Architecture Decision Records (ADRs)
+* Phase-by-Phase Implementation Guide
+* Interview Guide
+* Cleanup Guide
+* Screenshots
+* Source Code
+
+Additional portfolio documentation is available in the **docs/** directory.
+
+| Documentation                    | Description                                              |
+| -------------------------------- | -------------------------------------------------------- |
+| `docs/CLOUD_SKILLS.md`           | Cloud engineering skills and competency matrix           |
+| `docs/AWS_SERVICES.md`           | AWS services covered across projects                     |
+| `docs/ENGINEERING_PRINCIPLES.md` | Engineering principles followed throughout the portfolio |
+| `docs/LEARNING_ROADMAP.md`       | Detailed cloud learning roadmap                          |
+| `docs/REPOSITORY_STRUCTURE.md`   | Repository organization and documentation standards      |
+
+---
+
+# 🎯 Engineering Approach
+
+Every project in this portfolio is designed around production-inspired cloud engineering principles.
+
+These include:
+
+* Security by Design
+* AWS Well-Architected Framework
+* Reliability & High Availability
+* Observability & Monitoring
+* Cost-Aware Architecture
+* Operational Excellence
+* Infrastructure as Code
+* Comprehensive Technical Documentation
+* Architecture Decision Records (ADRs)
+
+The objective is not simply to demonstrate AWS services, but to explain **why** they were selected and **how** they contribute to a well-architected solution.
+
+---
+
+# 🎯 Mission
+
+My goal is to build a comprehensive collection of production-inspired AWS projects that demonstrate modern cloud engineering practices across serverless architectures, containers, Infrastructure as Code, security, observability, and Generative AI.
+
+Every completed project represents another step toward becoming a well-rounded Cloud Engineer and Solutions Architect.
+
+---
+
+# 🤝 Let's Connect
 
 Thank you for visiting my AWS Cloud Engineering Portfolio.
 
-I'm continuously learning, building, and documenting cloud solutions while expanding my knowledge of AWS and modern cloud engineering practices.
+I'm continuously learning, building, and documenting cloud solutions while sharing my cloud engineering journey with the community.
 
-I welcome feedback, suggestions, and discussions about AWS, cloud architecture, and software engineering.
+Feedback, suggestions, and discussions are always welcome.
 
-If you find these projects helpful, please consider giving the repository a ⭐.
+If you find this repository useful, please consider giving it a ⭐ to support the project.
 
 Happy Learning! 🚀
