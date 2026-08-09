@@ -31,24 +31,40 @@ The goal is to build practical, well-documented cloud solutions that reflect how
 
 | Explore | Description |
 |----------|-------------|
-| 🚀 **Featured Projects** | Explore production-inspired AWS projects covering serverless, AI, event-driven architecture, and cloud engineering best practices. |
-| 📊 **Portfolio Snapshot** | View portfolio statistics, architecture patterns, and technical documentation highlights. |
-| 🛠️ **Cloud Engineering Skills** | Explore the AWS services, tools, and technologies demonstrated throughout this portfolio. |
-| 🗺️ **Learning Journey** | Follow my roadmap as I build increasingly advanced AWS solutions. |
-| 📖 **Technical Documentation** | Read architecture decision records, implementation guides, and supporting documentation in the `docs/` directory. |
+| [🚀 Featured Projects](#-featured-projects) | Explore production-inspired AWS projects covering serverless, AI, and event-driven architectures. |
+| [🏗️ Architecture Gallery](#️-architecture-gallery) | Browse architecture diagrams for each project. |
+| [📊 Portfolio Snapshot](#-portfolio-snapshot) | View portfolio metrics and documentation statistics. |
+| [📈 Cloud Engineering Progress](#-cloud-engineering-progress) | Track completed and upcoming cloud engineering domains. |
+| [🛠️ Cloud Engineering Skills](#️-cloud-engineering-skills) | Review AWS services, tools, and technologies demonstrated across the portfolio. |
+| [🗺️ Learning Journey](#️-cloud-engineering-learning-journey) | Follow the roadmap of completed and planned projects. |
+| [📂 Repository Navigation](#-repository-navigation) | Explore repository documentation and standards. |
+| [🎯 Engineering Approach](#-engineering-approach) | Learn the engineering principles applied throughout the portfolio. |
+---
 
+# 👋 New to This Portfolio?
 
+If you're visiting this repository for the first time, I recommend exploring the projects in the following order. The projects below are ordered from the most comprehensive demonstration of cloud engineering concepts to foundational AWS implementations.
+
+| Recommended Order | Project | What You'll Learn |
+|------------------:|---------|-------------------|
+| 1️⃣ | 🤖 **[AWS AI Resume Builder](aws-ai-resume-builder/)** | End-to-end serverless AI application with authentication, document processing, Generative AI, and static website generation. |
+| 2️⃣ | ✨ **[Serverless AI CV Enhancer](serverless-ai-cv-enhancer/)** | Building secure serverless REST APIs powered by Amazon Bedrock. |
+| 3️⃣ | 📸 **[AWS Event-Driven Image Processing](aws-event-driven-image-processing/)** | Event-driven architecture using Amazon S3 event notifications and AWS Lambda. |
+| 4️⃣ | 🔄 **[Serverless DynamoDB CRUD API](serverless-dynamodb-crud-api/)** | Serverless API development with Amazon API Gateway, AWS Lambda, and DynamoDB. |
+| 5️⃣ | ⚡ **[AWS Lambda Execution Profiler](aws-lambda-execution-profiler/)** | Monitoring and performance analysis for AWS Lambda functions. |
+| 6️⃣ | 🌐 **[Static Website Hosting on Amazon S3](static-website-hosting-on-amazon-s3/)** | Static website hosting fundamentals using Amazon S3. |
+
+---
 
 # 🚀 Featured Projects
-
 | Project | Category | Key Learning Outcomes | AWS Services | Difficulty | Status |
 |---------|----------|-----------------------|--------------|:----------:|:------:|
-| 🤖 **AWS AI Resume Builder** | AI / Serverless | Build an end-to-end serverless AI application with secure authentication, document processing, and Generative AI | Amazon Cognito, API Gateway, Lambda, S3, Textract, Bedrock, CloudFront, IAM, CloudWatch | ⭐⭐⭐⭐⭐ | ✅ |
-| ✨ **Serverless AI CV Enhancer** | AI / Serverless | Build a secure serverless REST API powered by Amazon Bedrock for AI-driven CV enhancement | API Gateway, Lambda, Bedrock, DynamoDB, S3, CloudWatch, X-Ray, IAM | ⭐⭐⭐⭐ | ✅ |
-| 📸 **AWS Event-Driven Image Processing** | Event-Driven | Implement an event-driven architecture using Amazon S3 event notifications and AWS Lambda for automated image processing | Amazon S3, Lambda, DynamoDB, CloudWatch | ⭐⭐⭐⭐ | ✅ |
-| 🔄 **Serverless DynamoDB CRUD API** | API Development | Design and deploy a scalable RESTful API using AWS Lambda and Amazon DynamoDB | API Gateway, Lambda, DynamoDB | ⭐⭐⭐ | ✅ |
-| ⚡ **AWS Lambda Execution Profiler** | Observability | Analyze AWS Lambda execution performance using Amazon CloudWatch metrics, logs, and profiling techniques | Lambda, CloudWatch | ⭐⭐⭐ | ✅ |
-| 🌐 **Static Website Hosting on Amazon S3** | Static Hosting | Host and manage a static website using Amazon S3 following AWS best practices | Amazon S3 | ⭐⭐ | ✅ |
+| 🤖 **[AWS AI Resume Builder](aws-ai-resume-builder/)** | AI / Serverless | Build an end-to-end serverless AI application with secure authentication, document processing, and Generative AI | Amazon Cognito, API Gateway, Lambda, S3, Textract, Bedrock, CloudFront, IAM, CloudWatch | ⭐⭐⭐⭐⭐ | ✅ |
+| ✨ **[Serverless AI CV Enhancer](aws-serverless-ai-cv-enhancer/)** | AI / Serverless | Build a secure serverless REST API powered by Amazon Bedrock for AI-driven CV enhancement | API Gateway, Lambda, Bedrock, DynamoDB, S3, CloudWatch, X-Ray, IAM | ⭐⭐⭐⭐ | ✅ |
+| 📸 **[AWS Event-Driven Image Processing](aws-event-driven-image-processing/)** | Event-Driven | Implement an event-driven architecture using Amazon S3 event notifications and AWS Lambda for automated image processing | Amazon S3, Lambda, DynamoDB, CloudWatch | ⭐⭐⭐⭐ | ✅ |
+| 🔄 **[Serverless DynamoDB CRUD API](serverless-dynamodb-crud-api/)** | API Development | Design and deploy a scalable RESTful API using AWS Lambda and Amazon DynamoDB | API Gateway, Lambda, DynamoDB | ⭐⭐⭐ | ✅ |
+| ⚡ **[AWS Lambda Execution Profiler](aws-lambda-execution-profiler/)** | Observability | Analyze AWS Lambda execution performance using Amazon CloudWatch metrics, logs, and profiling techniques | Lambda, CloudWatch | ⭐⭐⭐ | ✅ |
+| 🌐 **[Static Website Hosting on Amazon S3](static-website-hosting-on-amazon-s3/)** | Static Hosting | Host and manage a static website using Amazon S3 following AWS best practices | Amazon S3 | ⭐⭐ | ✅ |
 | 🏗️ **Three-Tier Web Application** *(Coming Soon)* | Compute & Networking | Build a highly available three-tier web application using EC2, ALB, Auto Scaling, and Amazon RDS | EC2, ALB, Auto Scaling, RDS, VPC | ⭐⭐⭐⭐⭐ | 🚧 |
 
 ---
@@ -59,12 +75,12 @@ Explore the high-level architecture behind each production-inspired project.
 
 | Project | Architecture |
 |---------|--------------|
-| 🤖 AWS AI Resume Builder | *(Coming Soon)* |
-| ✨ Serverless AI CV Enhancer | *(Coming Soon)* |
-| 📸 Event-Driven Image Processing | *(Coming Soon)* |
-| 🔄 Serverless CRUD API | *(Coming Soon)* |
-| ⚡ Lambda Execution Profiler | *(Coming Soon)* |
-| 🌐 Static Website Hosting | *(Coming Soon)* |
+| 🤖 **AWS AI Resume Builder** | 📖 [View Architecture](aws-ai-resume-builder/#-solution-architecture) |
+| ✨ **Serverless AI CV Enhancer** | 📖 [View Architecture](aws-serverless-ai-cv-enhancer/#-solution-architecture) |
+| 📸 **AWS Event-Driven Image Processing** | 📖 [View Architecture](aws-event-driven-image-processing/#-solution-architecture) |
+| 🔄 **Serverless DynamoDB CRUD API** | 📖 [View Architecture](serverless-dynamodb-crud-api/#-solution-architecture) |
+| ⚡ **AWS Lambda Execution Profiler** | 📖 [View Architecture](aws-lambda-execution-profiler/#-solution-architecture) |
+| 🌐 **Static Website Hosting on Amazon S3** | 📖 [View Architecture](static-website-hosting-on-amazon-s3/#-solution-architecture) |
 
 ---
 
@@ -207,6 +223,26 @@ My goal is to build a comprehensive collection of production-inspired AWS projec
 Every completed project represents another step toward becoming a well-rounded Cloud Engineer and Solutions Architect.
 
 ---
+
+---
+
+# 📌 Portfolio Status
+
+This portfolio is actively maintained and continuously expanded with new production-inspired AWS projects.
+
+Current focus areas include:
+
+- 🏗️ Three-Tier Web Applications
+- 🌐 Amazon VPC Networking
+- 🐳 Docker & Amazon ECS
+- ☸️ Amazon EKS
+- 🏗️ Infrastructure as Code with Terraform
+- 🔄 CI/CD using GitHub Actions
+- 🤖 Advanced Generative AI with Amazon Bedrock
+
+_Last Updated: August 2026_
+
+
 
 # 🤝 Let's Connect
 
