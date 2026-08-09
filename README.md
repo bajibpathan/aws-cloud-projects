@@ -1,5 +1,9 @@
 # ☁️ AWS Cloud Engineering Portfolio
 
+<p align="center">
+  <img src="assets/banner.png" alt="AWS Cloud Engineering Portfolio Banner" width="100%">
+</p>
+
 ![AWS](https://img.shields.io/badge/AWS-Cloud-FF9900?logo=amazonaws\&logoColor=white)
 ![Python](https://img.shields.io/badge/Python-3776AB?logo=python\&logoColor=white)
 ![Serverless](https://img.shields.io/badge/Architecture-Serverless-success)
