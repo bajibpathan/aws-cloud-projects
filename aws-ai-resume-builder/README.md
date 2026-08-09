@@ -174,7 +174,7 @@ The application was built incrementally across seven implementation phases, with
 | 3 | User Authentication | [View Guide](docs/phase-03-authentication.md) |
 | 4 | Resume Processing | [View Guide](docs/phase-04-resume-processing.md) |
 | 5 | AI Resume Analysis | [View Guide](docs/phase-05-ai-resume-analysis.md) |
-| 6 | Web Client Integration | [View Guide](docs/phase-06-web-client.md) |
+| 6 | Web Client Integration | [View Guide](docs/phase-06-web-client-integration.md) |
 | 7 | Portfolio Website Generation | [View Guide](docs/phase-07-portfolio-generation.md) |
 
 ➡️ See the [`docs/`](docs/) directory for the complete implementation journey.
