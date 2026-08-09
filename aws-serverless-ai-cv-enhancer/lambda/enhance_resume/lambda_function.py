@@ -1,6 +1,8 @@
 from typing import Any
 
 from prompts.prompt_builder import build_prompt
+from prompts.output_parser import parse_enhanced_bullets
+from config import PROMPT_VERSION
 from response import build_response
 from services.bedrock_service import (
     BedrockServiceError,
@@ -52,6 +54,9 @@ def lambda_handler(
 
     try:
         enhanced_resume = enhance_resume(prompt)
+        enhanced_bullets = parse_enhanced_bullets(
+            enhanced_resume
+        )
 
     except BedrockServiceError:
         return build_response(
@@ -67,6 +72,7 @@ def lambda_handler(
         200,
         {
             "message": "Resume enhanced successfully.",
-            "enhancedResume": enhanced_resume
+            "enhancedBullets": enhanced_bullets,
+            "promptVersion": PROMPT_VERSION
         }
     )

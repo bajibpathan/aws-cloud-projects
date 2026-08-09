@@ -5,20 +5,19 @@ from config import PROMPT_VERSION
 
 def load_prompt_template() -> str:
     """
-    Load the approved resume enhancement prompt template.
+    Load the approved resume enhancement prompt.
     """
 
-    current_file = Path(__file__).resolve()
-
-    project_root = current_file.parents[3]
+    prompt_directory = Path(__file__).resolve().parent
 
     prompt_file = (
-        project_root
-        / "prompts"
+        prompt_directory
         / f"resume-enhancer-{PROMPT_VERSION}.txt"
     )
 
-    return prompt_file.read_text(encoding="utf-8")
+    return prompt_file.read_text(
+        encoding="utf-8"
+    )
 
 
 def build_prompt(
