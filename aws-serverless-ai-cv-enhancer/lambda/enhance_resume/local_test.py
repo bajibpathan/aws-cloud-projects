@@ -45,6 +45,33 @@ TEST_CASES = [
     )
 ]
 
+def prepare_enhance_event(event: dict) -> dict:
+    """
+    Ensure test events contain the API Gateway
+    routing information required for POST /enhance.
+    """
+
+    event.setdefault(
+        "rawPath",
+        "/enhance"
+    )
+
+    request_context = event.setdefault(
+        "requestContext",
+        {}
+    )
+
+    http_context = request_context.setdefault(
+        "http",
+        {}
+    )
+
+    http_context.setdefault(
+        "method",
+        "POST"
+    )
+
+    return event
 
 def load_event(file_path: Path) -> dict:
     with file_path.open("r", encoding="utf-8") as file:
@@ -57,9 +84,18 @@ def run_test(
     expected_status: int
 ) -> None:
 
-    event = load_event(event_file)
+    event = load_event(
+    event_file
+    )
 
-    response = lambda_handler(event, None)
+    event = prepare_enhance_event(
+        event
+    )
+
+    response = lambda_handler(
+        event,
+        None
+    )
 
     actual_status = response["statusCode"]
 
