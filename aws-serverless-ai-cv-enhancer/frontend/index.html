@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Serverless AI CV Enhancer</title>
+
+    <link
+        rel="stylesheet"
+        href="styles.css"
+    >
+</head>
+
+<body>
+
+    <header class="app-header">
+        <div class="container">
+            <h1>Serverless AI CV Enhancer</h1>
+
+            <p>
+                Improve your resume bullets for a target role
+                using Amazon Bedrock.
+            </p>
+        </div>
+    </header>
+
+    <main class="container">
+
+        <section class="card">
+
+            <h2>Enhance Resume</h2>
+
+            <form id="enhance-form">
+
+                <div class="form-group">
+
+                    <label for="job-description">
+                        Target Job Description
+                    </label>
+
+                    <textarea
+                        id="job-description"
+                        rows="8"
+                        placeholder="Paste the target job description here..."
+                        required
+                    ></textarea>
+
+                </div>
+
+                <div class="form-group">
+
+                    <label for="resume-bullets">
+                        Current Resume Bullets
+                    </label>
+
+                    <textarea
+                        id="resume-bullets"
+                        rows="8"
+                        placeholder="Enter one resume bullet per line..."
+                        required
+                    ></textarea>
+
+                </div>
+
+                <button
+                    id="enhance-button"
+                    type="submit"
+                >
+                    Enhance Resume
+                </button>
+
+            </form>
+
+            <p
+                id="enhance-status"
+                class="status"
+            ></p>
+
+        </section>
+
+        <section
+            id="results-section"
+            class="card hidden"
+        >
+
+            <h2>Enhanced Resume Bullets</h2>
+
+            <ul id="enhanced-bullets"></ul>
+
+            <p
+                id="enhancement-id"
+                class="metadata"
+            ></p>
+
+        </section>
+
+        <section class="card">
+
+            <div class="section-header">
+
+                <h2>Enhancement History</h2>
+
+                <button
+                    id="refresh-history"
+                    type="button"
+                    class="secondary-button"
+                >
+                    Refresh
+                </button>
+
+            </div>
+
+            <p
+                id="history-status"
+                class="status"
+            ></p>
+
+            <div id="history-list"></div>
+
+        </section>
+
+    </main>
+
+    <footer>
+        Serverless AI CV Enhancer
+    </footer>
+
+    <script src="config.js"></script>
+    <script src="app.js"></script>
+
+</body>
+</html>
