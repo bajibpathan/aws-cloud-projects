@@ -8,7 +8,9 @@ from config import (
     BEDROCK_REGION,
     DYNAMODB_TABLE_NAME
 )
+import logging
 
+logger = logging.getLogger(__name__)
 
 class HistoryServiceError(Exception):
     """
@@ -47,9 +49,8 @@ def save_enhancement(
         )
 
     except ClientError as error:
-        print(
-            "DynamoDB save error:",
-            error.response["Error"]["Message"]
+        logger.exception(
+            "DynamoDB query failed"
         )
 
         raise HistoryServiceError(

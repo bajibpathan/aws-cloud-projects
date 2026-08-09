@@ -1,42 +1,20 @@
 import json
 from typing import Any
+"""
+Request validation for the Serverless AI CV Enhancer.
+"""
+
+MAX_JOB_DESCRIPTION_LENGTH = 10000
+MAX_RESUME_BULLETS = 20
+MAX_BULLET_LENGTH = 1000
 
 
-def parse_request_body(
-    event: dict[str, Any]
-) -> tuple[dict[str, Any] | None, str | None]:
+def validate_request(request_body):
     """
-    Parse the JSON request body from an API Gateway event.
+    Validate the incoming request payload.
 
     Returns:
-        (request_body, error_message)
-    """
-
-    body = event.get("body")
-
-    if body is None or body == "":
-        return None, "Request body is required."
-
-    try:
-        request_body = json.loads(body)
-    except json.JSONDecodeError:
-        return None, "Request body contains invalid JSON."
-
-    if not isinstance(request_body, dict):
-        return None, "Request body must be a JSON object."
-
-    return request_body, None
-
-
-def validate_request(
-    request_body: dict[str, Any]
-) -> str | None:
-    """
-    Validate the resume-enhancement request.
-
-    Returns:
-        None when valid.
-        Error message when invalid.
+        None if valid, otherwise an error message.
     """
 
     job_description = request_body.get("jobDescription")
@@ -50,6 +28,12 @@ def validate_request(
     if not job_description.strip():
         return "Job description cannot be empty."
 
+    if len(job_description) > MAX_JOB_DESCRIPTION_LENGTH:
+        return (
+            f"Job description cannot exceed "
+            f"{MAX_JOB_DESCRIPTION_LENGTH} characters."
+        )
+
     resume_bullets = request_body.get("resumeBullets")
 
     if resume_bullets is None:
@@ -58,14 +42,27 @@ def validate_request(
     if not isinstance(resume_bullets, list):
         return "Resume bullets must be a list."
 
-    if not resume_bullets:
+    if len(resume_bullets) == 0:
         return "Resume bullets cannot be empty."
 
+    if len(resume_bullets) > MAX_RESUME_BULLETS:
+        return (
+            f"Resume bullets cannot exceed "
+            f"{MAX_RESUME_BULLETS} items."
+        )
+
     for bullet in resume_bullets:
+
         if not isinstance(bullet, str):
             return "Each resume bullet must be a string."
 
         if not bullet.strip():
             return "Resume bullets cannot contain empty values."
+
+        if len(bullet) > MAX_BULLET_LENGTH:
+            return (
+                f"Each resume bullet cannot exceed "
+                f"{MAX_BULLET_LENGTH} characters."
+            )
 
     return None
