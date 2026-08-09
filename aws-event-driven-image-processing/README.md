@@ -33,6 +33,43 @@ The primary goal of this project is not only to build a working application but 
 
 ---
 
+# 🏢 Business Problem
+
+Many cloud applications rely on manual or tightly coupled processing workflows that can become difficult to scale, maintain, and monitor as workloads increase.
+
+Modern cloud-native applications often require an event-driven approach where services react automatically to events without requiring continuous infrastructure or manual intervention. Building these systems also requires careful consideration of reliability, security, observability, and operational excellence.
+
+This project demonstrates how AWS managed services can be combined to build an automated image processing pipeline that follows production-inspired cloud engineering practices.
+
+---
+
+# 💡 Solution
+
+AWS Event-Driven Image Processing is a production-inspired serverless application that automatically processes image uploads using Amazon S3 Event Notifications and AWS Lambda.
+
+When an image is uploaded, Amazon S3 generates an event that invokes an AWS Lambda function. The function validates the uploaded file, generates a deterministic image identifier, stores image metadata in Amazon DynamoDB, and publishes operational logs and metrics to Amazon CloudWatch.
+
+The solution demonstrates how event-driven architectures can improve scalability, reduce operational overhead, and enable loosely coupled cloud-native applications using fully managed AWS services.
+
+---
+
+# 🎯 Engineering Goals
+
+This project was designed to strengthen practical cloud engineering skills by implementing a production-inspired event-driven serverless application on AWS.
+
+Key objectives include:
+
+- Build an event-driven architecture using Amazon S3 Event Notifications and AWS Lambda.
+- Process uploaded images automatically without manual intervention.
+- Implement idempotent processing to prevent duplicate records.
+- Persist metadata using Amazon DynamoDB.
+- Apply AWS security best practices with IAM and encryption.
+- Implement operational monitoring using Amazon CloudWatch.
+- Produce comprehensive documentation, architecture diagrams, and operational guidance.
+
+
+---
+
 # 📌 Project Highlights
 
 - ✅ Event-Driven Serverless Architecture
@@ -51,18 +88,18 @@ The primary goal of this project is not only to build a working application but 
 
 ---
 
-# 🏗 Architecture
+# 🏗 Solution Architecture
 
 > **High-Level Architecture**
 
 ![AWS Event-Driven Image Processing](architecture/images/01-high-level-architecture.png)
 
 ---
-# ⚙️ Solution Workflow
+# 🔄 Application Workflow
 
 The following sequence diagram illustrates the end-to-end workflow from image upload through event processing, metadata storage, and operational monitoring.
 
-![Solution Workflow](architecture/images/02-sequence-diagram.png)
+![Application Workflow](architecture/images/02-sequence-diagram.png)
 
 ### Processing Steps
 
@@ -77,7 +114,7 @@ The following sequence diagram illustrates the end-to-end workflow from image up
 9. CloudWatch dashboards and alarms provide operational visibility into the application.
 ---
 
-# ✨ Features
+# ✨ Key Features
 
 The application automatically performs the following operations whenever a supported image is uploaded.
 
@@ -113,13 +150,13 @@ Instead of documenting individual AWS services, this project is organized using 
 
 | Layer | Documentation |
 |--------|---------------|
-| Storage Layer | `docs/01-storage-layer.md` |
-| Event Layer | `docs/02-event-layer.md` |
-| Data Layer | `docs/03-data-layer.md` |
-| Observability Layer | `docs/04-observability-layer.md` |
-| Reliability Layer | `docs/05-reliability-layer.md` |
-| Operations Guide | `docs/06-operations-guide.md` |
-| Cost Analysis | `docs/07-cost-analysis.md` |
+| Storage Layer | **[Storage Layer](docs/01-storage-layer.md)** |
+| Event Layer | **[Event Layer](docs/02-event-layer.md)** |
+| Data Layer | **[Data Layer](docs/03-data-layer.md)** |
+| Observability Layer | **[Observability Layer](docs/04-observability-layer.md)** |
+| Reliability Layer | **[Reliability Layer](docs/05-reliability-layer.md)** |
+| Operations Guide | **[Operations Guide](docs/06-operations-guide.md)** |
+| Cost Analysis | **[Cost Analysis](docs/07-cost-analysis.md)** |
 
 ---
 
@@ -161,32 +198,14 @@ This repository contains detailed architecture documentation for every layer of 
 
 | Document | Description |
 |----------|-------------|
-| `PROJECT_SUMMARY.md` | Executive summary of the complete project |
-| `01-storage-layer.md` | Amazon S3 architecture and design decisions |
-| `02-event-layer.md` | Event-driven processing using S3 Event Notifications and Lambda |
-| `03-data-layer.md` | Metadata storage using DynamoDB |
-| `04-observability-layer.md` | Monitoring using CloudWatch Logs, Metrics, Dashboard and Alarm |
-| `05-reliability-layer.md` | Reliability improvements including idempotency and validation |
-| `06-operations-guide.md` | Deployment, monitoring, troubleshooting and cleanup |
-| `07-cost-analysis.md` | Cost optimization and operational cost analysis |
-
----
-
-# 📷 Project Screenshots
-
-The project includes implementation evidence captured throughout development.
-
-Examples include:
-
-- Amazon S3 Configuration
-- Event Notification
-- AWS Lambda Configuration
-- DynamoDB Metadata
-- CloudWatch Dashboard
-- CloudWatch Alarm
-- Structured Logs
-- Reliability Validation
-- Cost Optimization
+| **[PROJECT_SUMMARY.md](PROJECT_SUMMARY.md)** | Executive summary of the complete project |
+| **[01-storage-layer.md](docs/01-storage-layer.md)** | Amazon S3 architecture and design decisions |
+| **[02-event-layer.md](docs/02-event-layer.md)** | Event-driven processing using S3 Event Notifications and Lambda |
+| **[03-data-layer.md](docs/03-data-layer.md)** | Metadata storage using DynamoDB |
+| **[04-observability-layer.md](docs/04-observability-layer.md)** | Monitoring using CloudWatch Logs, Metrics, Dashboard and Alarm |
+| **[05-reliability-layer.md](docs/05-reliability-layer.md)** | Reliability improvements including idempotency and validation |
+| **[06-operations-guide.md](docs/06-operations-guide.md)** | Deployment, monitoring, troubleshooting and cleanup |
+| **[07-cost-analysis.md](docs/07-cost-analysis.md)** | Cost optimization and operational cost analysis |
 
 ---
 
@@ -345,101 +364,31 @@ The solution incorporates practices aligned with several pillars of the AWS Well
 | Cost Optimization | Serverless Services, Log Retention, Cleanup Strategy |
 
 ---
+# 🚀 Project Status
 
-# 🎯 Engineering Skills Demonstrated
+**Status:** ✅ Complete
 
-This project demonstrates practical experience with the following cloud engineering concepts.
+This project is feature complete as a production-inspired event-driven serverless application.
 
-### Architecture
+The implementation includes:
 
-- Event-Driven Architecture
-- Serverless Architecture
-- Layered System Design
+- Event-driven image processing with Amazon S3 Event Notifications
+- AWS Lambda image validation and metadata processing
+- Amazon DynamoDB metadata storage
+- Structured logging and CloudWatch monitoring
+- Reliability improvements through idempotent processing
+- Security best practices using IAM, encryption, and versioning
+- Comprehensive technical documentation and architecture diagrams
 
-### AWS Services
-
-- Amazon S3
-- AWS Lambda
-- Amazon DynamoDB
-- Amazon CloudWatch
-- AWS IAM
-
-### Engineering Practices
-
-- Cloud Security
-- Reliability Engineering
-- Observability
-- Cost Optimization
-- Operational Excellence
-- Technical Documentation
-
-### Software Engineering
-
-- Python
-- Structured Logging
-- Error Handling
-- Input Validation
-- Idempotent Processing
-- Configuration Management
+Future enhancements will continue to expand the solution using additional AWS services while maintaining the same production-inspired engineering principles.
 
 ---
 
-# 📈 Project Progress
+# ✅ Validation
 
-| Phase | Status |
-|---------|:------:|
-| Storage Layer | ✅ |
-| Event Layer | ✅ |
-| Data Layer | ✅ |
-| Observability Layer | ✅ |
-| Reliability Layer | ✅ |
-| Operations Guide | ✅ |
-| Cost Analysis | ✅ |
-| Architecture Documentation | 🚧 In Progress |
-| Portfolio Enhancements | 🚧 In Progress |
+The application was validated using multiple functional and operational scenarios, including successful image processing, duplicate event handling, unsupported file validation, CloudWatch monitoring, and DynamoDB metadata verification.
 
----
-
-# 📊 Project Statistics
-
-| Category | Value |
-|----------|------:|
-| AWS Services | 5 |
-| Architecture Layers | 5 |
-| Documentation Pages | 7 |
-| Lambda Functions | 1 |
-| CloudWatch Dashboard | 1 |
-| CloudWatch Alarm | 1 |
-| Python Modules | 1 |
-| Project Type | Event-Driven Serverless |
-
----
-
-# 🧪 Validation
-
-The solution has been tested using multiple scenarios.
-
-### Successful Scenarios
-
-- Image Upload
-- Metadata Storage
-- Structured Logging
-- Dashboard Monitoring
-- Alarm Validation
-
-### Reliability Scenarios
-
-- Duplicate Event Processing
-- Unsupported File Validation
-- Invalid Event Handling
-- Exception Logging
-
-### Operational Validation
-
-- CloudWatch Metrics
-- CloudWatch Dashboard
-- CloudWatch Alarm
-- DynamoDB Metadata Verification
+Detailed validation steps and operational procedures are available in the **Operations Guide** located in the `docs/` directory.
 
 ---
 
@@ -552,7 +501,7 @@ Verify:
 
 # 📸 Project Screenshots
 
-The project includes implementation evidence for each major architecture layer.
+The repository includes screenshots captured throughout the implementation process, demonstrating the configuration, deployment, monitoring, and validation of each major component.
 
 | Screenshot | Description |
 |------------|-------------|
@@ -593,31 +542,20 @@ This project establishes a strong serverless foundation and can be extended in s
 These enhancements will improve scalability, reliability, automation, and operational maturity.
 
 ---
+# 🔗 Continue Exploring
 
-# 📖 References
+If you found this project useful, you may also be interested in exploring other production-inspired AWS projects in this portfolio:
 
-The following AWS documentation was used during the implementation of this project.
+- 🤖 [AWS AI Resume Builder](../aws-ai-resume-builder)
+- ✨ [Serverless AI CV Enhancer](../serverless-ai-cv-enhancer)
+- 🔄 [Serverless DynamoDB CRUD API](../serverless-dynamodb-crud-api)
+- ⚡ [AWS Lambda Execution Profiler](../aws-lambda-execution-profiler)
+- 🌐 [Static Website Hosting on Amazon S3](../static-website-hosting-on-amazon-s3)
 
-- Amazon S3 Documentation
-- AWS Lambda Documentation
-- Amazon DynamoDB Documentation
-- Amazon CloudWatch Documentation
-- AWS IAM Documentation
-- AWS Well-Architected Framework
-- AWS Pricing Calculator
-- AWS Architecture Center
+You can also return to the **[AWS Cloud Engineering Portfolio](../README.md)** to explore additional projects, architecture patterns, and cloud engineering documentation.
 
 ---
 
-# 🤝 Contributing
-
-This repository is part of my AWS Cloud Engineering learning journey.
-
-Suggestions, feedback, and recommendations are always welcome.
-
-If you identify opportunities for improvement, feel free to open an issue or submit a pull request.
-
----
 
 # 📄 License
 
@@ -625,17 +563,9 @@ This project is licensed under the MIT License.
 
 ---
 
-# 👨‍💻 Author
-
-**Baji Pathan**
-
-Cloud Engineer | Observability Engineer | AWS Learner
-
-This project was built to strengthen practical AWS cloud engineering skills through hands-on implementation and production-inspired architecture.
-
----
-
 # 🙏 Acknowledgements
+
+This project was built as part of my AWS Cloud Engineering portfolio to strengthen my understanding of event-driven architectures and production-inspired serverless application design.
 
 Special thanks to:
 
@@ -644,7 +574,7 @@ Special thanks to:
 - AWS Architecture Center
 - The AWS Community
 
-for providing guidance and best practices that inspired the design and implementation of this project.
+for providing the guidance and best practices that informed the design and implementation of this project.
 
 ---
 
@@ -658,25 +588,3 @@ If you found this repository helpful:
 - 🤝 Connect with me on LinkedIn
 
 ---
-
-# 📌 Key Takeaways
-
-This project demonstrates much more than a simple serverless application.
-
-It showcases the complete lifecycle of building an AWS solution—from architecture and implementation to monitoring, reliability, cost optimization, operations, and documentation.
-
-Key concepts demonstrated include:
-
-- Event-Driven Architecture
-- Serverless Computing
-- Cloud Security
-- Observability
-- Reliability Engineering
-- Cost Optimization
-- Operational Excellence
-- AWS Well-Architected Principles
-- Technical Documentation
-
-By completing this project, I strengthened my ability to design, build, document, and operate production-inspired cloud solutions using AWS managed services.
-
-This repository represents the first project in my AWS Cloud Engineering portfolio and serves as a foundation for future production-inspired cloud projects.
