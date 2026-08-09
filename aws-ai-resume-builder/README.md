@@ -28,61 +28,85 @@ This project demonstrates real-world cloud engineering practices including event
 
 ---
 
-## 🎯 Learning Objectives
+# 🏢 Business Problem
 
-This project demonstrates how to:
+Recruiters and hiring managers often receive resumes in a variety of formats, making manual screening time-consuming and inconsistent. Candidates also struggle to understand how effectively their resumes communicate their skills and experience or how to transform them into a professional online portfolio.
 
-- Build a complete event-driven serverless application
-- Secure applications using Amazon Cognito and IAM
-- Upload files securely using Amazon S3 Presigned URLs
-- Process documents using Amazon Textract
+Traditional resume reviews are largely manual, making it difficult to provide personalized feedback, structured insights, or an engaging digital representation of a candidate's profile.
+
+---
+
+# 💡 Solution
+
+AWS AI Resume Builder demonstrates a production-inspired serverless application that automates resume processing using managed AWS services.
+
+The solution enables users to securely upload resumes, extract structured information, leverage Generative AI to enhance and analyze resume content, and automatically generate a professional portfolio website.
+
+The application is designed around modern cloud engineering principles including event-driven architecture, serverless computing, least-privilege security, Infrastructure as Code readiness, and operational observability.
+
+---
+
+# 🎯 Engineering Goals
+
+This project was designed to demonstrate the following cloud engineering capabilities:
+
+- Design an end-to-end event-driven serverless architecture
+- Build secure APIs using Amazon API Gateway and Amazon Cognito
+- Process documents automatically using Amazon Textract
 - Integrate Generative AI using Amazon Bedrock
-- Generate static portfolio websites automatically
-- Apply AWS Well-Architected Framework principles
-- Document architecture using Architecture Decision Records (ADRs)
+- Generate static portfolio websites using Amazon S3 and Amazon CloudFront
+- Apply AWS security and Well-Architected best practices
+- Build scalable and loosely coupled cloud-native applications
+- Produce comprehensive engineering documentation for maintainability and knowledge sharing
 
 ---
 
 # ✨ Key Features
 
-### User Features
+### 🔐 Security
 
-- Secure user authentication
-- Resume upload through a web interface
-- Direct S3 uploads using Presigned URLs
-- Automatic resume processing
-- AI-powered resume enhancement
-- Responsive portfolio website generation
-- Global website delivery using CloudFront
-
-### Cloud Engineering Features
-
-- Event-driven architecture
-- Fully serverless design
-- Modular Lambda functions
+- Amazon Cognito authentication
+- JWT-secured REST APIs
+- Amazon S3 presigned uploads
 - Least-privilege IAM permissions
-- Private S3 buckets
-- Structured CloudWatch logging
-- Jinja2 template engine
-- Production-style documentation
-- Architecture Decision Records (ADRs)
+
+### 🤖 AI & Document Processing
+
+- Resume text extraction with Amazon Textract
+- AI-powered resume analysis using Amazon Bedrock
+- Structured JSON generation
+- Automated portfolio content generation
+
+### ☁️ Cloud Architecture
+
+- Event-driven serverless design
+- RESTful APIs with Amazon API Gateway
+- Static website hosting with Amazon CloudFront
+- CloudWatch monitoring and logging
 
 ---
 
 # 🏗️ Solution Architecture
 
-> **Architecture Diagram**
+<p align="center">
+  <img src="architecture/images/aws-ai-resume-builder-architecture.png"
+       alt="AWS AI Resume Builder Architecture"
+       width="100%">
+</p>
 
-
-![Solution Architecture](architecture/images/aws-ai-resume-builder-architecture.png)
-
-The application follows an event-driven architecture where each AWS service performs a dedicated responsibility. Resume uploads automatically trigger downstream processing through Amazon S3 events, allowing each component to remain loosely coupled, scalable, and independently maintainable.
+The application follows an event-driven serverless architecture. Each AWS service performs a dedicated responsibility, allowing the solution to remain loosely coupled, scalable, secure, and independently maintainable.
 
 ---
 
 # 🔄 Application Workflow
 
-![High Level Workflow](architecture/images/aws-ai-resume-builder-high-level-workflow.png)
+<p align="center">
+  <img src="architecture/images/aws-ai-resume-builder-high-level-workflow.png"
+       alt="AWS AI Resume Builder High-Levellication Workflow"
+       width="100%">
+</p>
+
+The workflow shows the end-to-end processing path from secure resume upload through document extraction, AI-powered analysis, portfolio generation, and global delivery through Amazon CloudFront.
 
 ---
 
@@ -90,15 +114,35 @@ The application follows an event-driven architecture where each AWS service perf
 
 | AWS Service | Purpose |
 |-------------|---------|
-| AWS Lambda | Serverless compute for business logic |
-| Amazon API Gateway | Secure REST API endpoints |
-| Amazon S3 | Resume storage, processed data, and portfolio hosting |
-| Amazon Cognito | User authentication and authorization |
-| Amazon Textract | Extract structured text from PDF resumes |
-| Amazon Bedrock | AI-powered resume analysis and content generation |
-| Amazon CloudFront | Global delivery of generated portfolio websites |
-| Amazon CloudWatch | Logging and operational monitoring |
-| AWS IAM | Identity and access management |
+| Amazon Cognito | Authenticate users and issue JWT tokens |
+| Amazon API Gateway | Expose secure REST APIs |
+| AWS Lambda | Execute application logic |
+| Amazon S3 | Store resumes, generated content, and static websites |
+| Amazon Textract | Extract structured text from uploaded resumes |
+| Amazon Bedrock | Analyze and enhance resume content using Generative AI |
+| Amazon DynamoDB | Store application metadata and structured resume information |
+| Amazon CloudFront | Deliver generated portfolio websites globally |
+| Amazon CloudWatch | Collect logs, metrics, and operational insights |
+| AWS IAM | Secure access using least-privilege permissions |
+
+---
+
+# 🏛️ Architecture Decisions at a Glance
+
+The following table summarizes the key architectural decisions made during the design of this application. Detailed Architecture Decision Records (ADRs) are available in the [`architecture/decisions`](architecture/decisions/) directory.
+
+| Area | Decision | Why This Approach? |
+|------|----------|--------------------|
+| Compute | AWS Lambda | Fully managed compute with automatic scaling and no server management |
+| API | Amazon API Gateway | Secure, scalable REST APIs with built-in authorization and throttling |
+| Authentication | Amazon Cognito | Managed user authentication without maintaining custom identity infrastructure |
+| Storage | Amazon S3 | Highly durable object storage for resumes, generated content, and static websites |
+| Document Processing | Amazon Textract | Extract structured text from resumes without building custom OCR logic |
+| AI Processing | Amazon Bedrock | Integrate Generative AI using managed foundation models |
+| Database | Amazon DynamoDB | Serverless NoSQL database with low operational overhead |
+| CDN | Amazon CloudFront | Low-latency global delivery for generated portfolio websites |
+| Monitoring | Amazon CloudWatch | Centralized logging, metrics, and operational visibility |
+| Security | IAM Least Privilege | Restrict permissions to only the resources required by each component |
 
 ---
 
@@ -117,7 +161,7 @@ aws-ai-resume-builder/
 │   ├── phase-03-authentication.md
 │   ├── phase-04-resume-processing.md
 │   ├── phase-05-ai-resume-analysis.md
-│   ├── phase-06-web-client.md
+│   ├── phase-06-web-client-integration.md
 │   ├── phase-07-portfolio-generation.md
 │   ├── troubleshooting.md
 │   └── cleanup-guide.md
@@ -165,495 +209,19 @@ The project is fully functional and demonstrates a complete end-to-end serverles
 
 # 🚀 Implementation Journey
 
-The project was built incrementally using a production-style approach. Each phase introduces a new capability while keeping the application modular, secure, and scalable.
-
----
-
-# 📦 Phase 1 – Project Foundation & Storage
-
-## Overview
-
-The first phase established the project foundation by creating the storage layer used throughout the application. Amazon S3 was selected as the primary storage service because of its durability, scalability, and seamless integration with AWS serverless services.
-
-This phase also defined the initial repository structure, naming conventions, and folder organization to support future development.
-
-### Objectives
-
-- Create the project repository
-- Design the project folder structure
-- Create Amazon S3 buckets
-- Configure bucket security
-- Enable versioning
-- Validate file uploads
-
-### Components Implemented
-
-| Component | Purpose |
-|-----------|---------|
-| Amazon S3 Resume Bucket | Stores uploaded resumes |
-| Amazon S3 Processed Data | Stores extracted resume content |
-| Amazon S3 AI Output | Stores AI-enhanced resume JSON |
-| Amazon S3 Portfolio Bucket | Hosts generated portfolio websites |
-
-### Key Design Decisions
-
-- Separate buckets were used for each processing stage to simplify permissions and troubleshooting.
-- S3 Versioning was enabled to protect against accidental deletion or overwrites.
-- Public access was blocked on all buckets.
-- Bucket names follow a consistent naming convention for easier management.
-
-### Skills Demonstrated
-
-- Amazon S3
-- Bucket Policies
-- Versioning
-- Object Storage
-- Security Best Practices
-
-📖 **Detailed documentation:** `docs/phase-01-project-foundation.md`
-
----
-
-# 🔐 Phase 2 – Secure Resume Upload
-
-## Overview
-
-Uploading files directly through the application server introduces unnecessary complexity and security risks. Instead, this project uses **Amazon S3 Presigned URLs**, allowing authenticated users to upload resumes securely without exposing AWS credentials.
-
-The backend generates a temporary upload URL that grants limited-time permission to upload a single file directly to Amazon S3.
-
-### Workflow
-
-```text
-User
-    │
-    ▼
-API Gateway
-    │
-    ▼
-Upload URL Lambda
-    │
-Generate Presigned URL
-    │
-    ▼
-Amazon S3
-```
-
-### Components Implemented
-
-| Component | Purpose |
-|-----------|---------|
-| Amazon API Gateway | Exposes secure REST endpoint |
-| Upload URL Lambda | Generates presigned URLs |
-| Amazon S3 | Receives uploaded resumes |
-
-### Security Features
-
-- Temporary upload URLs
-- Time-limited access
-- Least-privilege IAM permissions
-- No AWS credentials exposed to clients
-- Direct browser-to-S3 uploads
-
-### Benefits
-
-- Reduced backend workload
-- Improved upload performance
-- Lower infrastructure costs
-- Secure file transfer
-
-### Skills Demonstrated
-
-- Amazon API Gateway
-- AWS Lambda
-- Amazon S3 Presigned URLs
-- IAM Roles
-- REST APIs
-
-📖 **Detailed documentation:** `docs/phase-02-secure-upload.md`
-
----
-
-# 👤 Phase 3 – User Authentication
-
-## Overview
-
-To ensure that only authorized users can upload resumes, Amazon Cognito was integrated into the application. Cognito provides a managed authentication service that eliminates the need to build and maintain a custom identity system.
-
-Authenticated users receive a JSON Web Token (JWT), which is validated by Amazon API Gateway before allowing access to protected API endpoints.
-
-### Authentication Flow
-
-```text
-User
-    │
-    ▼
-Amazon Cognito
-    │
-Authenticate User
-    │
-    ▼
-JWT Access Token
-    │
-    ▼
-Frontend Application
-    │
-    ▼
-Amazon API Gateway
-```
-
-### Components Implemented
-
-| Component | Purpose |
-|-----------|---------|
-| Amazon Cognito User Pool | User registration and authentication |
-| Cognito App Client | Frontend authentication |
-| API Gateway Authorizer | JWT validation |
-| Protected REST APIs | Restrict access to authenticated users |
-
-### Security Features
-
-- Secure user authentication
-- JWT token validation
-- Protected API endpoints
-- Least-privilege IAM permissions
-- HTTPS-only communication
-
-### Benefits
-
-- Managed authentication
-- No password storage
-- Scalable identity management
-- Seamless integration with AWS services
-
-### Skills Demonstrated
-
-- Amazon Cognito
-- JWT Authentication
-- API Gateway Authorization
-- Secure API Design
-- Identity Management
-
-📖 **Detailed documentation:** `docs/phase-03-authentication.md`
-
----
-
-# 🤖 Phase 4 – Resume Processing
-
-## Overview
-
-After a resume is uploaded to Amazon S3, an **ObjectCreated** event automatically invokes the Resume Processor Lambda function. The function extracts the uploaded PDF and uses Amazon Textract to convert the document into structured text.
-
-The extracted content is transformed into a structured JSON document and stored in Amazon S3, where it becomes the input for the AI processing stage.
-
-### Workflow
-
-```text
-Resume Upload (Amazon S3)
-        │
-        ▼
-S3 ObjectCreated Event
-        │
-        ▼
-Resume Processor Lambda
-        │
-        ▼
-Amazon Textract
-        │
-        ▼
-Structured Resume JSON
-        │
-        ▼
-Amazon S3
-```
-
-### Components Implemented
-
-| Component | Purpose |
-|-----------|---------|
-| Resume Processor Lambda | Processes uploaded resumes |
-| Amazon Textract | Extracts text from PDF resumes |
-| Amazon S3 | Stores structured resume JSON |
-
-### Key Features
-
-- Event-driven processing
-- Automatic document extraction
-- Structured JSON generation
-- Fully serverless workflow
-- No manual intervention
-
-### Skills Demonstrated
-
-- Amazon Textract
-- Event-Driven Architecture
-- AWS Lambda
-- Amazon S3 Events
-- JSON Processing
-
-📖 **Detailed documentation:** `docs/phase-04-resume-processing.md`
-
----
-
-# 🧠 Phase 5 – AI Resume Analysis
-
-## Overview
-
-Once the structured resume JSON is generated, another Amazon S3 event triggers the AI Resume Analyzer Lambda function.
-
-The function sends the extracted resume data to **Amazon Bedrock**, where a foundation model analyzes and restructures the content into a clean, standardized JSON format suitable for portfolio generation.
-
-Instead of generating HTML directly, AI focuses on improving the resume content while keeping presentation logic separate from business logic.
-
-### Workflow
-
-```text
-Structured Resume JSON
-        │
-        ▼
-S3 ObjectCreated Event
-        │
-        ▼
-AI Resume Analyzer Lambda
-        │
-        ▼
-Amazon Bedrock
-        │
-        ▼
-Enhanced Resume JSON
-        │
-        ▼
-Amazon S3
-```
-
-### Components Implemented
-
-| Component | Purpose |
-|-----------|---------|
-| AI Resume Analyzer Lambda | Sends resume data to Amazon Bedrock |
-| Amazon Bedrock | Enhances and restructures resume content |
-| Amazon S3 | Stores AI-generated JSON |
-
-### AI Capabilities
-
-- Resume summarization
-- Skill categorization
-- Professional profile generation
-- Experience normalization
-- Consistent JSON output
-
-### Design Decisions
-
-- AI generates structured content rather than HTML.
-- Business logic and presentation remain independent.
-- Enhanced resume data can be reused by multiple applications.
-
-### Skills Demonstrated
-
-- Amazon Bedrock
-- Prompt Engineering
-- AWS Lambda
-- JSON Transformation
-- Generative AI Integration
-
-📖 **Detailed documentation:** `docs/phase-05-ai-resume-analysis.md`
-
----
-
-# 💻 Phase 6 – Web Client Integration
-
-## Overview
-
-A lightweight web application provides the user interface for authentication and resume uploads.
-
-Authenticated users sign in using Amazon Cognito, request a presigned upload URL, and upload their resume directly to Amazon S3 without routing files through the backend.
-
-This approach minimizes backend processing while improving security and scalability.
-
-### User Workflow
-
-```text
-User Login
-      │
-      ▼
-Amazon Cognito
-      │
-      ▼
-Frontend Application
-      │
-      ▼
-API Gateway
-      │
-      ▼
-Upload URL Lambda
-      │
-      ▼
-Amazon S3 Presigned URL
-      │
-      ▼
-Resume Upload
-```
-
-### Components Implemented
-
-| Component | Purpose |
-|-----------|---------|
-| Frontend Application | User interface |
-| Amazon Cognito | Authentication |
-| Amazon API Gateway | Secure API access |
-| Upload URL Lambda | Generates upload URLs |
-
-### Key Features
-
-- Secure authentication
-- Direct browser-to-S3 uploads
-- Responsive interface
-- JWT-based authorization
-- REST API integration
-
-### Skills Demonstrated
-
-- HTML
-- CSS
-- JavaScript
-- Amazon Cognito
-- API Gateway
-- AWS Lambda
-
-📖 **Detailed documentation:** `docs/phase-06-web-client.md`
-
----
-
-# 🌐 Phase 7 – Portfolio Website Generation
-
-## Overview
-
-The final stage automatically transforms the AI-enhanced resume into a professional static portfolio website.
-
-When the enhanced resume JSON is stored in Amazon S3, an ObjectCreated event triggers the Portfolio Generator Lambda function.
-
-The function renders reusable Jinja2 templates using the AI-generated content and produces a responsive HTML portfolio website.
-
-The generated website is stored in an Amazon S3 bucket and delivered globally using Amazon CloudFront.
-
-### Workflow
-
-```text
-Enhanced Resume JSON
-        │
-        ▼
-S3 ObjectCreated Event
-        │
-        ▼
-Portfolio Generator Lambda
-        │
-        ▼
-Jinja2 Templates
-        │
-        ▼
-Portfolio Website (HTML)
-        │
-        ▼
-Amazon S3 Website Bucket
-        │
-        ▼
-Amazon CloudFront
-        │
-        ▼
-Generated Portfolio Website
-```
-
-### Components Implemented
-
-| Component | Purpose |
-|-----------|---------|
-| Portfolio Generator Lambda | Builds HTML portfolio |
-| Jinja2 Templates | Dynamic website rendering |
-| Amazon S3 | Website hosting |
-| Amazon CloudFront | Global content delivery |
-
-### Key Features
-
-- Automatic website generation
-- Responsive design
-- Static website hosting
-- Global CDN delivery
-- Fully automated deployment
-
-### Design Decisions
-
-- Separated presentation from AI processing.
-- Used reusable Jinja2 templates instead of AI-generated HTML.
-- CloudFront provides secure HTTPS delivery and global caching.
-
-### Skills Demonstrated
-
-- Static Website Hosting
-- Amazon CloudFront
-- AWS Lambda
-- Amazon S3
-- Jinja2 Templating
-- Event-Driven Automation
-
-📖 **Detailed documentation:** `docs/phase-07-portfolio-generation.md`
-
----
-
-
-# 🎯 What This Project Demonstrates
-
-This project showcases practical experience with modern AWS cloud engineering and AI services through a production-style implementation.
-
-### AWS Services
-
-- Amazon S3
-- AWS Lambda
-- Amazon API Gateway
-- Amazon Cognito
-- Amazon Textract
-- Amazon Bedrock
-- Amazon CloudFront
-- AWS IAM
-- Amazon CloudWatch
-
-### Cloud Engineering Skills
-
-- Serverless Architecture
-- Event-Driven Design
-- REST API Development
-- Authentication & Authorization
-- AI Integration
-- Static Website Hosting
-- Secure File Upload
-- IAM Security
-- Monitoring & Logging
-- Production Documentation
-
-# 🔒 Security Architecture
-
-Security was a core consideration throughout the project. The application follows AWS security best practices to protect user data, control access, and minimize the attack surface.
-
-## Security Controls
-
-| Area | Implementation |
-|------|----------------|
-| Authentication | Amazon Cognito User Pools |
-| Authorization | JWT validation using API Gateway |
-| Identity & Access | Least-Privilege IAM Roles |
-| File Upload | Amazon S3 Presigned URLs |
-| Data Storage | Private Amazon S3 Buckets |
-| Transport Security | HTTPS/TLS |
-| Public Access | Blocked on all S3 buckets |
-| Secrets | No hardcoded credentials |
-
-### Security Highlights
-
-- User authentication managed by Amazon Cognito
-- Direct browser-to-S3 uploads using temporary presigned URLs
-- IAM roles grant only the minimum required permissions
-- Private S3 buckets with Block Public Access enabled
-- API endpoints protected using JWT authentication
-- Server-side encryption supported for stored data
+The application was built incrementally across seven implementation phases, with each phase introducing a new cloud capability while maintaining a modular, secure, and event-driven architecture.
+
+| Phase | Focus | Documentation |
+|------|-------|---------------|
+| 1 | Project Foundation & Storage | [View Guide](docs/phase-01-project-foundation.md) |
+| 2 | Secure Resume Upload | [View Guide](docs/phase-02-secure-upload.md) |
+| 3 | User Authentication | [View Guide](docs/phase-03-authentication.md) |
+| 4 | Resume Processing | [View Guide](docs/phase-04-resume-processing.md) |
+| 5 | AI Resume Analysis | [View Guide](docs/phase-05-ai-resume-analysis.md) |
+| 6 | Web Client Integration | [View Guide](docs/phase-06-web-client-integration.md) |
+| 7 | Portfolio Website Generation | [View Guide](docs/phase-07-portfolio-generation.md) |
+
+➡️ See the [`docs/`](docs/) directory for the complete implementation journey.
 
 ---
 
@@ -789,20 +357,6 @@ Delete CloudWatch Log Groups
 
 ---
 
-# 📚 Repository Documentation
-
-| Document | Description |
-|----------|-------------|
-| README.md | Project overview |
-| PROJECT_SUMMARY.md | Executive summary |
-| INTERVIEW_GUIDE.md | Interview preparation |
-| docs/ | Detailed implementation guide |
-| architecture/ | Architecture diagrams and ADRs |
-| troubleshooting.md | Common issues and resolutions |
-| cleanup-guide.md | Resource cleanup instructions |
-
----
-
 # 🚀 Future Enhancements
 
 Potential enhancements for future iterations include:
@@ -818,35 +372,6 @@ Potential enhancements for future iterations include:
 
 ---
 
-# 🏆 Skills Demonstrated
-
-## AWS Services
-
-- Amazon S3
-- AWS Lambda
-- Amazon API Gateway
-- Amazon Cognito
-- Amazon Textract
-- Amazon Bedrock
-- Amazon CloudFront
-- AWS IAM
-- Amazon CloudWatch
-
-## Cloud Engineering
-
-- Serverless Architecture
-- Event-Driven Design
-- REST APIs
-- Authentication & Authorization
-- Secure File Upload
-- AI Integration
-- Static Website Hosting
-- Logging & Monitoring
-- Cost Optimization
-- Documentation
-
----
-
 # 🙏 Acknowledgements
 
 This project was inspired by the **AI Resume Builder** project shared by **Rajesh** from **IaaS Academy**.
@@ -858,6 +383,7 @@ https://github.com/iaasacademy/ai-resume-builder-aws
 
 ---
 
+
 # ⭐ Support
 
 If you found this repository helpful, consider giving it a ⭐ on GitHub.
@@ -865,3 +391,16 @@ If you found this repository helpful, consider giving it a ⭐ on GitHub.
 Feedback, suggestions, and contributions are always welcome.
 
 Happy Cloud Learning! ☁️
+
+---
+
+
+## 🔗 Continue Exploring
+
+🏠 [AWS Cloud Engineering Portfolio](../README.md)
+
+✨ [Serverless AI CV Enhancer](../aws-serverless-ai-cv-enhancer)
+
+📸 [Event-Driven Image Processing](../aws-event-driven-image-processing)
+
+🔄 [Serverless CRUD API](../serverless-dynamodb-crud-api)
