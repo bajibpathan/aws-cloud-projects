@@ -77,7 +77,7 @@ This project demonstrates how to:
        width="100%">
 </p>
 
-The application follows an event-driven serverless architecture. Resume uploads trigger independent processing stages through Amazon S3 events, allowing components to remain loosely coupled, scalable, and independently maintainable.
+The application follows an event-driven serverless architecture. Each AWS service performs a dedicated responsibility, allowing the solution to remain loosely coupled, scalable, secure, and independently maintainable.
 
 ---
 
@@ -85,11 +85,11 @@ The application follows an event-driven serverless architecture. Resume uploads 
 
 <p align="center">
   <img src="architecture/images/aws-ai-resume-builder-high-level-workflow.png"
-       alt="AWS AI Resume Builder Application Workflow"
+       alt="AWS AI Resume Builder AppHigh-Levellication Workflow"
        width="100%">
 </p>
 
-The workflow illustrates the end-to-end resume processing pipeline, from secure user authentication and resume upload through document extraction, AI analysis, and portfolio generation.
+The workflow shows the end-to-end processing path from secure resume upload through document extraction, AI-powered analysis, portfolio generation, and global delivery through Amazon CloudFront.
 
 ---
 
