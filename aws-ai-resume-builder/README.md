@@ -28,21 +28,6 @@ This project demonstrates real-world cloud engineering practices including event
 
 ---
 
-## 🎯 Learning Objectives
-
-This project demonstrates how to:
-
-- Build a complete event-driven serverless application
-- Secure applications using Amazon Cognito and IAM
-- Upload files securely using Amazon S3 Presigned URLs
-- Process documents using Amazon Textract
-- Integrate Generative AI using Amazon Bedrock
-- Generate static portfolio websites automatically
-- Apply AWS Well-Architected Framework principles
-- Document architecture using Architecture Decision Records (ADRs)
-
----
-
 # 🏢 Business Problem
 
 Recruiters and hiring managers often receive resumes in a variety of formats, making manual screening time-consuming and inconsistent. Candidates also struggle to understand how effectively their resumes communicate their skills and experience or how to transform them into a professional online portfolio.
@@ -117,7 +102,7 @@ The application follows an event-driven serverless architecture. Each AWS servic
 
 <p align="center">
   <img src="architecture/images/aws-ai-resume-builder-high-level-workflow.png"
-       alt="AWS AI Resume Builder AppHigh-Levellication Workflow"
+       alt="AWS AI Resume Builder High-Levellication Workflow"
        width="100%">
 </p>
 
@@ -129,15 +114,35 @@ The workflow shows the end-to-end processing path from secure resume upload thro
 
 | AWS Service | Purpose |
 |-------------|---------|
-| AWS Lambda | Serverless compute for business logic |
-| Amazon API Gateway | Secure REST API endpoints |
-| Amazon S3 | Resume storage, processed data, and portfolio hosting |
-| Amazon Cognito | User authentication and authorization |
-| Amazon Textract | Extract structured text from PDF resumes |
-| Amazon Bedrock | AI-powered resume analysis and content generation |
-| Amazon CloudFront | Global delivery of generated portfolio websites |
-| Amazon CloudWatch | Logging and operational monitoring |
-| AWS IAM | Identity and access management |
+| Amazon Cognito | Authenticate users and issue JWT tokens |
+| Amazon API Gateway | Expose secure REST APIs |
+| AWS Lambda | Execute application logic |
+| Amazon S3 | Store resumes, generated content, and static websites |
+| Amazon Textract | Extract structured text from uploaded resumes |
+| Amazon Bedrock | Analyze and enhance resume content using Generative AI |
+| Amazon DynamoDB | Store application metadata and structured resume information |
+| Amazon CloudFront | Deliver generated portfolio websites globally |
+| Amazon CloudWatch | Collect logs, metrics, and operational insights |
+| AWS IAM | Secure access using least-privilege permissions |
+
+---
+
+# 🏛️ Architecture Decisions at a Glance
+
+The following table summarizes the key architectural decisions made during the design of this application. Detailed Architecture Decision Records (ADRs) are available in the [`architecture/decisions`](architecture/decisions/) directory.
+
+| Area | Decision | Why This Approach? |
+|------|----------|--------------------|
+| Compute | AWS Lambda | Fully managed compute with automatic scaling and no server management |
+| API | Amazon API Gateway | Secure, scalable REST APIs with built-in authorization and throttling |
+| Authentication | Amazon Cognito | Managed user authentication without maintaining custom identity infrastructure |
+| Storage | Amazon S3 | Highly durable object storage for resumes, generated content, and static websites |
+| Document Processing | Amazon Textract | Extract structured text from resumes without building custom OCR logic |
+| AI Processing | Amazon Bedrock | Integrate Generative AI using managed foundation models |
+| Database | Amazon DynamoDB | Serverless NoSQL database with low operational overhead |
+| CDN | Amazon CloudFront | Low-latency global delivery for generated portfolio websites |
+| Monitoring | Amazon CloudWatch | Centralized logging, metrics, and operational visibility |
+| Security | IAM Least Privilege | Restrict permissions to only the resources required by each component |
 
 ---
 
@@ -217,64 +222,6 @@ The application was built incrementally across seven implementation phases, with
 | 7 | Portfolio Website Generation | [View Guide](docs/phase-07-portfolio-generation.md) |
 
 ➡️ See the [`docs/`](docs/) directory for the complete implementation journey.
-
----
-
-
-# 🎯 What This Project Demonstrates
-
-This project showcases practical experience with modern AWS cloud engineering and AI services through a production-style implementation.
-
-### AWS Services
-
-- Amazon S3
-- AWS Lambda
-- Amazon API Gateway
-- Amazon Cognito
-- Amazon Textract
-- Amazon Bedrock
-- Amazon CloudFront
-- AWS IAM
-- Amazon CloudWatch
-
-### Cloud Engineering Skills
-
-- Serverless Architecture
-- Event-Driven Design
-- REST API Development
-- Authentication & Authorization
-- AI Integration
-- Static Website Hosting
-- Secure File Upload
-- IAM Security
-- Monitoring & Logging
-- Production Documentation
-
-# 🔒 Security Architecture
-
-Security was a core consideration throughout the project. The application follows AWS security best practices to protect user data, control access, and minimize the attack surface.
-
-## Security Controls
-
-| Area | Implementation |
-|------|----------------|
-| Authentication | Amazon Cognito User Pools |
-| Authorization | JWT validation using API Gateway |
-| Identity & Access | Least-Privilege IAM Roles |
-| File Upload | Amazon S3 Presigned URLs |
-| Data Storage | Private Amazon S3 Buckets |
-| Transport Security | HTTPS/TLS |
-| Public Access | Blocked on all S3 buckets |
-| Secrets | No hardcoded credentials |
-
-### Security Highlights
-
-- User authentication managed by Amazon Cognito
-- Direct browser-to-S3 uploads using temporary presigned URLs
-- IAM roles grant only the minimum required permissions
-- Private S3 buckets with Block Public Access enabled
-- API endpoints protected using JWT authentication
-- Server-side encryption supported for stored data
 
 ---
 
@@ -410,20 +357,6 @@ Delete CloudWatch Log Groups
 
 ---
 
-# 📚 Repository Documentation
-
-| Document | Description |
-|----------|-------------|
-| README.md | Project overview |
-| PROJECT_SUMMARY.md | Executive summary |
-| INTERVIEW_GUIDE.md | Interview preparation |
-| docs/ | Detailed implementation guide |
-| architecture/ | Architecture diagrams and ADRs |
-| troubleshooting.md | Common issues and resolutions |
-| cleanup-guide.md | Resource cleanup instructions |
-
----
-
 # 🚀 Future Enhancements
 
 Potential enhancements for future iterations include:
@@ -439,35 +372,6 @@ Potential enhancements for future iterations include:
 
 ---
 
-# 🏆 Skills Demonstrated
-
-## AWS Services
-
-- Amazon S3
-- AWS Lambda
-- Amazon API Gateway
-- Amazon Cognito
-- Amazon Textract
-- Amazon Bedrock
-- Amazon CloudFront
-- AWS IAM
-- Amazon CloudWatch
-
-## Cloud Engineering
-
-- Serverless Architecture
-- Event-Driven Design
-- REST APIs
-- Authentication & Authorization
-- Secure File Upload
-- AI Integration
-- Static Website Hosting
-- Logging & Monitoring
-- Cost Optimization
-- Documentation
-
----
-
 # 🙏 Acknowledgements
 
 This project was inspired by the **AI Resume Builder** project shared by **Rajesh** from **IaaS Academy**.
@@ -479,6 +383,7 @@ https://github.com/iaasacademy/ai-resume-builder-aws
 
 ---
 
+
 # ⭐ Support
 
 If you found this repository helpful, consider giving it a ⭐ on GitHub.
@@ -486,3 +391,16 @@ If you found this repository helpful, consider giving it a ⭐ on GitHub.
 Feedback, suggestions, and contributions are always welcome.
 
 Happy Cloud Learning! ☁️
+
+---
+
+
+## 🔗 Continue Exploring
+
+🏠 [AWS Cloud Engineering Portfolio](../README.md)
+
+✨ [Serverless AI CV Enhancer](../serverless-ai-cv-enhancer)
+
+📸 [Event-Driven Image Processing](../aws-event-driven-image-processing)
+
+🔄 [Serverless CRUD API](../serverless-dynamodb-crud-api)
