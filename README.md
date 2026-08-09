@@ -53,6 +53,21 @@ The goal is to build practical, well-documented cloud solutions that reflect how
 
 ---
 
+# 🏗️ Architecture Gallery
+
+Explore the high-level architecture behind each production-inspired project.
+
+| Project | Architecture |
+|---------|--------------|
+| 🤖 AWS AI Resume Builder | *(Coming Soon)* |
+| ✨ Serverless AI CV Enhancer | *(Coming Soon)* |
+| 📸 Event-Driven Image Processing | *(Coming Soon)* |
+| 🔄 Serverless CRUD API | *(Coming Soon)* |
+| ⚡ Lambda Execution Profiler | *(Coming Soon)* |
+| 🌐 Static Website Hosting | *(Coming Soon)* |
+
+---
+
 # 📊 Portfolio Snapshot
 
 | Portfolio                            |   Count |
