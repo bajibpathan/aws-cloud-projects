@@ -38,20 +38,19 @@ Successful enhancements are stored in Amazon DynamoDB so they can be retrieved l
 
 ## Core Architecture
 
-![Core Architecture](architecture/diagrams/core-architecture.png)
+![Core Architecture](architecture/diagrams/01-core-architecture.png)
 
 ## Solution Architecture
 
-![Solution Architecture](architecture/diagrams/solution-architecture.png)
+![Solution Architecture](architecture/diagrams/04-solution-architecture.png)
 
 ## Application Workflow
 
-![Application Workflow](architecture/diagrams/application-workflow.png)
+![Application Workflow](architecture/diagrams/02-application-workflow.png)
 
 ## Prompt Engineering Flow
 
-![Prompt Flow](architecture/diagrams/prompt-flow.png)
-
+![Prompt Flow](architecture/diagrams/03-prompt-engineering-flow.png)
 ---
 
 # Current Architecture
