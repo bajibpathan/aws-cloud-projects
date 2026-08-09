@@ -399,7 +399,7 @@ Happy Cloud Learning! ☁️
 
 🏠 [AWS Cloud Engineering Portfolio](../README.md)
 
-✨ [Serverless AI CV Enhancer](../serverless-ai-cv-enhancer)
+✨ [Serverless AI CV Enhancer](../aws-serverless-ai-cv-enhancer)
 
 📸 [Event-Driven Image Processing](../aws-event-driven-image-processing)
 
