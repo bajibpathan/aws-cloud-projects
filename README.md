@@ -170,30 +170,31 @@ Explore the high-level architecture behind each production-inspired project.
 
 ---
 
-# 📂 Repository Navigation
+# 📚 Documentation & Repository Guide
 
 Every project follows a consistent documentation standard and includes, where applicable:
 
-* Project Overview
-* Technical Overview
-* Architecture Diagrams
-* Architecture Decision Records (ADRs)
-* Phase-by-Phase Implementation Guide
-* Interview Guide
-* Cleanup Guide
-* Screenshots
-* Source Code
+- Project Overview
+- Technical Overview
+- Architecture Diagrams
+- Architecture Decision Records (ADRs)
+- Phase-by-Phase Implementation Guide
+- Interview Guide
+- Cleanup Guide
+- Screenshots
+- Source Code
 
-Additional portfolio documentation is available in the **docs/** directory.
+The portfolio also includes a collection of reference guides that document the engineering principles, AWS services, cloud engineering skills, learning roadmap, and repository standards followed throughout this portfolio.
 
-| Documentation                    | Description                                              |
-| -------------------------------- | -------------------------------------------------------- |
-| `docs/CLOUD_SKILLS.md`           | Cloud engineering skills and competency matrix           |
-| `docs/AWS_SERVICES.md`           | AWS services covered across projects                     |
-| `docs/ENGINEERING_PRINCIPLES.md` | Engineering principles followed throughout the portfolio |
-| `docs/LEARNING_ROADMAP.md`       | Detailed cloud learning roadmap                          |
-| `docs/REPOSITORY_STRUCTURE.md`   | Repository organization and documentation standards      |
+## 📖 Portfolio Reference Documentation
 
+| Document | Description |
+|----------|-------------|
+| 📖 **[AWS Services Reference](docs/AWS_SERVICES.md)** | Overview of the AWS services covered throughout the portfolio. |
+| ☁️ **[Cloud Engineering Skills](docs/CLOUD_SKILLS.md)** | Summary of cloud engineering competencies demonstrated across projects. |
+| 🏗️ **[Engineering Principles](docs/ENGINEERING_PRINCIPLES.md)** | Engineering standards and architectural practices followed throughout the portfolio. |
+| 🗺️ **[Learning Roadmap](docs/LEARNING_ROADMAP.md)** | Current progress and future learning objectives. |
+| 📂 **[Repository Structure](docs/REPOSITORY_STRUCTURE.md)** | Repository organization, documentation standards, and project layout. |
 ---
 
 # 🎯 Engineering Approach
