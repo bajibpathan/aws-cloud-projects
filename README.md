@@ -27,6 +27,18 @@ The goal is to build practical, well-documented cloud solutions that reflect how
 
 ---
 
+# 🚀 Quick Navigation
+
+| Explore | Description |
+|----------|-------------|
+| 🚀 **Featured Projects** | Explore production-inspired AWS projects covering serverless, AI, event-driven architecture, and cloud engineering best practices. |
+| 📊 **Portfolio Snapshot** | View portfolio statistics, architecture patterns, and technical documentation highlights. |
+| 🛠️ **Cloud Engineering Skills** | Explore the AWS services, tools, and technologies demonstrated throughout this portfolio. |
+| 🗺️ **Learning Journey** | Follow my roadmap as I build increasingly advanced AWS solutions. |
+| 📖 **Technical Documentation** | Read architecture decision records, implementation guides, and supporting documentation in the `docs/` directory. |
+
+
+
 # 🚀 Featured Projects
 
 | Project | Category | Key Learning Outcomes | AWS Services | Difficulty | Status |
@@ -56,6 +68,26 @@ The goal is to build practical, well-documented cloud solutions that reflect how
 > *The portfolio continues to grow with each new project.*
 
 ---
+
+# 📈 Cloud Engineering Progress
+
+| Domain | Status |
+|--------|:------:|
+| ☁️ Serverless Computing | ✅ |
+| 🤖 Generative AI | ✅ |
+| 📦 Storage & Databases | ✅ |
+| 🔐 Security & IAM | ✅ |
+| 📊 Observability | ✅ |
+| 🌐 Networking | 🚧 |
+| 🖥️ Compute (EC2) | 🚧 |
+| ⚖️ Load Balancing | 🚧 |
+| 🏗️ Infrastructure as Code | 🚧 |
+| 🐳 Containers (ECS) | ⏳ |
+| ☸️ Kubernetes (EKS) | ⏳ |
+| 🔄 CI/CD | ⏳ |
+
+---
+
 
 # 🛠️ Cloud Engineering Skills
 
