@@ -16,20 +16,11 @@
 
 ## 🌟 Project Overview
 
-This project demonstrates how to build a scalable, secure, and reliable **event-driven serverless application** using AWS managed services.
+## 🌟 Project Overview
 
-When a user uploads an image to Amazon S3, the application automatically processes the upload using AWS Lambda, validates the file, prevents duplicate processing, stores metadata in Amazon DynamoDB, and publishes operational logs and metrics to Amazon CloudWatch.
+AWS Event-Driven Image Processing is a production-inspired serverless application that automatically processes image uploads using Amazon S3 Event Notifications, AWS Lambda, Amazon DynamoDB, and Amazon CloudWatch.
 
-The primary goal of this project is not only to build a working application but also to demonstrate real-world cloud engineering practices including:
-
-- Event-Driven Architecture
-- Serverless Computing
-- Cloud Security
-- Observability
-- Reliability Engineering
-- Cost Optimization
-- Operational Excellence
-- Technical Documentation
+The project demonstrates how to design and implement a scalable, secure, observable, and cost-effective event-driven architecture using AWS managed services while following production-inspired cloud engineering practices.
 
 ---
 
@@ -66,25 +57,6 @@ Key objectives include:
 - Apply AWS security best practices with IAM and encryption.
 - Implement operational monitoring using Amazon CloudWatch.
 - Produce comprehensive documentation, architecture diagrams, and operational guidance.
-
-
----
-
-# 📌 Project Highlights
-
-- ✅ Event-Driven Serverless Architecture
-- ✅ Amazon S3 Event Notifications
-- ✅ AWS Lambda Processing
-- ✅ Amazon DynamoDB Metadata Storage
-- ✅ Structured JSON Logging
-- ✅ CloudWatch Dashboard & Alarm
-- ✅ Idempotent Processing
-- ✅ File Validation
-- ✅ Least-Privilege IAM
-- ✅ Versioning & Encryption
-- ✅ Operations Guide
-- ✅ Cost Analysis
-- ✅ Production-Inspired Documentation
 
 ---
 
@@ -194,18 +166,12 @@ aws-event-driven-image-processing/
 
 # 📚 Documentation
 
-This repository contains detailed architecture documentation for every layer of the solution.
-
 | Document | Description |
 |----------|-------------|
-| **[PROJECT_SUMMARY.md](PROJECT_SUMMARY.md)** | Executive summary of the complete project |
-| **[01-storage-layer.md](docs/01-storage-layer.md)** | Amazon S3 architecture and design decisions |
-| **[02-event-layer.md](docs/02-event-layer.md)** | Event-driven processing using S3 Event Notifications and Lambda |
-| **[03-data-layer.md](docs/03-data-layer.md)** | Metadata storage using DynamoDB |
-| **[04-observability-layer.md](docs/04-observability-layer.md)** | Monitoring using CloudWatch Logs, Metrics, Dashboard and Alarm |
-| **[05-reliability-layer.md](docs/05-reliability-layer.md)** | Reliability improvements including idempotency and validation |
-| **[06-operations-guide.md](docs/06-operations-guide.md)** | Deployment, monitoring, troubleshooting and cleanup |
-| **[07-cost-analysis.md](docs/07-cost-analysis.md)** | Cost optimization and operational cost analysis |
+| **[PROJECT_SUMMARY.md](PROJECT_SUMMARY.md)** | Executive overview of the project |
+| **[INTERVIEW_GUIDE.md](INTERVIEW_GUIDE.md)** | Interview questions and discussion points |
+| **[architecture/](architecture/README.md)** | Architecture diagrams and design decisions |
+| **[docs/](docs/)** | Detailed implementation guides organized by architecture layer |
 
 ---
 
@@ -485,17 +451,17 @@ Create:
 
 ---
 
-### Step 6 — Validate the Solution
+### Step 6 – Test the Deployment
 
-Upload a sample image.
+Upload a supported image to the S3 bucket and verify:
 
-Verify:
+- Lambda invocation
+- DynamoDB metadata
+- CloudWatch logs
+- Dashboard metrics
+- Alarm status
 
-- Lambda Invocation
-- DynamoDB Metadata
-- CloudWatch Logs
-- Dashboard Metrics
-- Alarm Status
+Refer to the **Operations Guide** for the complete validation checklist.
 
 ---
 
@@ -547,14 +513,14 @@ These enhancements will improve scalability, reliability, automation, and operat
 If you found this project useful, you may also be interested in exploring other production-inspired AWS projects in this portfolio:
 
 - 🤖 [AWS AI Resume Builder](../aws-ai-resume-builder)
-- ✨ [Serverless AI CV Enhancer](../serverless-ai-cv-enhancer)
+- ✨ [Serverless AI CV Enhancer](../aws-serverless-ai-cv-enhancer)
 - 🔄 [Serverless DynamoDB CRUD API](../serverless-dynamodb-crud-api)
 - ⚡ [AWS Lambda Execution Profiler](../aws-lambda-execution-profiler)
 - 🌐 [Static Website Hosting on Amazon S3](../static-website-hosting-on-amazon-s3)
 
 You can also return to the **[AWS Cloud Engineering Portfolio](../README.md)** to explore additional projects, architecture patterns, and cloud engineering documentation.
 
----
+--- 
 
 
 # 📄 License
