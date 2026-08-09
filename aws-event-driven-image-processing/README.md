@@ -16,8 +16,6 @@
 
 ## 🌟 Project Overview
 
-## 🌟 Project Overview
-
 AWS Event-Driven Image Processing is a production-inspired serverless application that automatically processes image uploads using Amazon S3 Event Notifications, AWS Lambda, Amazon DynamoDB, and Amazon CloudWatch.
 
 The project demonstrates how to design and implement a scalable, secure, observable, and cost-effective event-driven architecture using AWS managed services while following production-inspired cloud engineering practices.
