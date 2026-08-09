@@ -7,7 +7,9 @@ from config import (
     MAX_OUTPUT_TOKENS,
     TEMPERATURE
 )
+import logging
 
+logger = logging.getLogger(__name__)
 
 class BedrockServiceError(Exception):
     """
@@ -63,11 +65,15 @@ def enhance_resume(prompt: str) -> str:
         error_code = error.response["Error"]["Code"]
         error_message = error.response["Error"]["Message"]
 
-        print(f"Bedrock error code: {error_code}")
-        print(f"Bedrock error message: {error_message}")
+        logger.exception(
+            "Amazon Bedrock invocation failed",
+            extra={
+                "errorCode": error_code
+            }
+        )
 
         raise BedrockServiceError(
-            f"Amazon Bedrock request failed: {error_code}"
+            "Amazon Bedrock request failed."
         ) from error
 
     content_blocks = (
