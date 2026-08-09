@@ -80,7 +80,7 @@ Explore the high-level architecture behind each production-inspired project.
 | 📸 **AWS Event-Driven Image Processing** | 📖 [View Architecture](aws-event-driven-image-processing/#-solution-architecture) |
 | 🔄 **Serverless DynamoDB CRUD API** | 📖 [View Architecture](serverless-dynamodb-crud-api/#-solution-architecture) |
 | ⚡ **AWS Lambda Execution Profiler** | 📖 [View Architecture](aws-lambda-execution-profiler/#-solution-architecture) |
-| 🌐 **Static Website Hosting on Amazon S3** | 📖 [View Architecture](static-website-hosting-on-amazon-s3/#-solution-architecture) |
+| 🌐 **Static Website Hosting on Amazon S3** | 📖 [View Architecture](static-website-hosting-on-aws-s3/#-solution-architecture) |
 
 ---
 
