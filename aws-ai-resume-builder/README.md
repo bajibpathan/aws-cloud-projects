@@ -71,18 +71,25 @@ This project demonstrates how to:
 
 # 🏗️ Solution Architecture
 
-> **Architecture Diagram**
+<p align="center">
+  <img src="architecture/images/aws-ai-resume-builder-architecture.png"
+       alt="AWS AI Resume Builder Architecture"
+       width="100%">
+</p>
 
-
-![Solution Architecture](architecture/images/aws-ai-resume-builder-architecture.png)
-
-The application follows an event-driven architecture where each AWS service performs a dedicated responsibility. Resume uploads automatically trigger downstream processing through Amazon S3 events, allowing each component to remain loosely coupled, scalable, and independently maintainable.
+The application follows an event-driven serverless architecture. Resume uploads trigger independent processing stages through Amazon S3 events, allowing components to remain loosely coupled, scalable, and independently maintainable.
 
 ---
 
 # 🔄 Application Workflow
 
-![High Level Workflow](architecture/images/aws-ai-resume-builder-high-level-workflow.png)
+<p align="center">
+  <img src="architecture/images/aws-ai-resume-builder-high-level-workflow.png"
+       alt="AWS AI Resume Builder Application Workflow"
+       width="100%">
+</p>
+
+The workflow illustrates the end-to-end resume processing pipeline, from secure user authentication and resume upload through document extraction, AI analysis, and portfolio generation.
 
 ---
 
@@ -117,7 +124,7 @@ aws-ai-resume-builder/
 │   ├── phase-03-authentication.md
 │   ├── phase-04-resume-processing.md
 │   ├── phase-05-ai-resume-analysis.md
-│   ├── phase-06-web-client.md
+│   ├── phase-06-web-client-integration.md
 │   ├── phase-07-portfolio-generation.md
 │   ├── troubleshooting.md
 │   └── cleanup-guide.md
