@@ -1,0 +1,68 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1400" height="920" viewBox="0 0 1400 920" role="img" aria-labelledby="title desc">
+  <title id="title">Ritual Roast three-tier AWS architecture</title>
+  <desc id="desc">Public Application Load Balancer, private EC2 Auto Scaling group, Single-AZ RDS MySQL, S3 artifacts, Secrets Manager, Systems Manager, and one NAT Gateway across two Availability Zones.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#071426"/><stop offset="1" stop-color="#132c4a"/></linearGradient>
+    <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%"><feDropShadow dx="0" dy="5" stdDeviation="7" flood-opacity=".3"/></filter>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto"><path d="M0,0 L10,3 L0,6 Z" fill="#76d7ff"/></marker>
+    <style>
+      .title{font:700 34px Arial;fill:#fff}.sub{font:18px Arial;fill:#b8d1e8}.label{font:700 17px Arial;fill:#fff}.small{font:14px Arial;fill:#d8e8f5}.tiny{font:12px Arial;fill:#b8d1e8}.zone{fill:#0b1e35;stroke:#4d789f;stroke-width:2}.tier{fill:#102943;stroke-width:2}.card{fill:#173b5e;stroke:#76d7ff;stroke-width:2;filter:url(#shadow)}.aws{fill:#ff9900}.line{stroke:#76d7ff;stroke-width:3;fill:none;marker-end:url(#arrow)}.dash{stroke:#a9bcd0;stroke-width:2;stroke-dasharray:7 7;fill:none;marker-end:url(#arrow)}
+    </style>
+  </defs>
+  <rect width="1400" height="920" rx="28" fill="url(#bg)"/>
+  <text x="700" y="52" text-anchor="middle" class="title">Ritual Roast — Three-Tier AWS Architecture</text>
+  <text x="700" y="82" text-anchor="middle" class="sub">eu-west-2 · VPC 10.16.0.0/16 · Cost-controlled portfolio rebuild</text>
+
+  <rect x="48" y="112" width="1304" height="690" rx="22" fill="none" stroke="#7fa8c9" stroke-width="2"/>
+  <text x="72" y="142" class="label">AWS Region: Europe (London)</text>
+  <rect x="74" y="160" width="1010" height="610" rx="18" fill="#081a2d" stroke="#ff9900" stroke-width="3"/>
+  <text x="96" y="190" class="label">ritual-roast-vpc</text>
+
+  <rect x="96" y="210" width="468" height="520" rx="15" class="zone"/>
+  <rect x="588" y="210" width="468" height="520" rx="15" class="zone"/>
+  <text x="330" y="241" text-anchor="middle" class="label">Availability Zone eu-west-2a</text>
+  <text x="822" y="241" text-anchor="middle" class="label">Availability Zone eu-west-2b</text>
+
+  <rect x="116" y="260" width="428" height="122" rx="13" class="tier" stroke="#48c78e"/>
+  <rect x="608" y="260" width="428" height="122" rx="13" class="tier" stroke="#48c78e"/>
+  <text x="136" y="286" class="small">PublicSubnet-01-2a · 10.16.0.0/20</text>
+  <text x="628" y="286" class="small">PublicSubnet-02-2b · 10.16.16.0/20</text>
+  <rect x="172" y="305" width="190" height="55" rx="10" class="card"/><circle cx="196" cy="332" r="12" class="aws"/><text x="219" y="337" class="label">ALB node</text>
+  <rect x="374" y="305" width="150" height="55" rx="10" class="card"/><circle cx="398" cy="332" r="12" class="aws"/><text x="420" y="337" class="label">NAT</text>
+  <rect x="682" y="305" width="190" height="55" rx="10" class="card"/><circle cx="706" cy="332" r="12" class="aws"/><text x="729" y="337" class="label">ALB node</text>
+
+  <rect x="116" y="402" width="428" height="130" rx="13" class="tier" stroke="#76d7ff"/>
+  <rect x="608" y="402" width="428" height="130" rx="13" class="tier" stroke="#76d7ff"/>
+  <text x="136" y="428" class="small">WebSubnet-01-2a · 10.16.64.0/20</text>
+  <text x="628" y="428" class="small">WebSubnet-02-2b · 10.16.80.0/20</text>
+  <rect x="210" y="452" width="240" height="57" rx="10" class="card"/><circle cx="236" cy="480" r="12" class="aws"/><text x="260" y="477" class="label">EC2 Flask</text><text x="260" y="497" class="tiny">Auto Scaling target · port 5000</text>
+  <rect x="702" y="452" width="240" height="57" rx="10" class="card"/><circle cx="728" cy="480" r="12" class="aws"/><text x="752" y="477" class="label">EC2 Flask</text><text x="752" y="497" class="tiny">Auto Scaling target · port 5000</text>
+
+  <rect x="116" y="552" width="428" height="145" rx="13" class="tier" stroke="#b388ff"/>
+  <rect x="608" y="552" width="428" height="145" rx="13" class="tier" stroke="#b388ff"/>
+  <text x="136" y="578" class="small">DataSubnet-01-2a · 10.16.192.0/20</text>
+  <text x="628" y="578" class="small">DataSubnet-02-2b · 10.16.208.0/20</text>
+  <rect x="210" y="607" width="240" height="62" rx="10" class="card"/><circle cx="236" cy="638" r="12" class="aws"/><text x="260" y="634" class="label">RDS MySQL</text><text x="260" y="654" class="tiny">Single-AZ lab deployment</text>
+  <text x="822" y="632" text-anchor="middle" class="small">Reserved for placement flexibility</text><text x="822" y="654" text-anchor="middle" class="tiny">and future Multi-AZ upgrade</text>
+
+  <rect x="1108" y="188" width="218" height="112" rx="12" class="card"/><circle cx="1138" cy="225" r="14" class="aws"/><text x="1164" y="230" class="label">Amazon S3</text><text x="1128" y="263" class="small">Versioned app artifacts</text>
+  <rect x="1108" y="328" width="218" height="112" rx="12" class="card"/><circle cx="1138" cy="365" r="14" class="aws"/><text x="1164" y="370" class="label">Secrets Manager</text><text x="1128" y="403" class="small">Database credentials</text>
+  <rect x="1108" y="468" width="218" height="112" rx="12" class="card"/><circle cx="1138" cy="505" r="14" class="aws"/><text x="1164" y="510" class="label">Systems Manager</text><text x="1128" y="543" class="small">Private administration</text>
+
+  <rect x="486" y="116" width="190" height="58" rx="12" class="card"/><text x="581" y="141" text-anchor="middle" class="label">Public user</text><text x="581" y="160" text-anchor="middle" class="tiny">HTTP port 80</text>
+  <path d="M581 174 L581 285 L530 285" class="line"/>
+  <path d="M581 285 L682 285" class="line"/>
+  <path d="M330 382 L330 452" class="line"/>
+  <path d="M822 382 L822 452" class="line"/>
+  <path d="M330 509 L330 607" class="line"/>
+  <path d="M702 490 C570 540 470 570 450 625" class="line"/>
+  <path d="M942 468 C1030 410 1050 250 1108 244" class="dash"/>
+  <path d="M942 480 C1040 450 1050 385 1108 385" class="dash"/>
+  <path d="M942 495 C1035 500 1055 520 1108 524" class="dash"/>
+
+  <rect x="74" y="826" width="1252" height="58" rx="12" fill="#0b1e35" stroke="#4d789f"/>
+  <text x="98" y="852" class="small">Availability:</text><text x="205" y="852" class="tiny">ALB + EC2 span two AZs</text>
+  <text x="430" y="852" class="small">Lab limits:</text><text x="518" y="852" class="tiny">Single-AZ RDS · one NAT Gateway · HTTP only</text>
+  <text x="896" y="852" class="small">Production:</text><text x="989" y="852" class="tiny">Multi-AZ RDS · HTTPS/WAF · least privilege</text>
+  <text x="700" y="906" text-anchor="middle" class="tiny">Application source supplied through IaaS Academy; architecture and implementation documentation by Baji Pathan</text>
+</svg>

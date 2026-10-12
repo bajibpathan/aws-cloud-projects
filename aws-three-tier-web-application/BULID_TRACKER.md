@@ -15,6 +15,6 @@ Rebuild and document a highly available three-tier recipe application on AWS.
 - [x] Phase 7: Configure target group and Application Load Balancer
 - [x] Phase 8: Create launch template and Auto Scaling group
 - [x] Phase 9: Validate recipe submission
-- [ ] Phase 10: Test EC2 recovery and application availability
-- [ ] Phase 11: Clean up AWS resources
-- [ ] Phase 12: Complete GitHub documentation
+- [x] Phase 10: Test EC2 recovery and application availability
+- [x] Phase 11: Clean up AWS resources
+- [x] Phase 12: Complete GitHub documentation
