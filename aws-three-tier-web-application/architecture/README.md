@@ -272,6 +272,10 @@ The RDS deployment:
 
 Amazon S3 stores the application source files used to initialize the EC2 instances.
 
+```text
+rr-capstone-source-code-025
+```
+
 The S3 bucket:
 
 - Is created in `eu-west-2`

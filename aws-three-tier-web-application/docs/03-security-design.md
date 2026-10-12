@@ -275,3 +275,23 @@ Capture the following screenshots:
 5. IAM policies attached to the EC2 role
 6. Secrets Manager policy summary without displaying the secret value
 7. EC2 instance visible as a Systems Manager managed node
+
+Suggested filenames:
+
+```text
+screenshots/03-security/01-alb-security-group.png
+screenshots/03-security/02-web-security-group.png
+screenshots/03-security/03-database-security-group.png
+screenshots/03-security/04-ec2-master-iam-role.png
+screenshots/03-security/05-ec2-role-permissions.png
+screenshots/03-security/06-secret-policy.png
+screenshots/03-security/07-systems-manager-node.png
+```
+
+Before uploading screenshots, remove or obscure:
+
+- AWS account ID
+- Secret ARN where unnecessary
+- Database credentials
+- Secret values
+- Complete AWS Console URLs
