@@ -4,7 +4,7 @@
 
 Ritual Roast is a highly available three-tier recipe-submission application deployed on AWS.
 
-Members of the public access the application through an internet-facing Application Load Balancer. The load balancer distributes requests across Flask application servers managed by an EC2 Auto Scaling group. Recipe information is stored in an Amazon RDS for MySQL Multi-AZ database.
+Members of the public access the application through an internet-facing Application Load Balancer. The load balancer distributes requests across Flask application servers managed by an EC2 Auto Scaling group. Recipe information is stored in an Amazon RDS for MySQL Single-AZ database for the cost-controlled rebuild.
 
 The solution is deployed in the AWS London Region across two Availability Zones.
 
@@ -14,7 +14,7 @@ The architecture contains three logical tiers:
 
 1. **Web tier:** Internet-facing Application Load Balancer
 2. **Application tier:** Flask application running on EC2 instances
-3. **Database tier:** Amazon RDS for MySQL Multi-AZ deployment
+3. **Database tier:** Amazon RDS for MySQL Single-AZ deployment
 
 Supporting AWS services provide source-code storage, credentials management and administrative access.
 
@@ -36,7 +36,7 @@ flowchart TB
             end
 
             subgraph Database["Private Data Subnets — Two Availability Zones"]
-                RDS[("RDS MySQL Multi-AZ")]
+                RDS[("RDS MySQL Single-AZ")]
             end
         end
 
@@ -256,17 +256,21 @@ If an application instance becomes unhealthy, the Auto Scaling group launches a 
 
 ## 14. Amazon RDS for MySQL
 
-The database tier uses Amazon RDS for MySQL in a Multi-AZ configuration.
+The portfolio rebuild uses a Single-AZ, free-tier-eligible Amazon RDS for MySQL instance.
 
-The RDS deployment:
+The database:
 
 - Uses `ritual-roast-rds-subnet-group`
-- Uses both private Data subnets
+- Is deployed in a private Data subnet
 - Is not publicly accessible
 - Uses `ritual-roast-db-sg`
 - Accepts MySQL traffic on port `3306` only from the Web security group
-- Maintains a synchronous standby in another Availability Zone
-- Uses a stable database endpoint during failover
+- Stores the recipe application data
+- Uses automated backups with a one-day retention period
+
+The DB subnet group contains Data subnets in two Availability Zones. This allows the database architecture to be upgraded to Multi-AZ in the future.
+
+The original capstone design used RDS Multi-AZ. Single-AZ was selected for this rebuild to control practice costs.
 
 ## 15. Amazon S3
 
@@ -330,9 +334,9 @@ If an instance is stopped or becomes unhealthy, Auto Scaling replaces it.
 
 ### Database tier
 
-Amazon RDS for MySQL uses a Multi-AZ deployment with a synchronously replicated standby in another Availability Zone.
+The cost-controlled rebuild uses a Single-AZ RDS MySQL instance. It does not provide automatic cross-Availability-Zone database failover.
 
-During a qualifying failure or user-initiated failover, the standby can be promoted to become the new primary.
+For a production environment, the database should be converted to Multi-AZ so that Amazon RDS can maintain a synchronous standby in another Availability Zone.
 
 ## 19. Architecture Decisions
 
@@ -342,7 +346,7 @@ During a qualifying failure or user-initiated failover, the standby can be promo
 | Availability Zones | Two | Use two or more based on resilience requirements |
 | Public entry point | Application Load Balancer | Appropriate |
 | Application compute | EC2 Auto Scaling | Appropriate; containers could also be evaluated |
-| Database | RDS MySQL Multi-AZ | Appropriate for managed relational availability |
+| Database | Single-AZ RDS MySQL for the rebuild | Use RDS Multi-AZ for production availability |
 | NAT Gateway | One | Use one per Availability Zone |
 | Private routing | Web and Data subnets share main route table | Use separate route tables |
 | Client protocol | HTTP on port `80` | Use HTTPS with ACM |

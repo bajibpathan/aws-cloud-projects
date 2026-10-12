@@ -2,9 +2,13 @@
 
 ## 1. Project Overview
 
-This project implements a highly available three-tier recipe contest application on AWS.
+This project implements a three-tier recipe contest application on AWS.
 
-Members of the public access the application through an Application Load Balancer and submit recipes using a web form. The application processes each submission and stores the recipe information in an Amazon RDS MySQL database. Submitted recipes are displayed in a public gallery.
+Members of the public access the application through an Application Load Balancer and submit recipes using a web form. The Flask application processes each submission and stores the recipe information in an Amazon RDS for MySQL database. Submitted recipes are then displayed in a public gallery.
+
+The web and application tiers are distributed across two Availability Zones. A Single-AZ RDS database is used during the cost-controlled portfolio rebuild.
+
+The original capstone architecture specified an RDS Multi-AZ deployment. Multi-AZ remains the recommended configuration for a production environment.
 
 ## 2. Business Scenario
 
@@ -19,9 +23,11 @@ The application must allow users to:
 - Provide recipe instructions or a description
 - Submit the recipe
 - Receive a confirmation message
-- View approved recipes in a public gallery
+- View submitted recipes in a public gallery
 
 The user’s email address must be stored but must not be displayed publicly.
+
+For this minimum viable product, submitted recipes are published automatically without a moderation workflow.
 
 ## 3. Functional Requirements
 
@@ -46,114 +52,185 @@ The application must:
 - Display the recipe description
 - Display the submission date and time
 - Sort recipes with the newest submissions first
-- Allow recipes to be filtered by category, if supported by the supplied application
+- Allow recipes to be filtered by category if supported by the supplied application
+
+The submitter’s email address must not appear in the public gallery.
 
 ## 4. Technical Requirements
 
 The solution must include:
 
 - A custom Amazon VPC
-- Resources distributed across two Availability Zones
-- Public subnets for the Application Load Balancer
-- Private application subnets for the EC2 instances
-- Private database subnets for Amazon RDS
+- Network resources distributed across two Availability Zones
+- Two public subnets for the Application Load Balancer
+- Two private Web subnets for the EC2 application instances
+- Two private Data subnets for Amazon RDS
+- An Internet Gateway
+- One NAT Gateway for the learning implementation
 - An internet-facing Application Load Balancer
-- An Auto Scaling group containing EC2 application servers
+- A target group forwarding requests to the Flask application on port `5000`
+- An EC2 Auto Scaling group
 - A launch template for repeatable EC2 provisioning
-- A target group forwarding requests to the application
-- An Amazon RDS MySQL Multi-AZ database
+- A Single-AZ Amazon RDS for MySQL database for the cost-controlled rebuild
+- A DB subnet group containing Data subnets in two Availability Zones
 - An Amazon S3 bucket for application source files
+- S3 bucket versioning
 - AWS Secrets Manager for database credentials
-- IAM roles following least-privilege principles
+- An IAM role attached to the EC2 instances
 - AWS Systems Manager Session Manager for administrative access
-- Security groups that restrict traffic between tiers
+- Security groups that restrict traffic between application tiers
 
 ## 5. Availability Requirements
 
-The application must remain available when one application server becomes unhealthy.
+The web and application tiers must remain available when one application server becomes unhealthy.
 
 The solution must:
 
+- Deploy the Application Load Balancer across two public subnets
 - Run application instances across two Availability Zones
-- Maintain the required number of instances through Auto Scaling
+- Maintain the required number of EC2 instances through Auto Scaling
 - Replace unhealthy EC2 instances automatically
 - Distribute requests across healthy application instances
-- Use an RDS Multi-AZ deployment for database availability
-- Support database failover to a standby Availability Zone
+- Register Auto Scaling instances with the Application Load Balancer target group
+- Prevent the load balancer from forwarding traffic to unhealthy targets
+
+### Database availability limitation
+
+The cost-controlled rebuild uses a Single-AZ RDS database. Therefore, the current implementation does not provide automatic cross-Availability-Zone database failover.
+
+The original capstone design specified RDS Multi-AZ. A production implementation should use Multi-AZ to maintain a synchronous standby database in another Availability Zone.
 
 ## 6. Security Requirements
 
-- Only the Application Load Balancer may receive public web traffic.
+- Only the Application Load Balancer may receive public application traffic.
 - EC2 application servers must not be directly accessible from the internet.
-- The application security group must accept application traffic only from the load balancer security group.
-- The database security group must accept MySQL traffic only from the application security group.
+- The Web security group must accept application traffic only from the ALB security group.
+- The database security group must accept MySQL traffic only from the Web security group.
 - The RDS database must not be publicly accessible.
-- Database credentials must not be embedded directly in the application or user-data script.
+- Database credentials must not be embedded directly in application source code.
+- Database credentials must not be stored in EC2 user data.
+- Database credentials must be stored in AWS Secrets Manager.
 - EC2 instances must retrieve credentials from AWS Secrets Manager.
-- Administrative access should use Session Manager instead of public SSH access.
-- S3 permissions should be restricted to the application artifact bucket.
+- Administrative access must use Systems Manager Session Manager instead of public SSH.
 - Secret values and credentials must never appear in screenshots or GitHub documentation.
+- The S3 application bucket must block public access.
+
+### IAM implementation
+
+The EC2 instances use the following IAM role:
+
+`ritual-roast-master-ec2-iam-role`
+
+The role contains:
+
+- `AmazonSSMManagedInstanceCore`
+- `AmazonS3FullAccess`
+- `ritual-roast-rds-db-secret-policy`
+
+`AmazonS3FullAccess` is used as part of the guided learning implementation. It grants broader access than the application requires.
+
+A production implementation should replace it with a least-privilege policy that permits access only to the required application-artifact bucket and objects.
 
 ## 7. Validation Requirements
 
 The completed solution must be validated by:
 
 1. Opening the application using the ALB DNS name
-2. Submitting a recipe through the application form
-3. Confirming that the recipe appears in the gallery
-4. Verifying that all registered targets are healthy
-5. Stopping one EC2 instance
-6. Confirming that Auto Scaling launches a replacement instance
-7. Confirming that the application remains accessible
-8. Initiating an RDS Multi-AZ failover
-9. Confirming that the application reconnects to the database
-10. Submitting or retrieving a recipe after the failover
+2. Confirming that the application form loads successfully
+3. Submitting a recipe through the form
+4. Confirming that the recipe submission succeeds
+5. Confirming that the submitted recipe appears in the gallery
+6. Confirming that the application can write data to the RDS database
+7. Confirming that the application can retrieve data from the RDS database
+8. Verifying that all registered EC2 targets are healthy
+9. Confirming that the EC2 instances appear as Systems Manager managed nodes
+10. Stopping one EC2 application instance
+11. Confirming that Auto Scaling detects and replaces the unhealthy instance
+12. Confirming that the replacement instance registers with the target group
+13. Confirming that the application remains accessible during EC2 recovery
+
+### Validation excluded from the rebuild
+
+RDS Multi-AZ failover testing is not included because the cost-controlled rebuild uses a Single-AZ database.
+
+Database failover testing should be added when the database is upgraded to Multi-AZ.
 
 ## 8. Cost Constraints
 
-This is a temporary learning environment.
+This is a temporary learning environment and must be operated within a controlled practice window.
 
 To control costs:
 
-- Use appropriately sized development resources
+- Use a free-tier-eligible RDS configuration where available
+- Use appropriately sized EC2 development resources
 - Use one NAT Gateway for the learning implementation
 - Avoid leaving RDS, NAT Gateway and load-balancing resources running unnecessarily
 - Complete deployment and testing within a planned practice window
-- Delete resources after collecting validation evidence
+- Capture evidence before beginning cleanup
+- Delete resources after testing
+- Release the NAT Gateway Elastic IP after deleting the NAT Gateway
 - Confirm that no chargeable resources remain after cleanup
 
-A production implementation would normally consider one NAT Gateway per Availability Zone to eliminate the single-AZ dependency.
+The overall solution is not completely free even when a free-tier-eligible RDS instance is used. The NAT Gateway and Application Load Balancer can generate charges while provisioned.
+
+A production implementation would normally use one NAT Gateway per Availability Zone to reduce the single-AZ dependency.
 
 ## 9. Project Scope
 
 ### Included
 
-- AWS networking
+- AWS VPC networking
+- Public and private subnet design
+- Internet Gateway and NAT Gateway configuration
+- Security-group configuration
 - Application load balancing
+- EC2 launch-template configuration
 - EC2 Auto Scaling
 - Flask application deployment
-- MySQL database integration
-- Secrets management
+- Amazon S3 application-artifact storage
+- RDS MySQL integration
+- AWS Secrets Manager integration
 - IAM permissions
-- High-availability validation
+- Systems Manager Session Manager
+- Application-tier recovery testing
 - Technical documentation
+- Evidence collection
 - Resource cleanup
 
 ### Not included in this version
 
+- RDS Multi-AZ failover testing
 - Custom domain registration
 - HTTPS certificate configuration
-- Web Application Firewall
+- AWS Web Application Firewall
 - CI/CD automation
 - Infrastructure as Code
 - Containerization
 - Kubernetes
 - Advanced observability
 - Application code redesign
+- Recipe moderation workflow
 
 These capabilities may be added as future enhancements.
 
-## 10. Attribution
+## 10. Success Criteria
+
+The project is considered successful when:
+
+- The application is accessible through the ALB DNS name.
+- The ALB has healthy EC2 targets.
+- A user can submit a recipe successfully.
+- The recipe is stored in the RDS MySQL database.
+- The submitted recipe appears in the application gallery.
+- The EC2 instances are not directly exposed to the internet.
+- The RDS database is not publicly accessible.
+- The EC2 instances can be managed through Systems Manager.
+- Auto Scaling replaces an unhealthy EC2 instance.
+- The application remains available while an unhealthy EC2 instance is replaced.
+- Deployment evidence is captured.
+- All chargeable resources are removed after testing.
+
+## 11. Attribution
 
 This project was completed as part of the IaaS Academy training program. The application scenario and application source code were provided through the course.
 

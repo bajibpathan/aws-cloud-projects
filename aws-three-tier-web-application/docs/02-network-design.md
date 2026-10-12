@@ -34,8 +34,8 @@ The implementation uses a public route table for the public subnets and the VPC 
 | Public Subnet 2 | `eu-west-2b` | `10.16.16.0/20` | Public | ALB node |
 | Web Application Subnet 1 | `eu-west-2a` | `10.16.64.0/20` | Private | EC2 application instances |
 | Web Application Subnet 2 | `eu-west-2b` | `10.16.80.0/20` | Private | EC2 application instances |
-| Database Subnet 1 | `eu-west-2a` | `10.16.192.0/20` | Private | RDS MySQL primary or standby |
-| Database Subnet 2 | `eu-west-2b` | `10.16.208.0/20` | Private | RDS MySQL primary or standby |
+| Database Subnet 1 | `eu-west-2a` | `10.16.192.0/20` | Private | Current Single-AZ RDS placement  |
+| Database Subnet 2 | `eu-west-2b` | `10.16.208.0/20` | Private | Future Multi-AZ support |
 
 Each `/20` subnet contains 4,096 IP addresses. AWS reserves five IP addresses in each subnet, leaving 4,091 usable addresses.
 
@@ -80,9 +80,8 @@ The database:
 - Is not publicly accessible
 - Accepts MySQL traffic only from the web application security group
 - Uses a DB subnet group containing both database subnets
-- Maintains the primary and standby database instances in separate Availability Zones
+- The DB subnet group includes Data subnets in two Availability Zones. The current cost-controlled rebuild uses a Single-AZ database, while the second subnet supports a future upgrade to Multi-AZ.
 
-The primary and standby roles are not permanently associated with a specific subnet. Their roles can switch during an RDS Multi-AZ failover.
 
 ## 5. Internet Connectivity
 
