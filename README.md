@@ -48,11 +48,11 @@ If you're visiting this repository for the first time, I recommend exploring the
 | Recommended Order | Project | What You'll Learn |
 |------------------:|---------|-------------------|
 | 1️⃣ | 🤖 **[AWS AI Resume Builder](aws-ai-resume-builder/)** | End-to-end serverless AI application with authentication, document processing, Generative AI, and static website generation. |
-| 2️⃣ | ✨ **[Serverless AI CV Enhancer](serverless-ai-cv-enhancer/)** | Building secure serverless REST APIs powered by Amazon Bedrock. |
+| 2️⃣ | ✨ **[Serverless AI CV Enhancer](aws-serverless-ai-cv-enhancer/)** | Building secure serverless REST APIs powered by Amazon Bedrock. |
 | 3️⃣ | 📸 **[AWS Event-Driven Image Processing](aws-event-driven-image-processing/)** | Event-driven architecture using Amazon S3 event notifications and AWS Lambda. |
 | 4️⃣ | 🔄 **[Serverless DynamoDB CRUD API](serverless-dynamodb-crud-api/)** | Serverless API development with Amazon API Gateway, AWS Lambda, and DynamoDB. |
 | 5️⃣ | ⚡ **[AWS Lambda Execution Profiler](aws-lambda-execution-profiler/)** | Monitoring and performance analysis for AWS Lambda functions. |
-| 6️⃣ | 🌐 **[Static Website Hosting on Amazon S3](static-website-hosting-on-amazon-s3/)** | Static website hosting fundamentals using Amazon S3. |
+| 6️⃣ | 🌐 **[Static Website Hosting on Amazon S3](static-website-hosting-on-aws-s3/)** | Static website hosting fundamentals using Amazon S3. |
 
 ---
 
@@ -64,8 +64,8 @@ If you're visiting this repository for the first time, I recommend exploring the
 | 📸 **[AWS Event-Driven Image Processing](aws-event-driven-image-processing/)** | Event-Driven | Implement an event-driven architecture using Amazon S3 event notifications and AWS Lambda for automated image processing | Amazon S3, Lambda, DynamoDB, CloudWatch | ⭐⭐⭐⭐ | ✅ |
 | 🔄 **[Serverless DynamoDB CRUD API](serverless-dynamodb-crud-api/)** | API Development | Design and deploy a scalable RESTful API using AWS Lambda and Amazon DynamoDB | API Gateway, Lambda, DynamoDB | ⭐⭐⭐ | ✅ |
 | ⚡ **[AWS Lambda Execution Profiler](aws-lambda-execution-profiler/)** | Observability | Analyze AWS Lambda execution performance using Amazon CloudWatch metrics, logs, and profiling techniques | Lambda, CloudWatch | ⭐⭐⭐ | ✅ |
-| 🌐 **[Static Website Hosting on Amazon S3](static-website-hosting-on-amazon-s3/)** | Static Hosting | Host and manage a static website using Amazon S3 following AWS best practices | Amazon S3 | ⭐⭐ | ✅ |
-| 🏗️ **Three-Tier Web Application** *(Coming Soon)* | Compute & Networking | Build a highly available three-tier web application using EC2, ALB, Auto Scaling, and Amazon RDS | EC2, ALB, Auto Scaling, RDS, VPC | ⭐⭐⭐⭐⭐ | 🚧 |
+| 🌐 **[Static Website Hosting on Amazon S3](static-website-hosting-on-aws-s3/)** | Static Hosting | Host and manage a static website using Amazon S3 following AWS best practices | Amazon S3 | ⭐⭐ | ✅ |
+| 🍲 **[Ritual Roast — Three-Tier Web Application](aws-three-tier-web-application/)** | Compute & Networking | Deploy and troubleshoot a segmented three-tier application with private EC2, load balancing, Auto Scaling, RDS, secrets, and S3 artifacts | VPC, EC2, ALB, Auto Scaling, RDS, S3, Secrets Manager, Systems Manager, IAM | ⭐⭐⭐⭐⭐ | 🚧 Final validation |
 
 ---
 
@@ -81,6 +81,7 @@ Explore the high-level architecture behind each production-inspired project.
 | 🔄 **Serverless DynamoDB CRUD API** | 📖 [View Architecture](serverless-dynamodb-crud-api/#-solution-architecture) |
 | ⚡ **AWS Lambda Execution Profiler** | 📖 [View Architecture](aws-lambda-execution-profiler/#-solution-architecture) |
 | 🌐 **Static Website Hosting on Amazon S3** | 📖 [View Architecture](static-website-hosting-on-aws-s3/#-solution-architecture) |
+| 🍲 **Ritual Roast — Three-Tier Web Application** | 📖 [View Architecture](aws-three-tier-web-application/architecture/) |
 
 ---
 
@@ -109,9 +110,9 @@ Explore the high-level architecture behind each production-inspired project.
 | 📦 Storage & Databases | ✅ |
 | 🔐 Security & IAM | ✅ |
 | 📊 Observability | ✅ |
-| 🌐 Networking | 🚧 |
-| 🖥️ Compute (EC2) | 🚧 |
-| ⚖️ Load Balancing | 🚧 |
+| 🌐 Networking | ✅ |
+| 🖥️ Compute (EC2) | ✅ |
+| ⚖️ Load Balancing | ✅ |
 | 🏗️ Infrastructure as Code | 🚧 |
 | 🐳 Containers (ECS) | ⏳ |
 | ☸️ Kubernetes (EKS) | ⏳ |
@@ -124,13 +125,13 @@ Explore the high-level architecture behind each production-inspired project.
 
 | Domain                 | Technologies                                            |
 | ---------------------- | ------------------------------------------------------- |
-| Cloud Architecture     | Serverless Architecture, Event-Driven Design, REST APIs |
-| Compute                | AWS Lambda                                              |
+| Cloud Architecture     | Three-Tier, Serverless, Event-Driven, REST APIs         |
+| Compute                | Amazon EC2, Auto Scaling, AWS Lambda                    |
 | Storage                | Amazon S3                                               |
-| Database               | Amazon DynamoDB                                         |
+| Database               | Amazon RDS for MySQL, Amazon DynamoDB                   |
 | AI / ML                | Amazon Bedrock, Amazon Textract, Prompt Engineering     |
 | Monitoring             | Amazon CloudWatch, AWS X-Ray                            |
-| Security               | IAM, Least Privilege, CORS                              |
+| Security               | IAM, Secrets Manager, Security Groups, CORS             |
 | Programming            | Python                                                  |
 | Infrastructure as Code | Terraform *(Learning)*, CloudFormation *(Learning)*     |
 
@@ -151,7 +152,7 @@ Explore the high-level architecture behind each production-inspired project.
 
 ## 🚧 Currently Building
 
-* Three-Tier Web Application on AWS
+* Ritual Roast — final EC2 recovery validation and cleanup
 
 ## 📌 Planned
 
@@ -241,7 +242,7 @@ Current focus areas include:
 - 🔄 CI/CD using GitHub Actions
 - 🤖 Advanced Generative AI with Amazon Bedrock
 
-_Last Updated: August 2026_
+_Last Updated: October 2026_
 
 
 
