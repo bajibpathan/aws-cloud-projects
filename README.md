@@ -65,7 +65,7 @@ If you're visiting this repository for the first time, I recommend exploring the
 | 🔄 **[Serverless DynamoDB CRUD API](serverless-dynamodb-crud-api/)** | API Development | Design and deploy a scalable RESTful API using AWS Lambda and Amazon DynamoDB | API Gateway, Lambda, DynamoDB | ⭐⭐⭐ | ✅ |
 | ⚡ **[AWS Lambda Execution Profiler](aws-lambda-execution-profiler/)** | Observability | Analyze AWS Lambda execution performance using Amazon CloudWatch metrics, logs, and profiling techniques | Lambda, CloudWatch | ⭐⭐⭐ | ✅ |
 | 🌐 **[Static Website Hosting on Amazon S3](static-website-hosting-on-aws-s3/)** | Static Hosting | Host and manage a static website using Amazon S3 following AWS best practices | Amazon S3 | ⭐⭐ | ✅ |
-| 🍲 **[Ritual Roast — Three-Tier Web Application](aws-three-tier-web-application/)** | Compute & Networking | Deploy and troubleshoot a segmented three-tier application with private EC2, load balancing, Auto Scaling, RDS, secrets, and S3 artifacts | VPC, EC2, ALB, Auto Scaling, RDS, S3, Secrets Manager, Systems Manager, IAM | ⭐⭐⭐⭐⭐ | 🚧 Final validation |
+| 🍲 **[Ritual Roast — Three-Tier Web Application](aws-three-tier-web-application/)** | Compute & Networking | Deploy and troubleshoot a segmented three-tier application with private EC2, load balancing, Auto Scaling, RDS, secrets, and S3 artifacts | VPC, EC2, ALB, Auto Scaling, RDS, S3, Secrets Manager, Systems Manager, IAM | ⭐⭐⭐⭐⭐ | ✅ |
 
 ---
 
