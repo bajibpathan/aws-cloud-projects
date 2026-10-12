@@ -222,7 +222,7 @@ The objective is not simply to demonstrate AWS services, but to explain **why** 
 
 My goal is to build a comprehensive collection of production-inspired AWS projects that demonstrate modern cloud engineering practices across serverless architectures, containers, Infrastructure as Code, security, observability, and Generative AI.
 
-Every completed project represents another step toward becoming a well-rounded Cloud Engineer and Solutions Architect.
+Every completed project represents another step toward becoming a well-rounded Cloud Engineer and Solutions Architect. 
 
 ---
 
