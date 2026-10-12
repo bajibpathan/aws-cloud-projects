@@ -6,8 +6,8 @@ Rebuild and document a highly available three-tier recipe application on AWS.
 
 ## Progress
 
-- [ ] Phase 1: Review requirements and prepare architecture
-- [ ] Phase 2: Create VPC and networking
+- [X] Phase 1: Review requirements and prepare architecture
+- [X] Phase 2: Create VPC and networking
 - [ ] Phase 3: Configure security groups and IAM
 - [ ] Phase 4: Upload application files to S3
 - [ ] Phase 5: Deploy RDS MySQL Multi-AZ
