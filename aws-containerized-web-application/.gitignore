@@ -1,0 +1,18 @@
+# Local credentials and environment files
+.env
+.env.*
+!.env.example
+.aws/
+*.pem
+*.key
+# Build outputs and local dependencies
+node_modules/
+.next/
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+# Downloaded archives and operating-system files
+*.zip
+.DS_Store
+Thumbs.db

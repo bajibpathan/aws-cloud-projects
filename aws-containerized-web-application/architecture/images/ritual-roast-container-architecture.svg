@@ -1,0 +1,53 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1400" height="940" viewBox="0 0 1400 940">
+<defs><marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto"><path d="M0,0 L0,6 L9,3 z" fill="#475569"/></marker></defs>
+<rect width="1400" height="940" fill="#f8fafc"/>
+<text x="40" y="45" font-family="Arial,sans-serif" font-size="29" fill="#0f172a">Ritual Roast — Containerized Web Application on AWS</text>
+<text x="40" y="75" font-family="Arial,sans-serif" font-size="18" fill="#0f172a">eu-west-2 | VPC 10.16.0.0/16 | ECS Fargate managed compute</text>
+<rect x="545" y="105" width="310" height="65" rx="10" fill="#e0f2fe" stroke="#94a3b8"/>
+<text x="561" y="135" font-family="Arial,sans-serif" font-size="19" fill="#0f172a">User browser</text>
+<rect x="360" y="220" width="680" height="85" rx="10" fill="#fff7ed" stroke="#94a3b8"/>
+<text x="376" y="250" font-family="Arial,sans-serif" font-size="19" fill="#0f172a">Internet-facing Application Load Balancer</text>
+<text x="376" y="277" font-family="Arial,sans-serif" font-size="16" fill="#334155">Public: 10.16.0.0/20 (2a) + 10.16.16.0/20 (2b)</text>
+<path d="M700,170 L700,220" stroke="#475569" stroke-width="2" fill="none" marker-end="url(#arrow)"/>
+<text x="708.0" y="186.0" font-family="Arial,sans-serif" font-size="15" fill="#0f172a">HTTP 80</text>
+<rect x="65" y="375" width="600" height="150" rx="10" fill="#eff6ff" stroke="#94a3b8"/>
+<text x="81" y="405" font-family="Arial,sans-serif" font-size="19" fill="#0f172a">Next.js frontend — ECS Fargate</text>
+<text x="81" y="432" font-family="Arial,sans-serif" font-size="16" fill="#334155">ritual-roast-nextjs-frontend-service</text>
+<text x="81" y="455" font-family="Arial,sans-serif" font-size="16" fill="#334155">2 tasks | 1 vCPU / 2 GiB each | port 3000</text>
+<text x="81" y="478" font-family="Arial,sans-serif" font-size="16" fill="#334155">IP target group | health check /</text>
+<rect x="735" y="375" width="600" height="150" rx="10" fill="#eff6ff" stroke="#94a3b8"/>
+<text x="751" y="405" font-family="Arial,sans-serif" font-size="19" fill="#0f172a">Flask backend — ECS Fargate</text>
+<text x="751" y="432" font-family="Arial,sans-serif" font-size="16" fill="#334155">ritual-roast-flask-backend-service</text>
+<text x="751" y="455" font-family="Arial,sans-serif" font-size="16" fill="#334155">2 tasks | 1 vCPU / 2 GiB each | port 5000</text>
+<text x="751" y="478" font-family="Arial,sans-serif" font-size="16" fill="#334155">IP target group | health check /api/health</text>
+<path d="M500,305 L365,375" stroke="#475569" stroke-width="2" fill="none" marker-end="url(#arrow)"/>
+<text x="440.5" y="331.0" font-family="Arial,sans-serif" font-size="15" fill="#0f172a">Default route</text>
+<path d="M900,305 L1030,375" stroke="#475569" stroke-width="2" fill="none" marker-end="url(#arrow)"/>
+<text x="973.0" y="331.0" font-family="Arial,sans-serif" font-size="15" fill="#0f172a">/api/* priority 1</text>
+<text x="65" y="559" font-family="Arial,sans-serif" font-size="19" fill="#0f172a">Private Web subnets: 10.16.64.0/20 (2a) and 10.16.80.0/20 (2b)</text>
+<rect x="735" y="620" width="600" height="110" rx="10" fill="#f0fdf4" stroke="#94a3b8"/>
+<text x="751" y="650" font-family="Arial,sans-serif" font-size="19" fill="#0f172a">Private RDS MySQL — recipedb</text>
+<text x="751" y="677" font-family="Arial,sans-serif" font-size="16" fill="#334155">Single-AZ | db.t3.micro | port 3306</text>
+<text x="751" y="700" font-family="Arial,sans-serif" font-size="16" fill="#334155">Data subnet group: 10.16.192.0/20 + 10.16.208.0/20</text>
+<path d="M1035,525 L1035,620" stroke="#475569" stroke-width="2" fill="none" marker-end="url(#arrow)"/>
+<text x="1043.0" y="563.5" font-family="Arial,sans-serif" font-size="15" fill="#0f172a">MySQL</text>
+<rect x="65" y="620" width="600" height="110" rx="10" fill="#faf5ff" stroke="#94a3b8"/>
+<text x="81" y="650" font-family="Arial,sans-serif" font-size="19" fill="#0f172a">Secrets Manager + rotation Lambda</text>
+<text x="81" y="677" font-family="Arial,sans-serif" font-size="16" fill="#334155">ritualroast-recipe-secret</text>
+<text x="81" y="700" font-family="Arial,sans-serif" font-size="16" fill="#334155">Seven-day single-user rotation | initial success confirmed</text>
+<path d="M665,675 L735,675" stroke="#475569" stroke-width="2" fill="none" marker-end="url(#arrow)"/>
+<text x="708.0" y="666.0" font-family="Arial,sans-serif" font-size="15" fill="#0f172a">Rotation</text>
+<rect x="65" y="785" width="400" height="95" rx="10" fill="#ffffff" stroke="#94a3b8"/>
+<text x="81" y="815" font-family="Arial,sans-serif" font-size="19" fill="#0f172a">Build and image delivery</text>
+<text x="81" y="842" font-family="Arial,sans-serif" font-size="16" fill="#334155">Temporary EC2 + SSM → private ECR</text>
+<text x="81" y="865" font-family="Arial,sans-serif" font-size="16" fill="#334155">Separate Next.js and Flask images</text>
+<rect x="495" y="785" width="400" height="95" rx="10" fill="#ffffff" stroke="#94a3b8"/>
+<text x="511" y="815" font-family="Arial,sans-serif" font-size="19" fill="#0f172a">Private outbound access</text>
+<text x="511" y="842" font-family="Arial,sans-serif" font-size="16" fill="#334155">rr-nat-gw in public subnet AZ 2a</text>
+<text x="511" y="865" font-family="Arial,sans-serif" font-size="16" fill="#334155">Main route table → NAT gateway</text>
+<rect x="925" y="785" width="410" height="95" rx="10" fill="#ffffff" stroke="#94a3b8"/>
+<text x="941" y="815" font-family="Arial,sans-serif" font-size="19" fill="#0f172a">Operations</text>
+<text x="941" y="842" font-family="Arial,sans-serif" font-size="16" fill="#334155">CloudWatch container logs</text>
+<text x="941" y="865" font-family="Arial,sans-serif" font-size="16" fill="#334155">Frontend rolling deployment</text>
+<text x="40" y="920" font-family="Arial,sans-serif" font-size="17" fill="#475569">Lab boundaries: HTTP only • one NAT • Single-AZ DB • diagram shows logical relationships</text>
+</svg>
