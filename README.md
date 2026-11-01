@@ -31,7 +31,7 @@ The goal is to build practical, well-documented cloud solutions that reflect how
 
 | Explore | Description |
 |----------|-------------|
-| [🚀 Featured Projects](#-featured-projects) | Explore production-inspired AWS projects covering serverless, AI, and event-driven architectures. |
+| [🚀 Featured Projects](#-featured-projects) | Explore production-inspired AWS projects covering containers, serverless, AI, and event-driven architectures. |
 | [🏗️ Architecture Gallery](#️-architecture-gallery) | Browse architecture diagrams for each project. |
 | [📊 Portfolio Snapshot](#-portfolio-snapshot) | View portfolio metrics and documentation statistics. |
 | [📈 Cloud Engineering Progress](#-cloud-engineering-progress) | Track completed and upcoming cloud engineering domains. |
@@ -53,6 +53,8 @@ If you're visiting this repository for the first time, I recommend exploring the
 | 4️⃣ | 🔄 **[Serverless DynamoDB CRUD API](serverless-dynamodb-crud-api/)** | Serverless API development with Amazon API Gateway, AWS Lambda, and DynamoDB. |
 | 5️⃣ | ⚡ **[AWS Lambda Execution Profiler](aws-lambda-execution-profiler/)** | Monitoring and performance analysis for AWS Lambda functions. |
 | 6️⃣ | 🌐 **[Static Website Hosting on Amazon S3](static-website-hosting-on-aws-s3/)** | Static website hosting fundamentals using Amazon S3. |
+| 7️⃣ | 🍲 **[Ritual Roast — Three-Tier Web Application](aws-three-tier-web-application/)** | Private EC2 application hosting, Auto Scaling, ALB, and RDS networking. |
+| 8️⃣ | 🐳 **[Ritual Roast — Containerized Web Application](aws-containerized-web-application/)** | Modernizing the application with Docker, ECR, separate ECS Fargate services, ALB path routing, and rolling deployments. |
 
 ---
 
@@ -66,6 +68,7 @@ If you're visiting this repository for the first time, I recommend exploring the
 | ⚡ **[AWS Lambda Execution Profiler](aws-lambda-execution-profiler/)** | Observability | Analyze AWS Lambda execution performance using Amazon CloudWatch metrics, logs, and profiling techniques | Lambda, CloudWatch | ⭐⭐⭐ | ✅ |
 | 🌐 **[Static Website Hosting on Amazon S3](static-website-hosting-on-aws-s3/)** | Static Hosting | Host and manage a static website using Amazon S3 following AWS best practices | Amazon S3 | ⭐⭐ | ✅ |
 | 🍲 **[Ritual Roast — Three-Tier Web Application](aws-three-tier-web-application/)** | Compute & Networking | Deploy and troubleshoot a segmented three-tier application with private EC2, load balancing, Auto Scaling, RDS, secrets, and S3 artifacts | VPC, EC2, ALB, Auto Scaling, RDS, S3, Secrets Manager, Systems Manager, IAM | ⭐⭐⭐⭐⭐ | ✅ |
+| 🐳 **[Ritual Roast — Containerized Web Application](aws-containerized-web-application/)** | Containers & Modernization | Deploy separate Next.js and Flask services, validate recipe workflows, and release a frontend update through an ECS rolling deployment | ECS, Fargate, ECR, ALB, VPC, RDS, Secrets Manager, IAM, CloudWatch, EC2, Systems Manager | ⭐⭐⭐⭐⭐ | ✅ |
 
 ---
 
@@ -82,6 +85,7 @@ Explore the high-level architecture behind each production-inspired project.
 | ⚡ **AWS Lambda Execution Profiler** | 📖 [View Architecture](aws-lambda-execution-profiler/#-solution-architecture) |
 | 🌐 **Static Website Hosting on Amazon S3** | 📖 [View Architecture](static-website-hosting-on-aws-s3/#-solution-architecture) |
 | 🍲 **Ritual Roast — Three-Tier Web Application** | 📖 [View Architecture](aws-three-tier-web-application/architecture/) |
+| 🐳 **Ritual Roast — Containerized Web Application** | 📖 [View Architecture](aws-containerized-web-application/architecture/) |
 
 ---
 
@@ -89,7 +93,7 @@ Explore the high-level architecture behind each production-inspired project.
 
 | Portfolio                            |   Count |
 | ------------------------------------ | ------: |
-| Production-Inspired AWS Projects     |   **6** |
+| Production-Inspired AWS Projects     |   **8** |
 | AWS Services Used                    |  **8+** |
 | Architecture Patterns                |  **5+** |
 | Technical Documents                  | **40+** |
@@ -114,7 +118,7 @@ Explore the high-level architecture behind each production-inspired project.
 | 🖥️ Compute (EC2) | ✅ |
 | ⚖️ Load Balancing | ✅ |
 | 🏗️ Infrastructure as Code | 🚧 |
-| 🐳 Containers (ECS) | ⏳ |
+| 🐳 Containers (ECS Fargate) | ✅ |
 | ☸️ Kubernetes (EKS) | ⏳ |
 | 🔄 CI/CD | ⏳ |
 
@@ -125,8 +129,10 @@ Explore the high-level architecture behind each production-inspired project.
 
 | Domain                 | Technologies                                            |
 | ---------------------- | ------------------------------------------------------- |
-| Cloud Architecture     | Three-Tier, Serverless, Event-Driven, REST APIs         |
-| Compute                | Amazon EC2, Auto Scaling, AWS Lambda                    |
+| Cloud Architecture     | Three-Tier, Containerized Applications, Serverless, Event-Driven, REST APIs         |
+| Compute                | Amazon EC2, Auto Scaling, AWS Lambda, ECS, Fargate                    |
+| Containers             | Docker, Amazon ECS, AWS Fargate, Amazon ECR             |
+| Networking             | Amazon VPC, Subnets, Route Tables, NAT Gateway, ALB     |
 | Storage                | Amazon S3                                               |
 | Database               | Amazon RDS for MySQL, Amazon DynamoDB                   |
 | AI / ML                | Amazon Bedrock, Amazon Textract, Prompt Engineering     |
@@ -143,20 +149,21 @@ Explore the high-level architecture behind each production-inspired project.
 
 ## ✅ Completed
 
-* Static Website Hosting on Amazon S3
-* Serverless DynamoDB CRUD API
-* AWS Lambda Execution Profiler
-* Event-Driven Image Processing
-* Serverless AI CV Enhancer
-* AWS AI Resume Builder
+* [Static Website Hosting on Amazon S3](static-website-hosting-on-aws-s3/)
+* [Serverless DynamoDB CRUD API](serverless-dynamodb-crud-api/)
+* [AWS Lambda Execution Profiler](serverless-dynamodb-crud-api/)
+* [Event-Driven Image Processing](aws-event-driven-image-processing/)
+* [Serverless AI CV Enhancer](aws-serverless-ai-cv-enhancer/)
+* [AWS AI Resume Builder](aws-ai-resume-builder/)
+* [Ritual Roast — Three-Tier Web Application](aws-three-tier-web-application/)
+* [Ritual Roast — Containerized Web Application](aws-containerized-web-application/)
 
 ## 🚧 Currently Building
 
-* Ritual Roast — final EC2 recovery validation and cleanup
+* Next hands-on project to be selected; Terraform and CI/CD remain planned learning areas.
 
 ## 📌 Planned
 
-* Docker & Amazon ECS
 * Amazon EKS
 * Amazon VPC
 * Infrastructure as Code with Terraform
@@ -242,7 +249,7 @@ Current focus areas include:
 - 🔄 CI/CD using GitHub Actions
 - 🤖 Advanced Generative AI with Amazon Bedrock
 
-_Last Updated: October 2026_
+_Last Updated: November 2026_
 
 
 
